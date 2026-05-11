@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORQOYIN — Urganchning Yagona Kiberxavfsizlik Markazi</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- CANVAS BACKGROUND -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- STICKY REGISTRATION CTA -->
+    <a href="#contact" class="sticky-cta" id="sticky-cta" aria-label="Roʻyxatdan oʻtish">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Roʻyxatdan oʻtish</span>
+    </a>
+
+    <!-- NAV -->
+    <header class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#top" class="logo">
+                <span class="logo-text"><span class="logo-bracket">[</span>ORQOYIN<span class="logo-bracket">]</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#courses">Kurslar</a>
+                <a href="#about">Biz haqimizda</a>
+                <a href="#contact" class="nav-cta">Roʻyxatdan oʻtish</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Tun/Kun rejimi">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <button class="burger" id="burger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#courses" class="mm-link">Kurslar</a>
+        <a href="#about" class="mm-link">Biz haqimizda</a>
+        <a href="#contact" class="mm-link mm-cta">Roʻyxatdan oʻtish</a>
+    </div>
+
+    <!-- ═══════════════════════ HERO ═══════════════════════ -->
+    <section class="hero" id="top">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Urganchning yagona kiberxavfsizlik markazi
+            </div>
+            <h1 class="hero-title">
+                <span class="line">KELAJAK</span>
+                <span class="line accent-line" data-text="HIMOYA">HIMOYA</span>
+                <span class="line" id="hero-qilingan">QILINGAN</span>
+            </h1>
+            <p class="hero-sub">
+                Kiberxavfsizlik va ingliz tili — ikki kuchni birlashtirib, global muhandis boʻling.
+            </p>
+            <div class="hero-actions">
+                <a href="#courses" class="btn btn-primary">Kurslarni koʻrish</a>
+                <a href="#about" class="btn btn-ghost">Biz haqimizda</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num" data-target="2">0</span>
+                    <span class="stat-label">Yoʻnalish</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num" data-target="1">0</span>
+                    <span class="stat-label">Mintaqada yagona</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Pastga</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ MARQUEE ═══════════════════════ -->
+    <div class="marquee-bar">
+        <div class="marquee-track">
+            <span>KIBERXAVFSIZLIK</span>
+            <span class="mx">✦</span>
+            <span>INGLIZ TILI</span>
+            <span class="mx">✦</span>
+            <span>ORQOYIN ACADEMY</span>
+            <span class="mx">✦</span>
+            <span>CYBERSECURITY</span>
+            <span class="mx">✦</span>
+            <span>ENGLISH LANGUAGE</span>
+            <span class="mx">✦</span>
+            <span>URGANCH</span>
+            <span class="mx">✦</span>
+            <span>KIBERXAVFSIZLIK</span>
+            <span class="mx">✦</span>
+            <span>INGLIZ TILI</span>
+            <span class="mx">✦</span>
+            <span>ORQOYIN ACADEMY</span>
+            <span class="mx">✦</span>
+            <span>CYBERSECURITY</span>
+            <span class="mx">✦</span>
+            <span>ENGLISH LANGUAGE</span>
+            <span class="mx">✦</span>
+            <span>URGANCH</span>
+            <span class="mx">✦</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ COURSES ═══════════════════════ -->
+    <section class="courses" id="courses">
+        <div class="section-header">
+            <p class="section-label">// 01 — KURSLAR</p>
+            <h2 class="section-title">Ikki kuch.<br>Cheksiz imkoniyat.</h2>
+        </div>
+
+        <!-- CYBERSECURITY COURSE -->
+        <div class="course-block cyber-block" id="cyber">
+            <div class="course-block-inner">
+                <div class="course-meta">
+                    <div class="course-number">01</div>
+                    <div class="course-tag cyber-tag">CYBERSECURITY</div>
+                </div>
+                <div class="course-content">
+                    <div class="course-left">
+                        <h3 class="course-title">Kiberxavfsizlik</h3>
+                        <p class="course-desc">
+                            Tarmoqlarni himoya qilishdan penetration testinggacha — raqamli dunyoning muhandisi boʻling.
+                            Zamonaviy kiberxavfsizlik mutaxassislari talab yuqori, maoshi yuqori.
+                        </p>
+                        <ul class="course-topics">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1L14 4V8C14 11.5 11.5 14 8 15C4.5 14 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                                Network Security & Ethical Hacking
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1L14 4V8C14 11.5 11.5 14 8 15C4.5 14 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                                Penetration Testing & CTF
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1L14 4V8C14 11.5 11.5 14 8 15C4.5 14 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                                Linux & Command Line Mastery
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1L14 4V8C14 11.5 11.5 14 8 15C4.5 14 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                                OSCP / CPTS sertifikat tayyorgarlik
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1L14 4V8C14 11.5 11.5 14 8 15C4.5 14 2 11.5 2 8V4L8 1Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                                Malware Analysis & Forensics
+                            </li>
+                        </ul>
+                        <div class="course-info-row">
+                            <div class="info-pill">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                1 yil
+                            </div>
+                            <div class="info-pill">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                Kichik guruhlar
+                            </div>
+                            <div class="info-pill">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                Amaliy lab
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-cyber">Qoʻshilish &rarr;</a>
+                    </div>
+                    <div class="course-visual cyber-visual">
+                        <div class="cyber-graphic">
+                            <div class="shield-outer">
+                                <div class="shield-inner">
+                                    <svg class="shield-icon" viewBox="0 0 80 90" fill="none">
+                                        <path d="M40 5L75 20V45C75 65 60 80 40 85C20 80 5 65 5 45V20L40 5Z" stroke="currentColor" stroke-width="2.5"/>
+                                        <path d="M40 20L60 29V45C60 57 51 67 40 70C29 67 20 57 20 45V29L40 20Z" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/>
+                                        <path d="M30 44L37 51L52 36" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="floating-tag ft1">root@orqoyin</div>
+                            <div class="floating-tag ft2">SECURED</div>
+                            <div class="floating-tag ft3">0x4F52</div>
+                            <div class="grid-lines"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENGLISH COURSE -->
+        <div class="course-block english-block" id="english">
+            <div class="course-block-inner">
+                <div class="course-meta">
+                    <div class="course-number">02</div>
+                    <div class="course-tag english-tag">ENGLISH</div>
+                </div>
+                <div class="course-content reverse">
+                    <div class="course-left">
+                        <h3 class="course-title">Ingliz Tili</h3>
+                        <p class="course-desc">
+                            Texnik ingliz tilidan biznes kommunikatsiyasigacha.
+                            Global IT kompaniyalari va xalqaro jamoalarda ishonch bilan gaplashing.
+                        </p>
+                        <ul class="course-topics">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 8.5c1-2 4-3 5-1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                                IT terminologiya & texnik yozishmalar
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 8.5c1-2 4-3 5-1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                                Suhbat & intervyu tayyorgarlik
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 8.5c1-2 4-3 5-1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                                IELTS / SAT sertifikat tayyorgarlik
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 8.5c1-2 4-3 5-1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                                Presentation & public speaking
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 8.5c1-2 4-3 5-1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                                Remote work & email writing
+                            </li>
+                        </ul>
+                        <div class="course-info-row">
+                            <div class="info-pill">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                1 yil
+                            </div>
+                            <div class="info-pill">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                A1 dan C1 gacha
+                            </div>
+                            <div class="info-pill">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                C darajadagi mentor
+                            </div>
+                        </div>
+                        <a href="#contact" class="btn btn-english">Qoʻshilish &rarr;</a>
+                    </div>
+                    <div class="course-visual english-visual">
+                        <div class="english-graphic">
+                            <div class="globe-ring ring1"></div>
+                            <div class="globe-ring ring2"></div>
+                            <div class="globe-ring ring3"></div>
+                            <div class="globe-center">
+                                <svg viewBox="0 0 80 80" fill="none" class="globe-icon">
+                                    <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/>
+                                    <ellipse cx="40" cy="40" rx="16" ry="34" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+                                    <line x1="6" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="10" y1="26" x2="70" y2="26" stroke="currentColor" stroke-width="1"/>
+                                    <line x1="10" y1="54" x2="70" y2="54" stroke="currentColor" stroke-width="1"/>
+                                </svg>
+                            </div>
+                            <div class="word-bubble wb1">Hello!</div>
+                            <div class="word-bubble wb2">Speak up</div>
+                            <div class="word-bubble wb3">IELTS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ WHY US ═══════════════════════ -->
+    <section class="why-us" id="about">
+        <div class="why-inner">
+            <div class="why-left">
+                <p class="section-label">// 02 — BIZ HAQIMIZDA</p>
+                <h2 class="section-title">Nega <br><span class="text-cyber">ORQOYIN?</span></h2>
+                <p class="why-desc">
+                    Urganchda birinchi va yagona ixtisoslashgan kiberxavfsizlik markazi.
+                    Biz faqat ikkita soha oʻrgatamiz — lekin ularni eng yuqori darajada.
+                </p>
+                <a href="#contact" class="btn btn-primary">Hozir boshlang</a>
+            </div>
+            <div class="why-right">
+                <div class="reason-card">
+                    <div class="reason-icon cyber-icon">
+                        <svg viewBox="0 0 32 32" fill="none"><path d="M16 3L28 8V16C28 23 22 28 16 29C10 28 4 23 4 16V8L16 3Z" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <div>
+                        <h4>Mintaqada yagona</h4>
+                        <p>Urganchda kiberxavfsizlik boʻyicha birinchi ixtisoslashgan markaz.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon english-icon">
+                        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/><ellipse cx="16" cy="16" rx="6" ry="12" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="16" x2="28" y2="16" stroke="currentColor" stroke-width="1.5"/></svg>
+                    </div>
+                    <div>
+                        <h4>Ikki kursni bir joyda</h4>
+                        <p>Kiberxavfsizlik + ingliz tili — texnik va kommunikatsiya koʻnikmalarini birga rivojlantiring.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M10 16h12M10 20h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                        <h4>100% amaliy</h4>
+                        <p>Real laboratoriyalar, haqiqiy stsenariylar, real natijalar. Teoriya emas — amal.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <svg viewBox="0 0 32 32" fill="none"><path d="M16 4L28 10V22L16 28L4 22V10L16 4Z" stroke="currentColor" stroke-width="2"/><path d="M16 10L22 13V19L16 22L10 19V13L16 10Z" stroke="currentColor" stroke-width="1.5"/></svg>
+                    </div>
+                    <div>
+                        <h4>Sertifikat kafili</h4>
+                        <p>OSCP, CPTS, IELTS, SAT — xalqaro tan olingan sertifikatlar uchun toʻliq tayyorgarlik.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ CTA BANNER ═══════════════════════ -->
+    <section class="cta-banner">
+        <div class="cta-inner">
+            <div class="cta-text">
+                <p class="cta-label">Kelajagingizni bugun boshlang</p>
+                <h2 class="cta-title">Tayyormisiz?</h2>
+            </div>
+            <div class="cta-split">
+                <a href="#contact" class="cta-card cyber-cta">
+                    <span class="cta-card-label">CYBERSECURITY</span>
+                    <span class="cta-card-action">Roʻyxatdan oʻting &rarr;</span>
+                </a>
+                <div class="cta-or">yoki</div>
+                <a href="#contact" class="cta-card english-cta">
+                    <span class="cta-card-label">ENGLISH</span>
+                    <span class="cta-card-action">Roʻyxatdan oʻting &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <div class="contact-left">
+                <p class="section-label">// 03 — ROʻYXAT</p>
+                <h2 class="section-title">Qoʻshiling.</h2>
+                <p class="contact-desc">
+                    Bepul konsultatsiya uchun ma'lumotlaringizni qoldiring.
+                    24 soat ichida aloqaga chiqamiz.
+                </p>
+                <div class="contact-info">
+                    <a href="https://maps.app.goo.gl/df6pieRZq7c63Wmv9" target="_blank" rel="noopener" class="ci-row ci-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Urganch — Xaritada koʻrish ↗
+                    </a>
+                    <a href="tel:+998909242550" class="ci-row ci-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 8.2 8.2l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        +998 90 924 2550
+                    </a>
+                    <a href="mailto:offseckh@icloud.com" class="ci-row ci-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        offseckh@icloud.com
+                    </a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form class="contact-form" id="reg-form">
+                    <div class="form-row">
+                        <div class="fg">
+                            <label>Ism va Familiya</label>
+                            <input type="text" id="reg-name" placeholder="Toʻliq ismingiz" required>
+                        </div>
+                        <div class="fg">
+                            <label>Telefon raqam</label>
+                            <input type="tel" id="reg-phone" inputmode="numeric" placeholder="+998 _ _ _ _ _ _ _ _" minlength="7" maxlength="18" required>
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <label>Kurs tanlang</label>
+                        <div class="course-selector">
+                            <label class="cs-option">
+                                <input type="radio" name="course" value="cybersecurity" required>
+                                <span class="cs-card cs-cyber">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M12 2L22 7V12C22 17.5 17.5 21 12 22C6.5 21 2 17.5 2 12V7L12 2Z"/></svg>
+                                    Kiberxavfsizlik
+                                </span>
+                            </label>
+                            <label class="cs-option">
+                                <input type="radio" name="course" value="english" required>
+                                <span class="cs-card cs-english">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                    Ingliz Tili
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="fg" id="smena-group" style="display:none">
+                        <label>Dars vaqtini tanlang</label>
+                        <div class="smena-options" id="smena-options"></div>
+                    </div>
+                    <div class="fg">
+                        <label>Bizni qayerdan topdingiz?</label>
+                        <select id="source" name="source">
+                            <option value="">— Tanlang —</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="telegram">Telegram</option>
+                            <option value="friend">Doʻst / tanish orqali</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="google">Google qidiruv</option>
+                            <option value="other">Boshqa</option>
+                        </select>
+                    </div>
+                    <!-- honeypot: bots fill this, humans never see it -->
+                    <div class="hp-trap" aria-hidden="true">
+                        <input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="btn btn-submit">
+                        <span>Roʻyxatdan oʻtish</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ MAP ═══════════════════════ -->
+    <section class="map-section">
+        <div class="map-inner">
+            <div class="map-label">
+                <p class="section-label">// 04 — JOYLASHUV</p>
+                <h2 class="section-title">Bizni toping.</h2>
+                <p class="map-desc">Urganch — mintaqaning yagona kiberxavfsizlik markazi.</p>
+                <a href="https://maps.app.goo.gl/df6pieRZq7c63Wmv9" target="_blank" rel="noopener" class="btn btn-primary map-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Google Xaritada ochish
+                </a>
+            </div>
+            <a href="https://maps.app.goo.gl/df6pieRZq7c63Wmv9" target="_blank" rel="noopener" class="map-card" aria-label="Xaritada ochish">
+                <div class="map-grid"></div>
+                <div class="map-pin-wrap">
+                    <div class="map-pin-pulse"></div>
+                    <div class="map-pin">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                </div>
+                <div class="map-card-footer">
+                    <span class="map-card-label">ORQOYIN — Urganch</span>
+                    <span class="map-card-action">Google Xaritada ochish ↗</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <a href="#top" class="footer-brand">
+                    <span><span class="logo-bracket">[</span>ORQOYIN<span class="logo-bracket">]</span></span>
+                </a>
+                <p>Urganchning yagona kiberxavfsizlik markazi</p>
+            </div>
+            <div class="footer-links">
+                <a href="#courses">Kurslar</a>
+                <a href="#about">Biz haqimizda</a>
+                <a href="#contact">Aloqa</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://t.me/orqoyinTM" target="_blank" rel="noopener" class="social-link" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+                    @orqoyinTM
+                </a>
+                <a href="https://instagram.com/orqoyinTM" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                    @orqoyinTM
+                </a>
+                <a href="https://youtube.com/@orqoyinTM" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    @orqoyinTM
+                </a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 ORQOYIN. Barcha huquqlar himoyalangan.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCAN BEAM (surveillance light ray) -->
+    <svg id="scan-beam" aria-hidden="true">
+        <defs>
+            <linearGradient id="beamGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%"   stop-color="#e84040" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#e84040" stop-opacity="0.08"/>
+            </linearGradient>
+        </defs>
+        <line id="scan-line" x1="0" y1="0" x2="0" y2="0"/>
+    </svg>
+
+    <!-- SUCCESS TOAST -->
+    <div class="toast" id="toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
+        Muvaffaqiyatli! Tez orada aloqaga chiqamiz.
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

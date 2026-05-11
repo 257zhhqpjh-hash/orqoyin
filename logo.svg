@@ -1,0 +1,37 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Arc: slow white→grey→white pulse -->
+  <path d="M 81 32 A 36 36 0 1 1 32 19"
+        stroke-width="9" stroke-linecap="round">
+    <animate attributeName="stroke"
+             values="#ffffff;#505050;#ffffff"
+             dur="5s"
+             repeatCount="indefinite"
+             calcMode="spline"
+             keyTimes="0;0.5;1"
+             keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+  </path>
+  <!-- Red dot: wanders inside the arc, slow blink -->
+  <circle r="7.5" fill="#e84040">
+    <animate attributeName="cx"
+             values="56;36;42;63;50;58;36;50;56"
+             dur="14s"
+             repeatCount="indefinite"
+             calcMode="spline"
+             keyTimes="0;0.125;0.25;0.375;0.5;0.625;0.75;0.875;1"
+             keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
+    <animate attributeName="cy"
+             values="30;38;62;57;45;33;55;63;30"
+             dur="14s"
+             repeatCount="indefinite"
+             calcMode="spline"
+             keyTimes="0;0.125;0.25;0.375;0.5;0.625;0.75;0.875;1"
+             keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"/>
+    <animate attributeName="opacity"
+             values="1;0.25;1"
+             dur="2.5s"
+             repeatCount="indefinite"
+             calcMode="spline"
+             keyTimes="0;0.5;1"
+             keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+  </circle>
+</svg>
