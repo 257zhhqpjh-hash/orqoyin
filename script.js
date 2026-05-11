@@ -711,15 +711,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const SMENA_DATA = {
         english: [
-            { value: '09:00–11:00', label: '09:00 – 11:00', note: '12+' },
-            { value: '16:00–18:00', label: '16:00 – 18:00', note: "Kids' English (5+)" },
-            { value: '18:00–19:30', label: '18:00 – 19:30', note: '12+' },
+            { value: '09:00',       label: '09:00',           note: '12+ yosh',       period: 'day'   },
+            { value: '16:00–18:00', label: '16:00 – 18:00',   note: "Bolalar (5+)",   period: 'day'   },
+            { value: '19:30',       label: '19:30',           note: '12+ yosh',       period: 'night' },
         ],
         cybersecurity: [
-            { value: '11:00–13:00', label: '11:00 – 13:00', note: '' },
-            { value: '19:30–21:00', label: '19:30 – 21:00', note: '' },
+            { value: '11:00', label: '11:00', note: '', period: 'day'   },
+            { value: '19:00', label: '19:00', note: '', period: 'night' },
         ],
     };
+
+    // Day-period icon SVG strings
+    const DAY_ICON   = `<svg class="period-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>`;
+    const NIGHT_ICON = `<svg class="period-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
 
     function buildSmenaOptions(course) {
         const container = document.getElementById('smena-options');
@@ -727,15 +731,28 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '';
         const slots = SMENA_DATA[course];
         if (!slots) { group.style.display = 'none'; return; }
+
+        const courseClass = course === 'cybersecurity' ? 'cyber-slot' : 'english-slot';
+
         slots.forEach(slot => {
             const lbl = document.createElement('label');
             lbl.className = 'smena-option';
+            const icon = slot.period === 'day' ? DAY_ICON : NIGHT_ICON;
             lbl.innerHTML = `
                 <input type="radio" name="smena" value="${slot.value}" required>
-                <span class="smena-slot ${course === 'cybersecurity' ? 'cyber-slot' : 'english-slot'}">
-                    <span class="slot-time">${slot.label}</span>
+                <span class="smena-slot ${courseClass} period-${slot.period}">
+                    <span class="slot-header">
+                        ${icon}
+                        <span class="slot-time">${slot.label}</span>
+                    </span>
                     ${slot.note ? `<span class="slot-age">${slot.note}</span>` : ''}
                 </span>`;
+            // Apply day/night visual immediately on radio change
+            const radio = lbl.querySelector('input');
+            radio.addEventListener('change', () => {
+                container.querySelectorAll('.smena-slot').forEach(s => s.removeAttribute('data-active'));
+                lbl.querySelector('.smena-slot').setAttribute('data-active', slot.period);
+            });
             container.appendChild(lbl);
         });
         group.style.display = 'flex';
