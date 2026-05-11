@@ -1275,47 +1275,47 @@ button { font-family: inherit; cursor: pointer; }
 .slot-header {
     display: flex; align-items: center; gap: 0.4rem;
 }
-.period-icon { flex-shrink: 0; opacity: 0.7; }
+.period-icon { flex-shrink: 0; opacity: 0.65; }
 .slot-time { font-size: 0.88rem; font-weight: 700; font-family: var(--font-mono); }
-.slot-age  { font-size: 0.6rem; font-weight: 400; padding-left: 1.3rem; opacity: 0.75; }
+.slot-age  { font-size: 0.6rem; font-weight: 400; padding-left: 1.3rem; }
 
-/* ── SELECTED: DAY slot — warm golden/sky ── */
+/* ── SELECTED: DAY slot — warm amber-to-sky, solid bg, bright text ── */
 .smena-option input:checked + .cyber-slot.period-day,
-.smena-option input:checked + .english-slot.period-day {
-    border-color: #f59e0b;
-    background: linear-gradient(135deg,
-        rgba(251,191,36,0.14) 0%,
-        rgba(56,189,248,0.10) 100%);
-    color: #fbbf24;
-    box-shadow: 0 0 18px rgba(251,191,36,0.22), inset 0 1px 0 rgba(255,235,150,0.12);
-}
-.smena-option input:checked + .period-day .period-icon { opacity: 1; color: #fbbf24; }
-.smena-option input:checked + .period-day .slot-age    { opacity: 0.85; }
-
-/* ── SELECTED: NIGHT slot — deep purple/navy ── */
-.smena-option input:checked + .cyber-slot.period-night,
-.smena-option input:checked + .english-slot.period-night {
-    border-color: var(--purple);
-    background: linear-gradient(135deg,
-        rgba(30,27,75,0.7) 0%,
-        rgba(109,40,217,0.18) 100%);
-    color: #a78bfa;
-    box-shadow: 0 0 18px var(--purple-glow), inset 0 1px 0 rgba(167,139,250,0.1);
-}
-.smena-option input:checked + .period-night .period-icon { opacity: 1; color: #a78bfa; }
-.smena-option input:checked + .period-night .slot-age    { opacity: 0.85; }
-
-/* data-active attribute (set by JS when radio fires) — same visuals, belt-and-suspenders */
+.smena-option input:checked + .english-slot.period-day,
 .smena-slot[data-active="day"] {
     border-color: #f59e0b !important;
-    background: linear-gradient(135deg, rgba(251,191,36,0.14) 0%, rgba(56,189,248,0.10) 100%) !important;
-    color: #fbbf24 !important;
+    background: linear-gradient(135deg, #92400e 0%, #1e3a5f 100%) !important;
+    color: #fef3c7 !important;         /* bright cream — 9:1 on dark amber */
+    box-shadow: 0 0 20px rgba(245,158,11,0.35), inset 0 1px 0 rgba(254,243,199,0.15) !important;
 }
+.smena-option input:checked + .period-day .period-icon,
+.smena-slot[data-active="day"] .period-icon {
+    opacity: 1;
+    color: #fde68a;
+}
+.smena-option input:checked + .period-day .slot-time,
+.smena-slot[data-active="day"] .slot-time { color: #fff; }
+.smena-option input:checked + .period-day .slot-age,
+.smena-slot[data-active="day"] .slot-age  { color: #fde68a; opacity: 1; }
+
+/* ── SELECTED: NIGHT slot — deep indigo, solid bg, bright lavender text ── */
+.smena-option input:checked + .cyber-slot.period-night,
+.smena-option input:checked + .english-slot.period-night,
 .smena-slot[data-active="night"] {
-    border-color: var(--purple) !important;
-    background: linear-gradient(135deg, rgba(30,27,75,0.7) 0%, rgba(109,40,217,0.18) 100%) !important;
-    color: #a78bfa !important;
+    border-color: #7c3aed !important;
+    background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%) !important;
+    color: #ede9fe !important;         /* bright lavender — 10:1 on dark indigo */
+    box-shadow: 0 0 20px rgba(124,58,237,0.45), inset 0 1px 0 rgba(237,233,254,0.12) !important;
 }
+.smena-option input:checked + .period-night .period-icon,
+.smena-slot[data-active="night"] .period-icon {
+    opacity: 1;
+    color: #c4b5fd;
+}
+.smena-option input:checked + .period-night .slot-time,
+.smena-slot[data-active="night"] .slot-time { color: #fff; }
+.smena-option input:checked + .period-night .slot-age,
+.smena-slot[data-active="night"] .slot-age  { color: #c4b5fd; opacity: 1; }
 
 /* ── AMENITIES STRIP ───────────────────────────── */
 .amenities-strip {
