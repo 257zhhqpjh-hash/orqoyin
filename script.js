@@ -709,6 +709,12 @@ document.addEventListener('DOMContentLoaded', () => {
         other:     'Boshqa',
     };
 
+    const COURSE_LABELS = {
+        cybersecurity: '🛡 Kiberxavfsizlik',
+        english:       '🌐 Ingliz Tili',
+        ielts_free:    '📖 Bepul IELTS Tayyorlovi',
+    };
+
     const SMENA_DATA = {
         english: [
             { value: '09:00',       label: '09:00',           note: '12+ yosh',       period: 'day'   },
@@ -718,6 +724,10 @@ document.addEventListener('DOMContentLoaded', () => {
         cybersecurity: [
             { value: '11:00', label: '11:00', note: '', period: 'day'   },
             { value: '19:00', label: '19:00', note: '', period: 'night' },
+        ],
+        ielts_free: [
+            { value: '09:00–11:00', label: '09:00 – 11:00', note: 'Sabahgi guruh', period: 'day'   },
+            { value: '18:00–20:00', label: '18:00 – 20:00', note: 'Kechki guruh',  period: 'night' },
         ],
     };
 
@@ -732,7 +742,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const slots = SMENA_DATA[course];
         if (!slots) { group.style.display = 'none'; return; }
 
-        const courseClass = course === 'cybersecurity' ? 'cyber-slot' : 'english-slot';
+        const courseClass = course === 'cybersecurity' ? 'cyber-slot'
+                          : course === 'ielts_free'    ? 'ielts-slot'
+                          : 'english-slot';
 
         slots.forEach(slot => {
             const lbl = document.createElement('label');
@@ -905,7 +917,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function sendToTelegram(data) {
-        const course = data.course === 'cybersecurity' ? '🛡 Kiberxavfsizlik' : '🌐 Ingliz Tili';
+        const course = COURSE_LABELS[data.course] || data.course || 'Noma\'lum';
         const source = SOURCE_LABELS[data.source] || data.source || 'Koʻrsatilmagan';
         const smena  = data.smena || 'Tanlanmagan';
 

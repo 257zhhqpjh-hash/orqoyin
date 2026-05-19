@@ -1213,6 +1213,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* Course selector — crimson / purple */
 .course-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.cs-option-full { grid-column: 1 / -1; }
 .cs-option input { display: none; }
 .cs-card {
     display: flex; align-items: center; gap: 0.62rem;
@@ -1239,6 +1240,33 @@ button { font-family: inherit; cursor: pointer; }
     background: var(--purple-dim);
     color: var(--purple);
     box-shadow: 0 0 16px var(--purple-glow);
+}
+.cs-option input:checked + .cs-ielts {
+    border-color: #10b981;
+    background: rgba(16,185,129,0.09);
+    color: #10b981;
+    box-shadow: 0 0 16px rgba(16,185,129,0.36);
+}
+.cs-ielts {
+    position: relative;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.cs-free-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.18em 0.55em;
+    border-radius: 20px;
+    background: rgba(16,185,129,0.15);
+    border: 1px solid rgba(16,185,129,0.35);
+    color: #10b981;
+    text-transform: uppercase;
+    margin-left: auto;
+}
+.cs-option input:checked + .cs-ielts .cs-free-badge {
+    background: rgba(16,185,129,0.25);
+    border-color: #10b981;
 }
 
 /* Submit button — crimson */
@@ -1282,6 +1310,7 @@ button { font-family: inherit; cursor: pointer; }
 /* ── SELECTED: DAY slot — warm amber-to-sky, solid bg, bright text ── */
 .smena-option input:checked + .cyber-slot.period-day,
 .smena-option input:checked + .english-slot.period-day,
+.smena-option input:checked + .ielts-slot.period-day,
 .smena-slot[data-active="day"] {
     border-color: #f59e0b !important;
     background: linear-gradient(135deg, #92400e 0%, #1e3a5f 100%) !important;
@@ -1301,6 +1330,7 @@ button { font-family: inherit; cursor: pointer; }
 /* ── SELECTED: NIGHT slot — deep indigo, solid bg, bright lavender text ── */
 .smena-option input:checked + .cyber-slot.period-night,
 .smena-option input:checked + .english-slot.period-night,
+.smena-option input:checked + .ielts-slot.period-night,
 .smena-slot[data-active="night"] {
     border-color: #7c3aed !important;
     background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%) !important;
