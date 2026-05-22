@@ -771,6 +771,17 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             container.appendChild(lbl);
         });
+
+        // Auto-select when only one slot — user shouldn't need an extra click
+        if (slots.length === 1) {
+            const onlyRadio = container.querySelector('input[name="smena"]');
+            const onlySlot  = container.querySelector('.smena-slot');
+            if (onlyRadio && onlySlot) {
+                onlyRadio.checked = true;
+                onlySlot.setAttribute('data-active', slots[0].period);
+            }
+        }
+
         group.style.display = 'flex';
     }
 
