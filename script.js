@@ -713,6 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cybersecurity: '🛡 Kiberxavfsizlik',
         english:       '🌐 Ingliz Tili',
         ielts_free:    '📖 Bepul IELTS Tayyorlovi',
+        sat_free:      '📐 Bepul SAT Tayyorlovi',
     };
 
     const SMENA_DATA = {
@@ -729,6 +730,9 @@ document.addEventListener('DOMContentLoaded', () => {
             { value: '09:00–11:00', label: '09:00 – 11:00', note: 'Sabahgi guruh', period: 'day'   },
             { value: '18:00–20:00', label: '18:00 – 20:00', note: 'Kechki guruh',  period: 'night' },
         ],
+        sat_free: [
+            { value: '18:30–20:00', label: '18:30 – 20:00', note: 'Juma · Shanba · Yakshanba', period: 'night' },
+        ],
     };
 
     // Day-period icon SVG strings
@@ -744,6 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const courseClass = course === 'cybersecurity' ? 'cyber-slot'
                           : course === 'ielts_free'    ? 'ielts-slot'
+                          : course === 'sat_free'      ? 'sat-slot'
                           : 'english-slot';
 
         slots.forEach(slot => {
