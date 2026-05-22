@@ -1528,6 +1528,42 @@ button { font-family: inherit; cursor: pointer; }
     line-height: 1.65;
     margin-top: auto;
 }
+.club-courses {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: 0.2rem;
+}
+.club-course {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+}
+.club-course-ielts {
+    background: rgba(16,185,129,0.07);
+    border-left-color: #10b981;
+}
+.club-course-sat {
+    background: rgba(14,165,233,0.07);
+    border-left-color: #0ea5e9;
+}
+.club-course-time {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--white);
+}
+.club-course-ielts .club-course-time { color: #10b981; }
+.club-course-sat  .club-course-time  { color: #0ea5e9; }
+.club-course-name {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 500;
+}
 @media (max-width: 768px) {
     .clubs-grid { grid-template-columns: 1fr; gap: 0.9rem; }
     .clubs-section { padding: 5rem 1.5rem; }

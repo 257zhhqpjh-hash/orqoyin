@@ -727,8 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { value: '19:00', label: '19:00', note: '', period: 'night' },
         ],
         ielts_free: [
-            { value: '09:00–11:00', label: '09:00 – 11:00', note: 'Sabahgi guruh', period: 'day'   },
-            { value: '18:00–20:00', label: '18:00 – 20:00', note: 'Kechki guruh',  period: 'night' },
+            { value: '10:00–11:30', label: '10:00 – 11:30', note: 'Juma · Shanba · Yakshanba', period: 'day' },
         ],
         sat_free: [
             { value: '18:30–20:00', label: '18:30 – 20:00', note: 'Juma · Shanba · Yakshanba', period: 'night' },
