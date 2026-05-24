@@ -403,9 +403,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ───────────────────────────────────────────────── */
     const isPointerFine = window.matchMedia('(pointer: fine)').matches;
     const orbs = [
-        { el: document.querySelector('.orb1'), speedX: 0.018, speedY: 0.012 },
-        { el: document.querySelector('.orb2'), speedX: -0.014, speedY: 0.020 },
-        { el: document.querySelector('.orb3'), speedX: 0.022, speedY: -0.016 },
+        { el: document.querySelector('.orb-1'), speedX: 0.018, speedY: 0.012 },
+        { el: document.querySelector('.orb-2'), speedX: -0.014, speedY: 0.020 },
+        { el: document.querySelector('.orb-3'), speedX: 0.022, speedY: -0.016 },
     ].filter(o => o.el);
 
     if (isPointerFine && orbs.length) {
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.5 });
 
-    document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
+    document.querySelectorAll('.hstat-num[data-target]').forEach(el => counterObserver.observe(el));
 
     /* ─────────────────────────────────────────────────
        10. SCAN BEAM
@@ -673,6 +673,146 @@ document.addEventListener('DOMContentLoaded', () => {
         if (textEl) textEl.textContent = T[currentLang].toast_success;
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    /* ─────────────────────────────────────────────────
+       13. CUSTOM CURSOR
+    ───────────────────────────────────────────────── */
+    if (isPointerFine) {
+        const ring = document.getElementById('cur-ring');
+        const dot  = document.getElementById('cur-dot');
+
+        let rx = -100, ry = -100; // ring pos (lerped)
+        let dx = -100, dy = -100; // dot pos  (instant)
+
+        document.addEventListener('mousemove', e => {
+            dx = e.clientX; dy = e.clientY;
+        }, { passive: true });
+
+        (function cursorLoop() {
+            rx += (dx - rx) * 0.10;
+            ry += (dy - ry) * 0.10;
+            if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+            if (dot)  { dot.style.left  = dx + 'px'; dot.style.top  = dy + 'px'; }
+            requestAnimationFrame(cursorLoop);
+        })();
+
+        // Hover detection for interactive elements
+        const hoverTargets = 'a, button, .cs-card, .smena-slot, .bento-card, .wu-card, .club-card, .map-card, label';
+        document.querySelectorAll(hoverTargets).forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+    }
+
+    /* ─────────────────────────────────────────────────
+       14. SCRAMBLE TEXT EFFECT
+    ───────────────────────────────────────────────── */
+    const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&!?';
+
+    function scrambleEl(el, target, duration) {
+        const len = target.length;
+        let start = null;
+
+        function step(ts) {
+            if (!start) start = ts;
+            const t = Math.min((ts - start) / duration, 1);
+            const revealed = Math.floor(t * len);
+
+            let out = '';
+            for (let i = 0; i < len; i++) {
+                out += i < revealed
+                    ? target[i]
+                    : GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+            }
+
+            // Update text node directly so CSS ::before/::after (data-text) stay intact
+            const tn = el.childNodes[0];
+            if (tn && tn.nodeType === 3) tn.nodeValue = out;
+            else el.textContent = out;
+
+            if (t < 1) {
+                requestAnimationFrame(step);
+            } else {
+                const tn2 = el.childNodes[0];
+                if (tn2 && tn2.nodeType === 3) tn2.nodeValue = target;
+                else el.textContent = target;
+                // Keep data-text in sync for glitch pseudo-elements
+                if (el.hasAttribute('data-text')) el.setAttribute('data-text', target);
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    function runScrambles(lang) {
+        const key = 'final' + lang.charAt(0).toUpperCase() + lang.slice(1);
+        document.querySelectorAll('.scramble').forEach((el, i) => {
+            const target = el.dataset[key] || el.textContent.trim();
+            setTimeout(() => scrambleEl(el, target, 1100 + i * 80), i * 90 + 120);
+        });
+    }
+
+    // Initial scramble on load
+    runScrambles(currentLang);
+
+    // Re-scramble when language changes
+    function onLangChange() {
+        setTimeout(() => runScrambles(currentLang), 60);
+    }
+    if (langToggle) langToggle.addEventListener('click', onLangChange);
+    document.querySelectorAll('.mm-lang-btn[data-l]').forEach(btn => {
+        btn.addEventListener('click', onLangChange);
+    });
+
+    /* ─────────────────────────────────────────────────
+       15. 3D CARD TILT
+    ───────────────────────────────────────────────── */
+    if (isPointerFine) {
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            const MAX = 8; // max degrees
+
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const cx = rect.left + rect.width  / 2;
+                const cy = rect.top  + rect.height / 2;
+                const dx = (e.clientX - cx) / (rect.width  / 2);
+                const dy = (e.clientY - cy) / (rect.height / 2);
+                const rotX = -dy * MAX;
+                const rotY =  dx * MAX;
+                card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+            });
+        });
+    }
+
+    /* ─────────────────────────────────────────────────
+       16. MAGNETIC BUTTONS
+    ───────────────────────────────────────────────── */
+    if (isPointerFine) {
+        document.querySelectorAll('.magnetic').forEach(el => {
+            const STRENGTH = 0.38;
+
+            el.addEventListener('mousemove', e => {
+                const rect = el.getBoundingClientRect();
+                const cx = rect.left + rect.width  / 2;
+                const cy = rect.top  + rect.height / 2;
+                const dx = (e.clientX - cx) * STRENGTH;
+                const dy = (e.clientY - cy) * STRENGTH;
+                el.style.transform = `translate(${dx}px, ${dy}px)`;
+            });
+
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translate(0,0)';
+                el.style.transition = 'transform 0.4s cubic-bezier(.25,.46,.45,.94)';
+            });
+
+            el.addEventListener('mouseenter', () => {
+                el.style.transition = 'transform 0.1s linear';
+            });
+        });
     }
 
 }); // end DOMContentLoaded
