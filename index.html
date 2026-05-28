@@ -25,14 +25,23 @@
 <!-- CANVAS -->
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-<!-- CURSOR — ORQOYIN eye shape (arc + red dot) -->
+<!-- CURSOR — ORQOYIN eye: velocity rotation + ghost trail -->
+<div class="cur-ghost cur-g3" id="cur-g3" aria-hidden="true">
+    <svg class="cur-arc-svg" viewBox="0 0 50 50" fill="none">
+        <path d="M 44 14 A 22 22 0 1 1 36 6" stroke="white" stroke-width="3.5" stroke-linecap="round" class="cur-arc-path"/>
+    </svg>
+</div>
+<div class="cur-ghost cur-g2" id="cur-g2" aria-hidden="true">
+    <svg class="cur-arc-svg" viewBox="0 0 50 50" fill="none">
+        <path d="M 44 14 A 22 22 0 1 1 36 6" stroke="white" stroke-width="3.5" stroke-linecap="round" class="cur-arc-path"/>
+    </svg>
+</div>
 <div class="cur-eye" id="cur-eye" aria-hidden="true">
-    <svg class="cur-arc-svg" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 44 14 A 22 22 0 1 1 36 6"
-              stroke="white" stroke-width="3.5" stroke-linecap="round"
-              class="cur-arc-path"/>
+    <svg class="cur-arc-svg" id="cur-arc-svg" viewBox="0 0 50 50" fill="none">
+        <path d="M 44 14 A 22 22 0 1 1 36 6" stroke="white" stroke-width="3.5" stroke-linecap="round" class="cur-arc-path"/>
     </svg>
     <div class="cur-red-dot" id="cur-dot"></div>
+    <div class="cur-dot-ring"></div>
 </div>
 
 <!-- STICKY CTA -->
@@ -45,7 +54,11 @@
 <header class="nav" id="nav">
     <div class="nav-inner">
         <a href="#top" class="logo" aria-label="ORQOYIN">
-            <span class="logo-bracket">[</span>ORQOYIN<span class="logo-bracket">]</span>
+            <svg class="logo-arc-icon" viewBox="0 0 22 22" fill="none" width="20" height="20" aria-hidden="true">
+                <path d="M 19 6 A 10 10 0 1 1 15.5 2.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="16.5" cy="3" r="2.2" fill="#e84040"/>
+            </svg>
+            <span><span class="logo-bracket">[</span>ORQOYIN<span class="logo-bracket">]</span></span>
         </a>
         <nav class="nav-links" aria-label="Asosiy menu">
             <a href="#courses" data-i18n="nav_courses">Kurslar</a>
@@ -132,6 +145,7 @@
                 <div class="se-scanner"></div>
                 <!-- iris rings -->
                 <div class="se-iris-outer"></div>
+                <div class="se-iris-mid"></div>
                 <div class="se-iris-inner"></div>
                 <!-- crosshair lines -->
                 <div class="se-ch-h"></div>
@@ -173,6 +187,10 @@
                     <div class="se-data-item">
                         <span class="se-data-key">θ</span>
                         <span class="se-data-val"><span id="se-angle">000</span>°</span>
+                    </div>
+                    <div class="se-data-item">
+                        <span class="se-data-key">DIST</span>
+                        <span class="se-data-val"><span id="se-dist">---</span></span>
                     </div>
                     <div class="se-data-item">
                         <span class="se-data-key">SYS</span>
@@ -232,22 +250,42 @@
         <span>A1 → C1</span><span class="mx">✦</span>
     </div>
 </div>
+<div class="marquee-bar marquee-rev" aria-hidden="true">
+    <div class="marquee-track">
+        <span>NETWORK SECURITY</span><span class="mx">◈</span>
+        <span>ETHICAL HACKING</span><span class="mx">◈</span>
+        <span>LINUX · MACOS</span><span class="mx">◈</span>
+        <span>PENETRATION TESTING</span><span class="mx">◈</span>
+        <span>IELTS B2+</span><span class="mx">◈</span>
+        <span>SAT PREP</span><span class="mx">◈</span>
+        <span>XORAZM VILOYATI</span><span class="mx">◈</span>
+        <span>RAQAMLI AKADEMIYA</span><span class="mx">◈</span>
+        <span>NETWORK SECURITY</span><span class="mx">◈</span>
+        <span>ETHICAL HACKING</span><span class="mx">◈</span>
+        <span>LINUX · MACOS</span><span class="mx">◈</span>
+        <span>PENETRATION TESTING</span><span class="mx">◈</span>
+        <span>IELTS B2+</span><span class="mx">◈</span>
+        <span>SAT PREP</span><span class="mx">◈</span>
+        <span>XORAZM VILOYATI</span><span class="mx">◈</span>
+        <span>RAQAMLI AKADEMIYA</span><span class="mx">◈</span>
+    </div>
+</div>
 
 <!-- ─── METRICS BAND ─────────────────────────────────── -->
 <div class="metrics-band">
     <div class="metrics-inner">
         <div class="metric-item reveal">
-            <span class="metric-val">2</span>
+            <span class="metric-val" data-count="2">2</span>
             <span class="metric-label" data-i18n="stat_directions">Yo'nalish</span>
         </div>
         <div class="metric-sep"></div>
         <div class="metric-item reveal" data-delay="80">
-            <span class="metric-val">2</span>
+            <span class="metric-val" data-count="2">2</span>
             <span class="metric-label" data-i18n="stat_free">Bepul kurs</span>
         </div>
         <div class="metric-sep"></div>
         <div class="metric-item reveal" data-delay="160">
-            <span class="metric-val">6</span>
+            <span class="metric-val" data-count="6">6</span>
             <span class="metric-label">Mac Mini</span>
         </div>
         <div class="metric-sep"></div>

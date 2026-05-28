@@ -682,51 +682,97 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ─────────────────────────────────────────────────
-       13. CURSOR — ORQOYIN EYE + SURVEILLANCE TRACKER
+       13. CURSOR — VELOCITY ROTATION + GHOST TRAIL
     ───────────────────────────────────────────────── */
     if (isPointerFine) {
-        const curEye = document.getElementById('cur-eye');
+        const curEye  = document.getElementById('cur-eye');
+        const curArc  = document.getElementById('cur-arc-svg');
+        const curG2   = document.getElementById('cur-g2');
+        const curG3   = document.getElementById('cur-g3');
 
-        /* Mouse position (raw) */
-        let mouseX = -200, mouseY = -200;
+        /* Raw mouse */
+        let mxRaw = -300, myRaw = -300;
+        let prevMX = -300, prevMY = -300;
+
         document.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            prevMX = mxRaw; prevMY = myRaw;
+            mxRaw = e.clientX; myRaw = e.clientY;
         }, { passive: true });
 
-        /* Lerped position for the eye cursor */
-        let eyeX = -200, eyeY = -200;
+        /* Lerped positions */
+        let eyeX = -300, eyeY = -300;  /* main cursor (fast lerp) */
+        let g2X  = -300, g2Y  = -300;  /* ghost 2 (medium) */
+        let g3X  = -300, g3Y  = -300;  /* ghost 3 (slow) */
 
-        /* ── cursor RAF loop ── */
+        /* Velocity-driven rotation */
+        let curAngle   = 0;
+        let rotSpeed   = 0.7;   /* current deg/frame */
+        let rotTarget  = 0.7;   /* target deg/frame */
+
+        /* ── main cursor RAF ── */
         (function eyeCursorLoop() {
-            eyeX += (mouseX - eyeX) * 0.10;
-            eyeY += (mouseY - eyeY) * 0.10;
-            if (curEye) {
-                curEye.style.left = eyeX + 'px';
-                curEye.style.top  = eyeY + 'px';
+            /* velocity → rotation speed target */
+            const vx = mxRaw - prevMX;
+            const vy = myRaw - prevMY;
+            const vel = Math.min(Math.hypot(vx, vy), 48);
+            rotTarget = 0.5 + vel * 0.085; /* 0.5 – 4.6 deg/frame */
+
+            /* smooth rotation speed */
+            rotSpeed += (rotTarget - rotSpeed) * 0.055;
+            curAngle += rotSpeed;
+
+            /* lerp positions */
+            eyeX += (mxRaw - eyeX) * 0.16;
+            eyeY += (myRaw - eyeY) * 0.16;
+            g2X  += (eyeX  - g2X)  * 0.10;
+            g2Y  += (eyeY  - g2Y)  * 0.10;
+            g3X  += (g2X   - g3X)  * 0.07;
+            g3Y  += (g2Y   - g3Y)  * 0.07;
+
+            /* apply positions */
+            if (curEye) { curEye.style.left = eyeX + 'px'; curEye.style.top = eyeY + 'px'; }
+            if (curG2)  { curG2.style.left  = g2X  + 'px'; curG2.style.top  = g2Y  + 'px'; }
+            if (curG3)  { curG3.style.left  = g3X  + 'px'; curG3.style.top  = g3Y  + 'px'; }
+
+            /* apply rotation (main arc + phase-offset ghosts) */
+            if (curArc) curArc.style.transform = `rotate(${curAngle}deg)`;
+            if (curG2) {
+                const g2Arc = curG2.querySelector('.cur-arc-svg');
+                if (g2Arc) g2Arc.style.transform = `rotate(${curAngle - 22}deg)`;
             }
+            if (curG3) {
+                const g3Arc = curG3.querySelector('.cur-arc-svg');
+                if (g3Arc) g3Arc.style.transform = `rotate(${curAngle - 44}deg)`;
+            }
+
             requestAnimationFrame(eyeCursorLoop);
         })();
 
-        /* Hover state — changes arc color + red dot size */
+        /* Click ripple */
+        document.addEventListener('click', () => {
+            if (!curEye) return;
+            curEye.classList.add('cur-click');
+            setTimeout(() => curEye.classList.remove('cur-click'), 440);
+        });
+
+        /* Hover — arc goes cyber-green, red dot scales */
         const hoverTargets = 'a, button, .cs-card, .smena-slot, .bento-card, .wu-card, .club-card, .map-card, label';
         document.querySelectorAll(hoverTargets).forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
             el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
         });
 
-        /* ── Hero surveillance eye — pupil tracks mouse ── */
+        /* ─────────────────────────────────────────────────
+           SURVEILLANCE EYE — pupil tracking + blink
+        ───────────────────────────────────────────────── */
         const survEye   = document.getElementById('surv-eye');
         const survPupil = document.getElementById('se-pupil');
         const survAngle = document.getElementById('se-angle');
+        const survDist  = document.getElementById('se-dist');
 
         if (survEye && survPupil) {
-            const MAX_DIST = 38; // max px the pupil can travel from center
-
-            /* Target pupil position (updated on mousemove) */
-            let ptx = 0, pty = 0;
-            /* Current lerped pupil position */
-            let pcx = 0, pcy = 0;
+            const MAX_DIST = 40;
+            let ptx = 0, pty = 0, pcx = 0, pcy = 0;
 
             document.addEventListener('mousemove', e => {
                 const rect = survEye.getBoundingClientRect();
@@ -734,15 +780,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cy = rect.top  + rect.height / 2;
                 const dx = e.clientX - cx;
                 const dy = e.clientY - cy;
-                const angle = Math.atan2(dy, dx);
-                const dist  = Math.min(Math.hypot(dx, dy) / 5, MAX_DIST);
+                const rawDist = Math.hypot(dx, dy);
+                const angle   = Math.atan2(dy, dx);
+                const dist    = Math.min(rawDist / 5, MAX_DIST);
+
                 ptx = Math.cos(angle) * dist;
                 pty = Math.sin(angle) * dist;
 
-                /* Live angle readout */
                 if (survAngle) {
                     const deg = Math.round(((angle * 180 / Math.PI) + 360) % 360);
                     survAngle.textContent = String(deg).padStart(3, '0');
+                }
+                if (survDist) {
+                    survDist.textContent = String(Math.min(Math.round(rawDist), 999)).padStart(3, '0');
                 }
             }, { passive: true });
 
@@ -753,8 +803,45 @@ document.addEventListener('DOMContentLoaded', () => {
                     `translate(calc(-50% + ${pcx.toFixed(2)}px), calc(-50% + ${pcy.toFixed(2)}px))`;
                 requestAnimationFrame(pupilLoop);
             })();
+
+            /* Periodic blink */
+            (function scheduleBlink() {
+                const delay = 5000 + Math.random() * 9000;
+                setTimeout(() => {
+                    survEye.classList.add('se-blinking');
+                    setTimeout(() => {
+                        survEye.classList.remove('se-blinking');
+                        scheduleBlink();
+                    }, 420);
+                }, delay);
+            })();
         }
     }
+
+    /* ─────────────────────────────────────────────────
+       13b. METRIC COUNTER (data-count)
+    ───────────────────────────────────────────────── */
+    const metricCountObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseInt(el.dataset.count, 10);
+            if (isNaN(target)) return;
+            const dur = 1100;
+            const start = performance.now();
+            el.classList.add('counting');
+            function countStep(now) {
+                const t = Math.min((now - start) / dur, 1);
+                const ease = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(ease * target);
+                if (t < 1) { requestAnimationFrame(countStep); }
+                else { el.textContent = target; el.classList.remove('counting'); }
+            }
+            requestAnimationFrame(countStep);
+            metricCountObserver.unobserve(el);
+        });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.metric-val[data-count]').forEach(el => metricCountObserver.observe(el));
 
     /* ─────────────────────────────────────────────────
        14. SCRAMBLE TEXT EFFECT
