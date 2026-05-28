@@ -1,89 +1,55 @@
 <!DOCTYPE html>
-<html lang="uz" data-lang="uz" data-theme="dark">
+<html lang="uz" data-lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORQOYIN — Urganch Raqamli Akademiyasi</title>
-    <meta name="description" content="Kiberxavfsizlik va ingliz tili — Urganch shahridagi birinchi ixtisoslashgan akademiya. Bepul IELTS va SAT to'garaklari.">
+    <title>ORQOYIN — Urganch Kiberxavfsizlik Akademiyasi</title>
+    <meta name="description" content="Kiberxavfsizlik va ingliz tili — Urganch shahridagi birinchi ixtisoslashgan akademiya.">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NOISE TEXTURE -->
-<svg class="noise-svg" aria-hidden="true">
-    <filter id="noise">
-        <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/>
-        <feColorMatrix type="saturate" values="0"/>
-    </filter>
-    <rect width="100%" height="100%" filter="url(#noise)" opacity="0.032"/>
+<!-- GRAIN -->
+<svg class="grain" aria-hidden="true">
+    <filter id="gf"><feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <rect width="100%" height="100%" filter="url(#gf)" opacity="0.028"/>
 </svg>
 
-<!-- CANVAS -->
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-
-<!-- CURSOR — ORQOYIN eye: velocity rotation + ghost trail -->
-<div class="cur-ghost cur-g3" id="cur-g3" aria-hidden="true">
-    <svg class="cur-arc-svg" viewBox="0 0 50 50" fill="none">
-        <path d="M 44 14 A 22 22 0 1 1 36 6" stroke="white" stroke-width="3.5" stroke-linecap="round" class="cur-arc-path"/>
+<!-- CURSOR -->
+<div class="cur" id="cur" aria-hidden="true">
+    <svg id="cur-svg" viewBox="0 0 42 42" fill="none" width="42" height="42">
+        <path d="M 37 12 A 18 18 0 1 1 31 6" stroke="rgba(255,255,255,0.8)" stroke-width="2.6" stroke-linecap="round" class="cur-arc"/>
     </svg>
 </div>
-<div class="cur-ghost cur-g2" id="cur-g2" aria-hidden="true">
-    <svg class="cur-arc-svg" viewBox="0 0 50 50" fill="none">
-        <path d="M 44 14 A 22 22 0 1 1 36 6" stroke="white" stroke-width="3.5" stroke-linecap="round" class="cur-arc-path"/>
-    </svg>
-</div>
-<div class="cur-eye" id="cur-eye" aria-hidden="true">
-    <svg class="cur-arc-svg" id="cur-arc-svg" viewBox="0 0 50 50" fill="none">
-        <path d="M 44 14 A 22 22 0 1 1 36 6" stroke="white" stroke-width="3.5" stroke-linecap="round" class="cur-arc-path"/>
-    </svg>
-    <div class="cur-red-dot" id="cur-dot"></div>
-    <div class="cur-dot-ring"></div>
-</div>
 
-<!-- STICKY CTA -->
-<a href="#contact" class="sticky-cta" id="sticky-cta">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-    <span data-i18n="nav_register">Ro'yxatdan o'tish</span>
-</a>
-
-<!-- ─── NAV ─────────────────────────────────────────── -->
+<!-- NAV -->
 <header class="nav" id="nav">
-    <div class="nav-inner">
-        <a href="#top" class="logo" aria-label="ORQOYIN">
-            <svg class="logo-arc-icon" viewBox="0 0 22 22" fill="none" width="20" height="20" aria-hidden="true">
-                <path d="M 19 6 A 10 10 0 1 1 15.5 2.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
-                <circle cx="16.5" cy="3" r="2.2" fill="#e84040"/>
-            </svg>
-            <span><span class="logo-bracket">[</span>ORQOYIN<span class="logo-bracket">]</span></span>
-        </a>
-        <nav class="nav-links" aria-label="Asosiy menu">
-            <a href="#courses" data-i18n="nav_courses">Kurslar</a>
-            <a href="#about"   data-i18n="nav_about">Akademiya</a>
-            <a href="#contact" class="nav-cta magnetic" data-i18n="nav_register">Ro'yxatdan o'tish</a>
-        </nav>
-        <div class="nav-controls">
-            <button class="lang-toggle" id="lang-toggle" aria-label="Til tanlash">
-                <span class="lang-opt" data-l="uz">UZ</span>
-                <span class="lang-pip"></span>
-                <span class="lang-opt" data-l="tm">TM</span>
-            </button>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Tun/Kun rejim">
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            </button>
-            <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+    <a href="#top" class="logo" aria-label="ORQOYIN">
+        <svg viewBox="0 0 22 22" fill="none" width="17" height="17" aria-hidden="true">
+            <path d="M 19 6 A 10 10 0 1 1 15.5 2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="16.5" cy="3" r="2.2" fill="#e84040"/>
+        </svg>
+        <span>ORQOYIN</span>
+    </a>
+    <div class="nav-end">
+        <button class="lang-btn" id="lang-toggle" aria-label="Til">
+            <span class="lang-opt" data-l="uz">UZ</span>
+            <span class="lang-sep">·</span>
+            <span class="lang-opt" data-l="tm">TM</span>
+        </button>
+        <a href="#contact" class="nav-reg" data-i18n="nav_register">Ro'yxatdan o'tish</a>
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span>
+        </button>
     </div>
 </header>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+<div class="mob-menu" id="mobile-menu" aria-hidden="true">
     <div class="mm-lang">
         <button class="mm-lang-btn" data-l="uz">O'zbek</button>
         <button class="mm-lang-btn" data-l="tm">Türkmen</button>
@@ -93,545 +59,191 @@
     <a href="#contact" class="mm-link mm-cta" data-i18n="nav_register">Ro'yxatdan o'tish</a>
 </div>
 
-<!-- ═══════════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════════════ -->
+<!-- ═══ HERO ═════════════════════════════════════════════════ -->
 <section class="hero" id="top">
 
-    <!-- atmospheric orbs -->
-    <div class="orb orb-1" aria-hidden="true"></div>
-    <div class="orb orb-2" aria-hidden="true"></div>
-    <div class="orb orb-3" aria-hidden="true"></div>
-
-    <!-- grid lines -->
-    <div class="hero-grid-bg" aria-hidden="true">
-        <div class="hg-line hg-v" style="left:20%"></div>
-        <div class="hg-line hg-v" style="left:50%"></div>
-        <div class="hg-line hg-v" style="left:80%"></div>
-        <div class="hg-line hg-h" style="top:50%"></div>
+    <div class="hero-text">
+        <p class="hero-eyebrow" data-i18n="hero_badge">Urganch — Raqamli Akademiya</p>
+        <h1 class="hero-title">
+            <span class="ht scramble" data-final-uz="KELAJAK"  data-final-tm="GELJEK">KELAJAK</span>
+            <span class="ht ht-amber scramble" data-final-uz="HIMOYA" data-final-tm="GORAGLY">HIMOYA</span>
+            <span class="ht scramble" data-final-uz="QILINGAN" data-final-tm="BOLSUN">QILINGAN</span>
+        </h1>
+        <p class="hero-sub" data-i18n="hero_sub">Kiberxavfsizlik. Ingliz tili. Bir joyda.<br>Urganch shahridagi birinchi ixtisoslashgan akademiya.</p>
+        <div class="hero-btns">
+            <a href="#courses" class="btn-amber" data-i18n="hero_btn_courses">Kurslarni ko'rish</a>
+            <a href="#contact" class="btn-ghost" data-i18n="nav_register">Ro'yxat</a>
+        </div>
     </div>
 
-    <div class="hero-inner">
-
-        <!-- LEFT: content -->
-        <div class="hero-content">
-            <div class="hero-badge reveal" data-delay="0">
-                <span class="badge-pip"></span>
-                <span data-i18n="hero_badge">Urganch — Raqamli Akademiya</span>
-            </div>
-
-            <h1 class="hero-title reveal" data-delay="60" aria-label="Kelajak himoya qilingan">
-                <span class="ht scramble" data-final-uz="KELAJAK"  data-final-tm="GELJEK"   data-i18n="hero_line1">KELAJAK</span>
-                <span class="ht ht-accent scramble" data-final-uz="HIMOYA"   data-final-tm="GORAGLY"  data-i18n-accent="hero_line2" data-text="HIMOYA">HIMOYA</span>
-                <span class="ht scramble" data-final-uz="QILINGAN" data-final-tm="BOLSUN"   data-i18n="hero_line3">QILINGAN</span>
-            </h1>
-
-            <p class="hero-sub reveal" data-delay="120" data-i18n="hero_sub">
-                Kiberxavfsizlik. Ingliz tili. Bir joyda.<br>Urganch shahridagi birinchi ixtisoslashgan akademiya.
-            </p>
-
-            <div class="hero-actions reveal" data-delay="180">
-                <a href="#courses" class="btn btn-primary magnetic" data-i18n="hero_btn_courses">Kurslarni ko'rish</a>
-                <a href="#about"   class="btn btn-ghost  magnetic" data-i18n="hero_btn_about">Akademiya haqida</a>
+    <div class="hero-eye-wrap">
+        <div class="eye-haze"></div>
+        <div class="eye" id="eye">
+            <div class="eye-scan"></div>
+            <div class="eye-iris eye-i1"></div>
+            <div class="eye-iris eye-i2"></div>
+            <div class="eye-iris eye-i3"></div>
+            <div class="eye-ch-h"></div>
+            <div class="eye-ch-v"></div>
+            <div class="eye-pupil" id="eye-pupil"></div>
+            <svg class="eye-svg" viewBox="0 0 340 340" fill="none" aria-hidden="true">
+                <circle cx="170" cy="170" r="163" stroke="rgba(255,255,255,0.025)" stroke-width="1" stroke-dasharray="2 8"/>
+                <!-- Main ORQOYIN arc — 300°, gap upper-right -->
+                <path d="M 299 97 A 148 148 0 1 1 245 41"
+                      stroke="white" stroke-width="22" stroke-linecap="round"
+                      class="eye-arc"/>
+                <!-- inner amber echo -->
+                <path d="M 287 109 A 130 130 0 1 1 234 49"
+                      stroke="rgba(196,120,32,0.22)" stroke-width="1"
+                      stroke-dasharray="5 5" stroke-linecap="round"/>
+                <!-- HUD corners -->
+                <polyline points="26,26 26,48"   stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="26,26 48,26"   stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="314,26 314,48"  stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="292,26 314,26"  stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="26,314 26,292"  stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="26,314 48,314"  stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="314,314 314,292" stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="292,314 314,314" stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <div class="eye-hud">
+                <span class="hk">θ</span><span class="hv" id="eye-angle">000</span>
+                <span class="hs">·</span>
+                <span class="hk">DST</span><span class="hv" id="eye-dist">---</span>
+                <span class="hs">·</span>
+                <span class="hactive">ACTIVE</span>
             </div>
         </div>
-
-        <!-- RIGHT: surveillance eye -->
-        <div class="hero-visual reveal" data-delay="100" aria-hidden="true">
-
-            <!-- ORQOYIN surveillance eye -->
-            <div class="surv-eye" id="surv-eye">
-                <!-- scanner beam -->
-                <div class="se-scanner"></div>
-                <!-- iris rings -->
-                <div class="se-iris-outer"></div>
-                <div class="se-iris-mid"></div>
-                <div class="se-iris-inner"></div>
-                <!-- crosshair lines -->
-                <div class="se-ch-h"></div>
-                <div class="se-ch-v"></div>
-                <!-- CRT scanlines overlay -->
-                <div class="se-scanlines"></div>
-                <!-- tracking pupil (red dot) -->
-                <div class="se-pupil" id="se-pupil"></div>
-                <!-- logo arc — thick white incomplete circle, gap at upper-right -->
-                <svg class="se-arc-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- main logo arc: 300° clockwise, gap at ~1-2 o'clock -->
-                    <path d="M 263 85 A 130 130 0 1 1 215 37"
-                          stroke="white" stroke-width="22" stroke-linecap="round"
-                          class="se-arc-main"/>
-                    <!-- inner dashed echo -->
-                    <path d="M 252 96 A 113 113 0 1 1 206 48"
-                          stroke="rgba(0,255,157,0.22)" stroke-width="1"
-                          stroke-dasharray="6 4" stroke-linecap="round"/>
-                    <!-- outer ghost ring -->
-                    <circle cx="150" cy="150" r="145"
-                            stroke="rgba(255,255,255,0.04)" stroke-width="1"
-                            stroke-dasharray="3 7"/>
-                    <!-- corner brackets -->
-                    <polyline points="30,30 30,52" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-                    <polyline points="30,30 52,30" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-                    <polyline points="270,30 270,52" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-                    <polyline points="248,30 270,30" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-                    <polyline points="30,270 30,248" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-                    <polyline points="30,270 52,270" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-                    <polyline points="270,270 270,248" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-                    <polyline points="248,270 270,270" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-                <!-- live data readout -->
-                <div class="se-data">
-                    <div class="se-data-item">
-                        <span class="se-data-key">SCAN</span>
-                        <span class="se-data-val">ACTIVE</span>
-                    </div>
-                    <div class="se-data-item">
-                        <span class="se-data-key">θ</span>
-                        <span class="se-data-val"><span id="se-angle">000</span>°</span>
-                    </div>
-                    <div class="se-data-item">
-                        <span class="se-data-key">DIST</span>
-                        <span class="se-data-val"><span id="se-dist">---</span></span>
-                    </div>
-                    <div class="se-data-item">
-                        <span class="se-data-key">SYS</span>
-                        <span class="se-data-val se-val-green">ONLINE</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- floating mini terminal -->
-            <div class="hero-terminal hero-terminal-mini">
-                <div class="ht-bar">
-                    <span class="ht-dot ht-red"></span>
-                    <span class="ht-dot ht-yellow"></span>
-                    <span class="ht-dot ht-green"></span>
-                    <span class="ht-bar-title">orqoyin@terminal:~</span>
-                </div>
-                <div class="ht-body">
-                    <div class="ht-line ht-out"><span class="ht-green-txt">✓</span> Viloyatda yagona markaz</div>
-                    <div class="ht-line ht-out"><span class="ht-green-txt">✓</span> 6 Mac Mini · Shaxsiy lab</div>
-                    <div class="ht-line ht-out"><span class="ht-amber-txt">★</span> Bepul IELTS + SAT</div>
-                    <div class="ht-line"><span class="ht-prompt">$</span> <span class="ht-cursor">▋</span></div>
-                </div>
-            </div>
-
-            <!-- floating accent tags -->
-            <div class="hv-tag hv-t1">TRACKING_ACTIVE</div>
-            <div class="hv-tag hv-t2" data-i18n="cyber_float">HIMOYALANGAN</div>
-        </div>
-
-    </div><!-- /hero-inner -->
-
-    <!-- scroll cue -->
-    <div class="hero-scroll" aria-hidden="true">
-        <div class="hs-line"></div>
-        <span data-i18n="scroll_down">Pastga</span>
     </div>
+
 </section>
 
-<!-- ─── MARQUEE ─────────────────────────────────────── -->
-<div class="marquee-bar" aria-hidden="true">
-    <div class="marquee-track">
-        <span>KIBERXAVFSIZLIK</span><span class="mx">✦</span>
-        <span>INGLIZ TILI</span><span class="mx">✦</span>
-        <span>ORQOYIN AKADEMIYASI</span><span class="mx">✦</span>
-        <span>BEPUL IELTS</span><span class="mx">✦</span>
-        <span>BEPUL SAT</span><span class="mx">✦</span>
-        <span>URGANCH</span><span class="mx">✦</span>
-        <span>CTF · OSCP · CPTS</span><span class="mx">✦</span>
-        <span>A1 → C1</span><span class="mx">✦</span>
-        <span>KIBERXAVFSIZLIK</span><span class="mx">✦</span>
-        <span>INGLIZ TILI</span><span class="mx">✦</span>
-        <span>ORQOYIN AKADEMIYASI</span><span class="mx">✦</span>
-        <span>BEPUL IELTS</span><span class="mx">✦</span>
-        <span>BEPUL SAT</span><span class="mx">✦</span>
-        <span>URGANCH</span><span class="mx">✦</span>
-        <span>CTF · OSCP · CPTS</span><span class="mx">✦</span>
-        <span>A1 → C1</span><span class="mx">✦</span>
-    </div>
+<!-- ═══ STATS ══════════════════════════════════════════════════ -->
+<div class="h-rule"></div>
+<div class="stats-bar">
+    <div class="stat-item"><span class="sv" data-count="2">2</span><span class="sl" data-i18n="stat_directions">Yo'nalish</span></div>
+    <div class="stat-item"><span class="sv" data-count="2">2</span><span class="sl" data-i18n="stat_free">Bepul kurs</span></div>
+    <div class="stat-item"><span class="sv" data-count="6">6</span><span class="sl">Mac Mini</span></div>
+    <div class="stat-item"><span class="sv sv-sm">9–21</span><span class="sl" data-i18n="stat_hours">Har kuni ochiq</span></div>
+    <div class="stat-item"><span class="sv sv-sm" data-i18n="stat_unique">Yagona</span><span class="sl" data-i18n="stat_unique_sub">Viloyatda</span></div>
 </div>
-<div class="marquee-bar marquee-rev" aria-hidden="true">
-    <div class="marquee-track">
-        <span>NETWORK SECURITY</span><span class="mx">◈</span>
-        <span>ETHICAL HACKING</span><span class="mx">◈</span>
-        <span>LINUX · MACOS</span><span class="mx">◈</span>
-        <span>PENETRATION TESTING</span><span class="mx">◈</span>
-        <span>IELTS B2+</span><span class="mx">◈</span>
-        <span>SAT PREP</span><span class="mx">◈</span>
-        <span>XORAZM VILOYATI</span><span class="mx">◈</span>
-        <span>RAQAMLI AKADEMIYA</span><span class="mx">◈</span>
-        <span>NETWORK SECURITY</span><span class="mx">◈</span>
-        <span>ETHICAL HACKING</span><span class="mx">◈</span>
-        <span>LINUX · MACOS</span><span class="mx">◈</span>
-        <span>PENETRATION TESTING</span><span class="mx">◈</span>
-        <span>IELTS B2+</span><span class="mx">◈</span>
-        <span>SAT PREP</span><span class="mx">◈</span>
-        <span>XORAZM VILOYATI</span><span class="mx">◈</span>
-        <span>RAQAMLI AKADEMIYA</span><span class="mx">◈</span>
-    </div>
-</div>
+<div class="h-rule"></div>
 
-<!-- ─── METRICS BAND ─────────────────────────────────── -->
-<div class="metrics-band">
-    <div class="metrics-inner">
-        <div class="metric-item reveal">
-            <span class="metric-val" data-count="2">2</span>
-            <span class="metric-label" data-i18n="stat_directions">Yo'nalish</span>
-        </div>
-        <div class="metric-sep"></div>
-        <div class="metric-item reveal" data-delay="80">
-            <span class="metric-val" data-count="2">2</span>
-            <span class="metric-label" data-i18n="stat_free">Bepul kurs</span>
-        </div>
-        <div class="metric-sep"></div>
-        <div class="metric-item reveal" data-delay="160">
-            <span class="metric-val" data-count="6">6</span>
-            <span class="metric-label">Mac Mini</span>
-        </div>
-        <div class="metric-sep"></div>
-        <div class="metric-item reveal" data-delay="240">
-            <span class="metric-val metric-sm">9:00–21:00</span>
-            <span class="metric-label" data-i18n="stat_hours">Har kuni ochiq</span>
-        </div>
-        <div class="metric-sep"></div>
-        <div class="metric-item reveal" data-delay="320">
-            <span class="metric-val metric-sm" data-i18n="stat_unique">Yagona</span>
-            <span class="metric-label" data-i18n="stat_unique_sub">Viloyatda</span>
-        </div>
-    </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════
-     COURSES — BENTO GRID
-═══════════════════════════════════════════════════════ -->
+<!-- ═══ COURSES ════════════════════════════════════════════════ -->
 <section class="courses" id="courses">
-    <div class="section-head reveal">
-        <p class="sec-eyebrow">// 01 — <span data-i18n="nav_courses">KURSLAR</span></p>
-        <h2 class="sec-title" data-i18n="courses_title">Ikki kuch.<br>Cheksiz imkoniyat.</h2>
+    <div class="sec-label"><span class="mono">// 01</span><span data-i18n="nav_courses">KURSLAR</span></div>
+
+    <!-- CYBERSECURITY -->
+    <div class="c-rule"></div>
+    <div class="cr reveal">
+        <div class="cr-n mono">01</div>
+        <div class="cr-body">
+            <h2 class="cr-title" data-i18n="cyber_title">Kiberxavfsizlik</h2>
+            <p class="cr-desc" data-i18n="cyber_desc">Axloqiy hakerlik, tarmoq himoyasi va raqamli tekshiruv — haqiqiy laboratoriyalarda, real tajriba.</p>
+            <ul class="cr-list">
+                <li data-i18n="cyber_t1">Tarmoq xavfsizligi va axloqiy hakerlik</li>
+                <li data-i18n="cyber_t2">Tizimga kirib tekshirish va CTF</li>
+                <li data-i18n="cyber_t3">Linux tizimi va buyruq satri</li>
+                <li data-i18n="cyber_t4">Zararli dastur tahlili va raqamli tekshiruv</li>
+                <li data-i18n="cyber_t5">OSCP/CPTS sertifikat tayyorlovi</li>
+            </ul>
+        </div>
+        <div class="cr-meta">
+            <div class="cm"><span class="cm-k mono" data-i18n="form_time">VAQT</span><span class="cm-v mono">11:00<br>19:00</span></div>
+            <div class="cm"><span class="cm-k mono" data-i18n="cyber_dur">MUDDAT</span><span class="cm-v mono">1 YIL · <span data-i18n="cyber_days">HAFTA 4 KUN</span></span></div>
+            <div class="cm"><span class="cm-k mono">LAB</span><span class="cm-v mono">6 MAC MINI</span></div>
+            <a href="#contact" class="btn-amber" data-i18n="nav_register">Ro'yxatdan o'tish</a>
+        </div>
     </div>
 
-    <div class="bento-grid">
-
-        <!-- CYBERSECURITY (left, tall) -->
-        <article class="bento-card cyber-card tilt-card reveal" id="cyber">
-            <div class="bc-glow bc-glow-cyber"></div>
-            <div class="bc-accent-bar"></div>
-            <header class="bc-head">
-                <div class="bc-num">01</div>
-                <div class="bc-tag" data-i18n="cyber_tag">KIBERXAVFSIZLIK</div>
-            </header>
-
-            <!-- Cyber visual: mini terminal -->
-            <div class="bc-visual cyber-visual">
-                <div class="card-terminal">
-                    <div class="ct-bar">
-                        <span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-dot ct-green"></span>
-                        <span class="ct-title">scan.sh</span>
-                    </div>
-                    <div class="ct-body">
-                        <div><span class="ct-g">$</span> nmap -sV <span class="ct-y">192.168.1.0/24</span></div>
-                        <div><span class="ct-d">Scanning...</span></div>
-                        <div><span class="ct-g">▶</span> 443/tcp  <span class="ct-g">open</span> ssl/https</div>
-                        <div><span class="ct-g">▶</span> 22/tcp   <span class="ct-g">open</span> ssh</div>
-                        <div><span class="ct-g">▶</span> 80/tcp   <span class="ct-g">open</span> http</div>
-                        <div class="ct-blink"><span class="ct-g">$</span> _</div>
-                    </div>
-                </div>
-                <div class="ft-tag ft1">root@orqoyin</div>
-                <div class="ft-tag ft2" data-i18n="cyber_float">HIMOYALANGAN</div>
-                <div class="ft-tag ft3">0x4F52</div>
-            </div>
-
-            <div class="bc-body">
-                <h3 class="bc-title" data-i18n="cyber_title">Kiberxavfsizlik</h3>
-                <p class="bc-desc" data-i18n="cyber_desc">Axloqiy hakerlik, tarmoq himoyasi va raqamli tekshiruv — haqiqiy laboratoriyalarda, real tajriba.</p>
-                <ul class="bc-topics">
-                    <li><span data-i18n="cyber_t1">Tarmoq xavfsizligi va axloqiy hakerlik</span></li>
-                    <li><span data-i18n="cyber_t2">Tizimga kirib tekshirish va CTF</span></li>
-                    <li><span data-i18n="cyber_t3">Linux tizimi va buyruq satri</span></li>
-                    <li><span data-i18n="cyber_t4">Zararli dastur tahlili va raqamli tekshiruv</span></li>
-                    <li><span data-i18n="cyber_t5">OSCP/CPTS sertifikat tayyorlovi</span></li>
-                </ul>
-                <div class="bc-pills">
-                    <span class="pill" data-i18n="cyber_dur">1 yil</span>
-                    <span class="pill" data-i18n="cyber_days">Hafta 4 kun</span>
-                    <span class="pill">6 Mac Mini</span>
-                    <span class="pill" data-i18n="cyber_lab">Amaliy lab</span>
-                </div>
-                <div class="bc-schedule">
-                    <div class="sched-row day-row">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-                        <span class="sr-time">11:00</span>
-                        <span data-i18n="cyber_morning">Sabahgi guruh</span>
-                    </div>
-                    <div class="sched-row night-row">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                        <span class="sr-time">19:00</span>
-                        <span data-i18n="cyber_evening">Kechki guruh</span>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <!-- ENGLISH (right) -->
-        <article class="bento-card english-card tilt-card reveal" id="english">
-            <div class="bc-glow bc-glow-sky"></div>
-            <div class="bc-accent-bar bc-bar-sky"></div>
-            <header class="bc-head">
-                <div class="bc-num">02</div>
-                <div class="bc-tag" data-i18n="eng_tag">INGLIZ TILI</div>
-            </header>
-
-            <!-- English visual: globe + words -->
-            <div class="bc-visual english-visual">
-                <div class="globe-ring ring1"></div>
-                <div class="globe-ring ring2"></div>
-                <div class="globe-ring ring3"></div>
-                <div class="globe-center">
-                    <svg viewBox="0 0 80 80" fill="none" class="globe-icon">
-                        <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/>
-                        <ellipse cx="40" cy="40" rx="16" ry="34" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
-                        <line x1="6" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.5"/>
-                        <line x1="10" y1="26" x2="70" y2="26" stroke="currentColor" stroke-width="1"/>
-                        <line x1="10" y1="54" x2="70" y2="54" stroke="currentColor" stroke-width="1"/>
-                    </svg>
-                </div>
-                <div class="word-bubble wb1">Hello!</div>
-                <div class="word-bubble wb2">IELTS B2+</div>
-                <div class="word-bubble wb3">A1→C1</div>
-            </div>
-
-            <div class="bc-body">
-                <h3 class="bc-title" data-i18n="eng_title">Ingliz Tili</h3>
-                <p class="bc-desc" data-i18n="eng_desc">A1 dan C1 gacha — grammatika, nutq, IELTS va SAT tayyorlovi. Bolalar uchun maxsus 5+ guruh.</p>
-                <ul class="bc-topics">
-                    <li><span data-i18n="eng_t1">Boshlang'ich ingliz tili asoslari</span></li>
-                    <li><span data-i18n="eng_t2">Grammatika va so'z boyligi</span></li>
-                    <li><span data-i18n="eng_t3">Tinglash va o'qib tushunish</span></li>
-                    <li><span data-i18n="eng_t4">Yozma va og'zaki nutq</span></li>
-                    <li><span data-i18n="eng_t5">IELTS/SAT tayyorlovi</span></li>
-                </ul>
-                <div class="eng-variants">
-                    <div class="eng-var">
-                        <div class="ev-tag" data-i18n="eng_adult">12+ yosh</div>
-                        <div class="ev-rows">
-                            <div class="sched-row day-row">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-                                09:00 – 11:00
-                            </div>
-                            <div class="sched-row night-row">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                                19:30 – 21:00
-                            </div>
-                            <div class="ev-meta"><span data-i18n="eng_days4">Hafta 4 kun</span> · A1→C1</div>
-                        </div>
-                    </div>
-                    <div class="eng-var">
-                        <div class="ev-tag ev-kids" data-i18n="eng_kids">Bolalar 5–12</div>
-                        <div class="ev-rows">
-                            <div class="sched-row day-row">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-                                16:00 – 18:00
-                            </div>
-                            <div class="ev-meta"><span data-i18n="eng_days5">Hafta 5 kun</span> · <span data-i18n="eng_play">O'yin orqali</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <!-- FREE ROW -->
-        <div class="bento-free-row">
-
-            <!-- FREE IELTS -->
-            <article class="bento-card ielts-card tilt-card reveal">
-                <div class="bc-glow bc-glow-sky"></div>
-                <div class="bc-accent-bar ielts-bar"></div>
-                <div class="free-pill" data-i18n="free_badge">BEPUL</div>
-                <div class="bc-body">
-                    <h3 class="bc-title ielts-title" data-i18n="ielts_title">Bepul IELTS Tayyorlovi</h3>
-                    <div class="free-time-display">
-                        <span class="ftd-time">10:00 – 11:30</span>
-                        <span class="ftd-period day-period">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-                        </span>
-                    </div>
-                    <div class="free-days-row">
-                        <span data-i18n="day_fri">Juma</span>
-                        <span class="fdr-dot">·</span>
-                        <span data-i18n="day_sat">Shanba</span>
-                        <span class="fdr-dot">·</span>
-                        <span data-i18n="day_sun">Yakshanba</span>
-                    </div>
-                    <p class="free-note" data-i18n="free_reg_note">Markazga kelib ro'yxatdan o'ting. To'lov yo'q.</p>
-                    <a href="#contact" class="btn free-btn-ielts magnetic" data-i18n="free_join">Qo'shilish</a>
-                </div>
-            </article>
-
-            <!-- FREE SAT -->
-            <article class="bento-card sat-card tilt-card reveal">
-                <div class="bc-glow bc-glow-amber"></div>
-                <div class="bc-accent-bar sat-bar"></div>
-                <div class="free-pill sat-pill" data-i18n="free_badge">BEPUL</div>
-                <div class="bc-body">
-                    <h3 class="bc-title sat-title" data-i18n="sat_title">Bepul SAT Tayyorlovi</h3>
-                    <div class="free-time-display">
-                        <span class="ftd-time sat-ftd">18:30 – 20:00</span>
-                        <span class="ftd-period night-period">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                        </span>
-                    </div>
-                    <div class="free-days-row">
-                        <span data-i18n="day_fri">Juma</span>
-                        <span class="fdr-dot">·</span>
-                        <span data-i18n="day_sat">Shanba</span>
-                        <span class="fdr-dot">·</span>
-                        <span data-i18n="day_sun">Yakshanba</span>
-                    </div>
-                    <p class="free-note" data-i18n="free_reg_note">Markazga kelib ro'yxatdan o'ting. To'lov yo'q.</p>
-                    <a href="#contact" class="btn free-btn-sat magnetic" data-i18n="free_join">Qo'shilish</a>
-                </div>
-            </article>
-
-        </div><!-- /bento-free-row -->
-    </div><!-- /bento-grid -->
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     WHY US / AKADEMIYA
-═══════════════════════════════════════════════════════ -->
-<section class="why-us" id="about">
-    <div class="wu-inner">
-
-        <div class="wu-top">
-            <div class="wu-header reveal">
-                <p class="sec-eyebrow">// 02 — <span data-i18n="nav_about">AKADEMIYA</span></p>
-                <h2 class="sec-title"><span data-i18n="why_title">Nega</span> <span class="text-accent">ORQOYIN?</span></h2>
-            </div>
-            <p class="wu-desc reveal" data-i18n="why_desc">Xorazm viloyatida kiberxavfsizlik bo'yicha birinchi va yagona ixtisoslashgan markaz. Biz ikkita sohani o'rgatamiz — jahon darajasida.</p>
+    <!-- ENGLISH -->
+    <div class="c-rule"></div>
+    <div class="cr reveal">
+        <div class="cr-n mono">02</div>
+        <div class="cr-body">
+            <h2 class="cr-title" data-i18n="eng_title">Ingliz Tili</h2>
+            <p class="cr-desc" data-i18n="eng_desc">A1 dan C1 gacha — grammatika, nutq, IELTS va SAT tayyorlovi. Bolalar uchun maxsus 5+ guruh.</p>
+            <ul class="cr-list">
+                <li data-i18n="eng_t1">Boshlang'ich ingliz tili asoslari</li>
+                <li data-i18n="eng_t2">Grammatika va so'z boyligi</li>
+                <li data-i18n="eng_t3">Tinglash va o'qib tushunish</li>
+                <li data-i18n="eng_t4">Yozma va og'zaki nutq</li>
+                <li data-i18n="eng_t5">IELTS/SAT tayyorlovi</li>
+            </ul>
         </div>
-
-        <div class="wu-cards">
-            <div class="wu-card reveal" data-delay="0">
-                <span class="wu-num">01</span>
-                <div class="wu-icon">
-                    <svg viewBox="0 0 32 32" fill="none"><path d="M16 3L28 8V16C28 23 22 28 16 29C10 28 4 23 4 16V8L16 3Z" stroke="currentColor" stroke-width="2"/><path d="M11 16l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <h4 data-i18n="reason1_title">Viloyatda yagona</h4>
-                <p data-i18n="reason1_desc">Xorazm viloyatida kiberxavfsizlik bo'yicha birinchi va yagona ixtisoslashgan markaz.</p>
-            </div>
-            <div class="wu-card reveal" data-delay="80">
-                <span class="wu-num">02</span>
-                <div class="wu-icon wu-icon-sky">
-                    <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/><ellipse cx="16" cy="16" rx="6" ry="12" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="16" x2="28" y2="16" stroke="currentColor" stroke-width="1.5"/></svg>
-                </div>
-                <h4 data-i18n="reason2_title">Ikki kurs, bir joy</h4>
-                <p data-i18n="reason2_desc">Kiberxavfsizlik + ingliz tili — texnik bilim va muloqot ko'nikmasi bir kompleksda.</p>
-            </div>
-            <div class="wu-card reveal" data-delay="160">
-                <span class="wu-num">03</span>
-                <div class="wu-icon wu-icon-purple">
-                    <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M10 14h4M10 18h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="22" cy="16" r="2" fill="currentColor" opacity="0.4"/></svg>
-                </div>
-                <h4 data-i18n="reason3_title">Haqiqiy laboratoriya</h4>
-                <p data-i18n="reason3_desc">Ommaviy ma'ruzalar emas — 6 Mac Mini, real CTF va amaliy loyihalar.</p>
-            </div>
-            <div class="wu-card reveal" data-delay="240">
-                <span class="wu-num">04</span>
-                <div class="wu-icon wu-icon-amber">
-                    <svg viewBox="0 0 32 32" fill="none"><path d="M16 4l2.5 7h7.5l-6 4.5 2.5 7.5L16 19l-6.5 4 2.5-7.5L6 11h7.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-                </div>
-                <h4 data-i18n="reason4_title">Chuqur bilim</h4>
-                <p data-i18n="reason4_desc">Sertifikat uchun emas — bilim uchun. Mustaqil fikrlash va real muammolarni hal etish.</p>
-            </div>
+        <div class="cr-meta">
+            <div class="cm"><span class="cm-k mono" data-i18n="form_time">VAQT</span><span class="cm-v mono">09:00–11:00<br>16:00–18:00<br>19:30–21:00</span></div>
+            <div class="cm"><span class="cm-k mono" data-i18n="eng_adult">YOSH</span><span class="cm-v mono">5+ · 12+</span></div>
+            <div class="cm"><span class="cm-k mono">DARAJA</span><span class="cm-v mono">A1 → C1</span></div>
+            <a href="#contact" class="btn-amber" data-i18n="nav_register">Ro'yxatdan o'tish</a>
         </div>
-
-        <!-- AMENITIES -->
-        <div class="amenities reveal">
-            <div class="am-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                <div><strong>9:00 – 21:00</strong><span data-i18n="amen_hours">Dush–Payshanba rasmiy. Juma–Yakshanba — to'garaklar va erkin vaqt.</span></div>
-            </div>
-            <div class="am-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
-                <div><strong data-i18n="amen_internet">Bepul internet</strong><span data-i18n="amen_internet_desc">Barcha talabalar uchun tezkor tarmoq.</span></div>
-            </div>
-            <div class="am-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                <div><strong data-i18n="amen_coffee">Qahva va choy</strong><span data-i18n="amen_coffee_desc">Bepul. Har kuni.</span></div>
-            </div>
-            <div class="am-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                <div><strong>6 Mac Mini</strong><span data-i18n="amen_mac">Dars bo'lmagan vaqtda ham foydalanish mumkin.</span></div>
-            </div>
-            <div class="am-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                <div><strong data-i18n="amen_server">Shaxsiy server</strong><span data-i18n="amen_server_desc">Ma'lumotlar uchinchi tomon serverlariga yuborilmaydi.</span></div>
-            </div>
-            <div class="am-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                <div><strong data-i18n="amen_workspace">Ochiq ish joyi</strong><span data-i18n="amen_workspace_desc">Uyga vazifa, ijodiy va shaxsiy loyiha ishlari uchun.</span></div>
-            </div>
-        </div>
-
     </div>
+
+    <!-- FREE -->
+    <div class="c-rule"></div>
+    <div class="cr cr-free reveal">
+        <div class="cr-n mono cr-n-free" data-i18n="free_badge">BEPUL</div>
+        <div class="cr-body">
+            <h2 class="cr-title cr-title-free">IELTS + SAT</h2>
+            <p class="cr-desc"><span data-i18n="ielts_title">Bepul IELTS Tayyorlovi</span> — 10:00–11:30<br><span data-i18n="sat_title">Bepul SAT Tayyorlovi</span> — 18:30–20:00</p>
+        </div>
+        <div class="cr-meta">
+            <div class="cm"><span class="cm-k mono">KUNLAR</span><span class="cm-v mono"><span data-i18n="day_fri">Juma</span> · <span data-i18n="day_sat">Shanba</span> · <span data-i18n="day_sun">Yakshanba</span></span></div>
+            <div class="cm"><span class="cm-k mono">TO'LOV</span><span class="cm-v-free mono" data-i18n="free_badge">BEPUL</span></div>
+            <a href="#contact" class="btn-outline-amber" data-i18n="free_join">Qo'shilish</a>
+        </div>
+    </div>
+    <div class="c-rule"></div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     CTA BANNER
-═══════════════════════════════════════════════════════ -->
-<section class="cta-banner reveal">
-    <div class="cta-bg-grid" aria-hidden="true"></div>
-    <div class="cta-inner">
-        <div class="cta-left">
-            <p class="cta-sub" data-i18n="cta_sub">Birinchi qadam eng muhim</p>
-            <h2 class="cta-title" data-i18n="cta_title">Tayyormisiz?</h2>
-            <p class="cta-note" data-i18n="cta_note">Joylar cheklangan. Hoziroq ro'yxatdan o'ting.</p>
+<!-- ═══ WHY ═══════════════════════════════════════════════════ -->
+<section class="why" id="about">
+    <div class="sec-label"><span class="mono">// 02</span><span data-i18n="nav_about">AKADEMIYA</span></div>
+    <div class="why-inner">
+        <div class="why-left reveal">
+            <p class="why-stmt"><span data-i18n="why_title">Nega</span> <span class="amber-t">ORQOYIN?</span></p>
+            <p class="why-desc" data-i18n="why_desc">Xorazm viloyatida kiberxavfsizlik bo'yicha birinchi va yagona ixtisoslashgan markaz. Biz ikkita sohani o'rgatamiz — jahon darajasida.</p>
         </div>
-        <div class="cta-right">
-            <a href="#contact" class="cta-card cyber-cta magnetic">
-                <div class="cta-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M12 2L22 7V12C22 17.5 17.5 21 12 22C6.5 21 2 17.5 2 12V7L12 2Z"/></svg>
-                </div>
-                <div>
-                    <span class="cta-card-label" data-i18n="cyber_tag">KIBERXAVFSIZLIK</span>
-                    <span class="cta-card-action" data-i18n="cta_register">Ro'yxatdan o'ting →</span>
-                </div>
-            </a>
-            <div class="cta-or" data-i18n="cta_or">yoki</div>
-            <a href="#contact" class="cta-card english-cta magnetic">
-                <div class="cta-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                </div>
-                <div>
-                    <span class="cta-card-label" data-i18n="eng_tag">INGLIZ TILI</span>
-                    <span class="cta-card-action" data-i18n="cta_register">Ro'yxatdan o'ting →</span>
-                </div>
-            </a>
+        <div class="why-right">
+            <div class="why-item reveal"><span class="wi-n mono">01</span><div><p class="wi-t" data-i18n="reason1_title">Viloyatda yagona</p><p class="wi-d" data-i18n="reason1_desc">Xorazm viloyatida kiberxavfsizlik bo'yicha birinchi va yagona ixtisoslashgan markaz.</p></div></div>
+            <div class="why-item reveal"><span class="wi-n mono">02</span><div><p class="wi-t" data-i18n="reason2_title">Ikki kurs, bir joy</p><p class="wi-d" data-i18n="reason2_desc">Kiberxavfsizlik + ingliz tili — texnik bilim va muloqot ko'nikmasi bir kompleksda.</p></div></div>
+            <div class="why-item reveal"><span class="wi-n mono">03</span><div><p class="wi-t" data-i18n="reason3_title">Haqiqiy laboratoriya</p><p class="wi-d" data-i18n="reason3_desc">Ommaviy ma'ruzalar emas — 6 Mac Mini, real CTF va amaliy loyihalar.</p></div></div>
+            <div class="why-item reveal"><span class="wi-n mono">04</span><div><p class="wi-t" data-i18n="reason4_title">Chuqur bilim</p><p class="wi-d" data-i18n="reason4_desc">Sertifikat uchun emas — bilim uchun. Mustaqil fikrlash va real muammolarni hal etish.</p></div></div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     CONTACT
-═══════════════════════════════════════════════════════ -->
+<!-- ═══ CTA ══════════════════════════════════════════════════ -->
+<div class="h-rule"></div>
+<div class="cta-strip reveal">
+    <div>
+        <p class="cta-eye mono" data-i18n="cta_sub">Birinchi qadam eng muhim</p>
+        <h2 class="cta-title" data-i18n="cta_title">Tayyormisiz?</h2>
+        <p class="cta-note mono" data-i18n="cta_note">Joylar cheklangan. Hoziroq ro'yxatdan o'ting.</p>
+    </div>
+    <a href="#contact" class="btn-amber cta-btn" data-i18n="nav_register">Ro'yxatdan o'tish</a>
+</div>
+<div class="h-rule"></div>
+
+<!-- ═══ CONTACT ══════════════════════════════════════════════ -->
 <section class="contact" id="contact">
+    <div class="sec-label"><span class="mono">// 03</span><span data-i18n="contact_label">RO'YXAT</span></div>
     <div class="contact-inner">
+
         <div class="contact-left reveal">
-            <p class="sec-eyebrow">// 03 — <span data-i18n="contact_label">RO'YXAT</span></p>
-            <h2 class="sec-title" data-i18n="contact_title">Qo'shiling.</h2>
+            <h2 class="contact-title" data-i18n="contact_title">Qo'shiling.</h2>
             <p class="contact-desc" data-i18n="contact_desc">Bepul maslahat uchun ma'lumotlaringizni qoldiring. 24 soat ichida bog'lanamiz.</p>
-            <div class="contact-info">
-                <a href="https://maps.app.goo.gl/df6pieRZq7c63Wmv9" target="_blank" rel="noopener" class="ci-row">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="c-links">
+                <a href="https://maps.app.goo.gl/df6pieRZq7c63Wmv9" target="_blank" rel="noopener" class="c-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span data-i18n="contact_map_link">Urganch — Xaritada ko'rish ↗</span>
                 </a>
-                <a href="tel:+998909242550" class="ci-row">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 8.2 8.2l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <a href="tel:+998909242550" class="c-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.89a16 16 0 0 0 8.2 8.2l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     +998 90 924 25 50
                 </a>
-                <a href="mailto:offseckh@icloud.com" class="ci-row">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <a href="mailto:offseckh@icloud.com" class="c-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     offseckh@icloud.com
                 </a>
             </div>
@@ -639,49 +251,23 @@
 
         <div class="contact-right reveal">
             <form class="reg-form" id="reg-form" novalidate>
-                <div class="form-row">
+                <div class="fg-row">
                     <div class="fg">
                         <label data-i18n="form_name">Ism va Familiya</label>
                         <input type="text" id="reg-name" data-i18n-ph="form_name_ph" placeholder="To'liq ismingiz" required autocomplete="name">
                     </div>
                     <div class="fg">
                         <label data-i18n="form_phone">Telefon raqam</label>
-                        <input type="tel" id="reg-phone" inputmode="numeric" placeholder="+998 _ _ _ _ _ _ _ _" minlength="7" maxlength="18" required autocomplete="tel">
+                        <input type="tel" id="reg-phone" placeholder="+998 _ _ _ _ _ _ _ _" minlength="7" maxlength="18" required autocomplete="tel">
                     </div>
                 </div>
                 <div class="fg">
                     <label data-i18n="form_course">Kurs tanlang</label>
-                    <div class="course-selector">
-                        <label class="cs-option">
-                            <input type="radio" name="course" value="cybersecurity" required>
-                            <span class="cs-card cs-cyber">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 2L22 7V12C22 17.5 17.5 21 12 22C6.5 21 2 17.5 2 12V7L12 2Z"/></svg>
-                                <span data-i18n="cyber_title">Kiberxavfsizlik</span>
-                            </span>
-                        </label>
-                        <label class="cs-option">
-                            <input type="radio" name="course" value="english" required>
-                            <span class="cs-card cs-english">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                                <span data-i18n="eng_title">Ingliz Tili</span>
-                            </span>
-                        </label>
-                        <label class="cs-option">
-                            <input type="radio" name="course" value="ielts_free" required>
-                            <span class="cs-card cs-ielts">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                                <span data-i18n="ielts_title">Bepul IELTS</span>
-                                <span class="cs-badge" data-i18n="free_badge">BEPUL</span>
-                            </span>
-                        </label>
-                        <label class="cs-option">
-                            <input type="radio" name="course" value="sat_free" required>
-                            <span class="cs-card cs-sat">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                                <span data-i18n="sat_title">Bepul SAT</span>
-                                <span class="cs-badge cs-badge-sat" data-i18n="free_badge">BEPUL</span>
-                            </span>
-                        </label>
+                    <div class="course-sel">
+                        <label class="cs-opt"><input type="radio" name="course" value="cybersecurity" required><span class="cs-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 2L22 7V12C22 17.5 17.5 21 12 22C6.5 21 2 17.5 2 12V7L12 2Z"/></svg><span data-i18n="cyber_title">Kiberxavfsizlik</span></span></label>
+                        <label class="cs-opt"><input type="radio" name="course" value="english" required><span class="cs-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span data-i18n="eng_title">Ingliz Tili</span></span></label>
+                        <label class="cs-opt"><input type="radio" name="course" value="ielts_free" required><span class="cs-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span data-i18n="ielts_title">Bepul IELTS</span></span></label>
+                        <label class="cs-opt"><input type="radio" name="course" value="sat_free" required><span class="cs-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span data-i18n="sat_title">Bepul SAT</span></span></label>
                     </div>
                 </div>
                 <div class="fg" id="smena-group" style="display:none">
@@ -700,202 +286,30 @@
                         <option value="other" data-i18n="form_source_other">Boshqa</option>
                     </select>
                 </div>
-                <div class="hp-trap" aria-hidden="true">
-                    <input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off">
-                </div>
-                <button type="submit" class="btn btn-submit magnetic">
+                <div class="hp-trap" aria-hidden="true"><input type="text" name="website" id="hp-website" tabindex="-1" autocomplete="off"></div>
+                <button type="submit" class="btn-submit">
                     <span data-i18n="nav_register">Ro'yxatdan o'tish</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
             </form>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     MAP
-═══════════════════════════════════════════════════════ -->
-<section class="map-section">
-    <div class="map-inner">
-        <div class="map-text reveal">
-            <p class="sec-eyebrow">// 04 — <span data-i18n="map_label">JOYLASHUV</span></p>
-            <h2 class="sec-title" data-i18n="map_title">Bizni toping.</h2>
-            <p data-i18n="map_desc">Urganch — Xorazm viloyatining yagona kiberxavfsizlik akademiyasi.</p>
-            <a href="https://maps.app.goo.gl/df6pieRZq7c63Wmv9" target="_blank" rel="noopener" class="btn btn-primary magnetic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span data-i18n="map_btn">Google Xaritada ochish</span>
-            </a>
-        </div>
-        <a href="https://maps.app.goo.gl/df6pieRZq7c63Wmv9" target="_blank" rel="noopener" class="map-card reveal">
-            <div class="map-grid-bg"></div>
-            <div class="map-pin-wrap">
-                <div class="map-pin-pulse"></div>
-                <div class="map-pin">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                </div>
-            </div>
-            <div class="map-footer">
-                <span>ORQOYIN — Urganch</span>
-                <span data-i18n="map_btn">Google Xaritada ↗</span>
-            </div>
-        </a>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     WEEKEND / CLUBS
-═══════════════════════════════════════════════════════ -->
-<section class="clubs-section">
-    <div class="clubs-inner">
-        <div class="clubs-header reveal">
-            <p class="sec-eyebrow">// <span data-i18n="clubs_label">BEPUL TO'GARAKLAR</span></p>
-            <h2 class="sec-title">
-                <span data-i18n="clubs_title_pre">Hafta oxiri</span> —<br>
-                <span class="text-crimson" data-i18n="clubs_title_free">bepul.</span>
-            </h2>
-            <p class="clubs-desc" data-i18n="clubs_desc">Juma, shanba va yakshanba — rasmiy dars yo'q. Bu kunlar IELTS va SAT to'garaklari, tarmoq qurishish va hamkasblar bilan bilim almashinuvi uchun. Ro'yxat kerak — lekin onlayn emas. Markazga kelib yozilasiz. To'lov yo'q.</p>
-        </div>
-        <div class="clubs-grid">
-            <div class="club-card reveal">
-                <div class="club-day-wrap">
-                    <span class="club-day-num" data-i18n="day_fri_short">Jum</span>
-                    <span class="club-day-full" data-i18n="day_fri">Juma</span>
-                </div>
-                <div class="club-courses">
-                    <div class="club-course club-course-ielts">
-                        <span class="club-course-time">10:00 – 11:30</span>
-                        <span class="club-course-name" data-i18n="ielts_title">Bepul IELTS Tayyorlovi</span>
-                    </div>
-                    <div class="club-course club-course-sat">
-                        <span class="club-course-time">18:30 – 20:00</span>
-                        <span class="club-course-name" data-i18n="sat_title">Bepul SAT Tayyorlovi</span>
-                    </div>
-                </div>
-            </div>
-            <div class="club-card reveal" data-delay="80">
-                <div class="club-day-wrap">
-                    <span class="club-day-num" data-i18n="day_sat_short">Sha</span>
-                    <span class="club-day-full" data-i18n="day_sat">Shanba</span>
-                </div>
-                <div class="club-courses">
-                    <div class="club-course club-course-ielts">
-                        <span class="club-course-time">10:00 – 11:30</span>
-                        <span class="club-course-name" data-i18n="ielts_title">Bepul IELTS Tayyorlovi</span>
-                    </div>
-                    <div class="club-course club-course-sat">
-                        <span class="club-course-time">18:30 – 20:00</span>
-                        <span class="club-course-name" data-i18n="sat_title">Bepul SAT Tayyorlovi</span>
-                    </div>
-                </div>
-            </div>
-            <div class="club-card reveal" data-delay="160">
-                <div class="club-day-wrap">
-                    <span class="club-day-num" data-i18n="day_sun_short">Yak</span>
-                    <span class="club-day-full" data-i18n="day_sun">Yakshanba</span>
-                </div>
-                <div class="club-courses">
-                    <div class="club-course club-course-ielts">
-                        <span class="club-course-time">10:00 – 11:30</span>
-                        <span class="club-course-name" data-i18n="ielts_title">Bepul IELTS Tayyorlovi</span>
-                    </div>
-                    <div class="club-course club-course-sat">
-                        <span class="club-course-time">18:30 – 20:00</span>
-                        <span class="club-course-name" data-i18n="sat_title">Bepul SAT Tayyorlovi</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════════════ -->
+<!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
 <footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-top">
-            <div class="footer-logo-col">
-                <a href="#top" class="footer-logo">
-                    <span class="logo-bracket">[</span>ORQOYIN<span class="logo-bracket">]</span>
-                </a>
-                <p data-i18n="footer_tagline">Urganch — Xorazm viloyatining kiberxavfsizlik akademiyasi</p>
-            </div>
-            <div class="footer-links">
-                <a href="#courses" data-i18n="nav_courses">Kurslar</a>
-                <a href="#about"   data-i18n="nav_about">Akademiya</a>
-                <a href="#contact" data-i18n="contact_label">Aloqa</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://t.me/orqoyinTM" target="_blank" rel="noopener" class="soc-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
-                    @orqoyinTM
-                </a>
-                <a href="https://instagram.com/orqoyinTM" target="_blank" rel="noopener" class="soc-link">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-                    @orqoyinTM
-                </a>
-                <a href="https://youtube.com/@orqoyinTM" target="_blank" rel="noopener" class="soc-link">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    @orqoyinTM
-                </a>
-            </div>
-        </div>
-
-        <!-- GARA ÖY BAND -->
-        <div class="gara-band">
-            <div class="gara-inner">
-                <div class="gara-left">
-                    <div class="gara-logo-wrap">
-                        <svg viewBox="0 0 32 32" fill="none" width="26" height="26">
-                            <path d="M16 2L30 9V20L16 27L2 20V9L16 2Z" stroke="#f59e0b" stroke-width="1.6"/>
-                            <path d="M16 8L24 12V19L16 23L8 19V12L16 8Z" fill="rgba(245,158,11,0.1)" stroke="#f59e0b" stroke-width="1"/>
-                            <path d="M13 16h6M16 13v6" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                        <span class="gara-name">Gara öý</span>
-                    </div>
-                    <p class="gara-desc" data-i18n="garaoy_desc">Orqoyin jamoasining yangi platformasi — Linux, Android va macOS uchun</p>
-                </div>
-                <div class="gara-right">
-                    <div class="gara-chips">
-                        <span class="gara-chip">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><ellipse cx="12" cy="18" rx="8" ry="3"/><path d="M4 15c-2-2-2-9 8-9s10 7 8 9"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
-                            Linux
-                        </span>
-                        <span class="gara-chip">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><path d="M12 2a10 10 0 0 1 10 10c0 4.42-2.87 8.17-6.84 9.49a.5.5 0 0 1-.63-.49v-2.2c0-.93-.44-1.73-1.11-2.25.53-.06 1.08-.15 1.57-.31 1.48-.49 2.56-1.65 2.56-3.24 0-.87-.35-1.68-.93-2.28.26-.71.24-1.5-.02-2.2-.56-.17-1.83.23-2.84.96-.5-.14-1.03-.21-1.56-.21s-1.06.07-1.56.21c-1.01-.73-2.28-1.13-2.84-.96-.26.7-.28 1.49-.02 2.2-.58.6-.93 1.41-.93 2.28 0 1.59 1.08 2.75 2.56 3.24.49.16 1.04.25 1.57.31-.67.52-1.11 1.32-1.11 2.25v2.2c0 .28-.27.49-.63.49C4.87 20.17 2 16.42 2 12A10 10 0 0 1 12 2z"/></svg>
-                            macOS
-                        </span>
-                        <span class="gara-chip">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-linecap="round" stroke-width="2.5"/></svg>
-                            Android
-                        </span>
-                    </div>
-                    <div class="gara-soon" data-i18n="coming_soon">Tez orada</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-copy">
-            © 2026 ORQOYIN — <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span>
-        </div>
-    </div>
+    <a href="#top" class="foot-logo">
+        <svg viewBox="0 0 22 22" fill="none" width="14" height="14"><path d="M 19 6 A 10 10 0 1 1 15.5 2.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="16.5" cy="3" r="2.2" fill="#e84040"/></svg>
+        ORQOYIN
+    </a>
+    <p class="foot-tag mono" data-i18n="footer_tagline">Urganch — Xorazm viloyatining kiberxavfsizlik akademiyasi</p>
+    <p class="foot-copy mono">© 2025</p>
 </footer>
-
-<!-- SCAN BEAM -->
-<svg id="scan-beam" aria-hidden="true">
-    <defs>
-        <linearGradient id="beamGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%"   stop-color="#00ff9d" stop-opacity="0.7"/>
-            <stop offset="100%" stop-color="#00ff9d" stop-opacity="0"/>
-        </linearGradient>
-    </defs>
-    <line id="scan-line" x1="0" y1="0" x2="0" y2="0"/>
-</svg>
 
 <!-- TOAST -->
 <div class="toast" id="toast">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
-    <span id="toast-text" data-i18n="toast_success">Muvaffaqiyatli! Tez orada aloqaga chiqamiz.</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+    <span data-i18n="toast_success">Muvaffaqiyatli!</span>
 </div>
 
 <script src="script.js"></script>
