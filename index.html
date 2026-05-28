@@ -25,9 +25,15 @@
 <!-- CANVAS -->
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-<!-- CURSOR -->
-<div class="cur-ring" id="cur-ring" aria-hidden="true"></div>
-<div class="cur-dot"  id="cur-dot"  aria-hidden="true"></div>
+<!-- CURSOR — ORQOYIN eye shape (arc + red dot) -->
+<div class="cur-eye" id="cur-eye" aria-hidden="true">
+    <svg class="cur-arc-svg" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 44 14 A 22 22 0 1 1 36 6"
+              stroke="white" stroke-width="3.5" stroke-linecap="round"
+              class="cur-arc-path"/>
+    </svg>
+    <div class="cur-red-dot" id="cur-dot"></div>
+</div>
 
 <!-- STICKY CTA -->
 <a href="#contact" class="sticky-cta" id="sticky-cta">
@@ -117,16 +123,66 @@
             </div>
         </div>
 
-        <!-- RIGHT: terminal card -->
+        <!-- RIGHT: surveillance eye -->
         <div class="hero-visual reveal" data-delay="100" aria-hidden="true">
-            <!-- rotating rings -->
-            <div class="hv-rings">
-                <div class="hv-ring hv-r1"></div>
-                <div class="hv-ring hv-r2"></div>
-                <div class="hv-ring hv-r3"></div>
+
+            <!-- ORQOYIN surveillance eye -->
+            <div class="surv-eye" id="surv-eye">
+                <!-- scanner beam -->
+                <div class="se-scanner"></div>
+                <!-- iris rings -->
+                <div class="se-iris-outer"></div>
+                <div class="se-iris-inner"></div>
+                <!-- crosshair lines -->
+                <div class="se-ch-h"></div>
+                <div class="se-ch-v"></div>
+                <!-- CRT scanlines overlay -->
+                <div class="se-scanlines"></div>
+                <!-- tracking pupil (red dot) -->
+                <div class="se-pupil" id="se-pupil"></div>
+                <!-- logo arc — thick white incomplete circle, gap at upper-right -->
+                <svg class="se-arc-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- main logo arc: 300° clockwise, gap at ~1-2 o'clock -->
+                    <path d="M 263 85 A 130 130 0 1 1 215 37"
+                          stroke="white" stroke-width="22" stroke-linecap="round"
+                          class="se-arc-main"/>
+                    <!-- inner dashed echo -->
+                    <path d="M 252 96 A 113 113 0 1 1 206 48"
+                          stroke="rgba(0,255,157,0.22)" stroke-width="1"
+                          stroke-dasharray="6 4" stroke-linecap="round"/>
+                    <!-- outer ghost ring -->
+                    <circle cx="150" cy="150" r="145"
+                            stroke="rgba(255,255,255,0.04)" stroke-width="1"
+                            stroke-dasharray="3 7"/>
+                    <!-- corner brackets -->
+                    <polyline points="30,30 30,52" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                    <polyline points="30,30 52,30" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                    <polyline points="270,30 270,52" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                    <polyline points="248,30 270,30" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                    <polyline points="30,270 30,248" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                    <polyline points="30,270 52,270" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                    <polyline points="270,270 270,248" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                    <polyline points="248,270 270,270" stroke="rgba(0,255,157,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <!-- live data readout -->
+                <div class="se-data">
+                    <div class="se-data-item">
+                        <span class="se-data-key">SCAN</span>
+                        <span class="se-data-val">ACTIVE</span>
+                    </div>
+                    <div class="se-data-item">
+                        <span class="se-data-key">θ</span>
+                        <span class="se-data-val"><span id="se-angle">000</span>°</span>
+                    </div>
+                    <div class="se-data-item">
+                        <span class="se-data-key">SYS</span>
+                        <span class="se-data-val se-val-green">ONLINE</span>
+                    </div>
+                </div>
             </div>
-            <!-- terminal window -->
-            <div class="hero-terminal">
+
+            <!-- floating mini terminal -->
+            <div class="hero-terminal hero-terminal-mini">
                 <div class="ht-bar">
                     <span class="ht-dot ht-red"></span>
                     <span class="ht-dot ht-yellow"></span>
@@ -134,21 +190,15 @@
                     <span class="ht-bar-title">orqoyin@terminal:~</span>
                 </div>
                 <div class="ht-body">
-                    <div class="ht-line"><span class="ht-prompt">$</span> <span class="ht-cmd">whoami</span></div>
-                    <div class="ht-line ht-out">kiberxavfsizlik_mutaxassisi</div>
-                    <div class="ht-line"><span class="ht-prompt">$</span> <span class="ht-cmd">ls akademiya/</span></div>
-                    <div class="ht-line ht-out"><span class="ht-file">kiberxavfsizlik/</span>  <span class="ht-file">ingliz-tili/</span></div>
-                    <div class="ht-line ht-out"><span class="ht-file-free">bepul-ielts/</span>     <span class="ht-file-free">bepul-sat/</span></div>
-                    <div class="ht-line"><span class="ht-prompt">$</span> <span class="ht-cmd">cat info.txt</span></div>
                     <div class="ht-line ht-out"><span class="ht-green-txt">✓</span> Viloyatda yagona markaz</div>
                     <div class="ht-line ht-out"><span class="ht-green-txt">✓</span> 6 Mac Mini · Shaxsiy lab</div>
-                    <div class="ht-line ht-out"><span class="ht-green-txt">✓</span> 9:00 – 21:00 · Har kuni</div>
                     <div class="ht-line ht-out"><span class="ht-amber-txt">★</span> Bepul IELTS + SAT</div>
                     <div class="ht-line"><span class="ht-prompt">$</span> <span class="ht-cursor">▋</span></div>
                 </div>
             </div>
+
             <!-- floating accent tags -->
-            <div class="hv-tag hv-t1">root@orqoyin:~$</div>
+            <div class="hv-tag hv-t1">TRACKING_ACTIVE</div>
             <div class="hv-tag hv-t2" data-i18n="cyber_float">HIMOYALANGAN</div>
         </div>
 

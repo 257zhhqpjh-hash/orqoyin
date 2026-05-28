@@ -682,33 +682,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ─────────────────────────────────────────────────
-       13. CUSTOM CURSOR
+       13. CURSOR — ORQOYIN EYE + SURVEILLANCE TRACKER
     ───────────────────────────────────────────────── */
     if (isPointerFine) {
-        const ring = document.getElementById('cur-ring');
-        const dot  = document.getElementById('cur-dot');
+        const curEye = document.getElementById('cur-eye');
 
-        let rx = -100, ry = -100; // ring pos (lerped)
-        let dx = -100, dy = -100; // dot pos  (instant)
-
+        /* Mouse position (raw) */
+        let mouseX = -200, mouseY = -200;
         document.addEventListener('mousemove', e => {
-            dx = e.clientX; dy = e.clientY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         }, { passive: true });
 
-        (function cursorLoop() {
-            rx += (dx - rx) * 0.10;
-            ry += (dy - ry) * 0.10;
-            if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
-            if (dot)  { dot.style.left  = dx + 'px'; dot.style.top  = dy + 'px'; }
-            requestAnimationFrame(cursorLoop);
+        /* Lerped position for the eye cursor */
+        let eyeX = -200, eyeY = -200;
+
+        /* ── cursor RAF loop ── */
+        (function eyeCursorLoop() {
+            eyeX += (mouseX - eyeX) * 0.10;
+            eyeY += (mouseY - eyeY) * 0.10;
+            if (curEye) {
+                curEye.style.left = eyeX + 'px';
+                curEye.style.top  = eyeY + 'px';
+            }
+            requestAnimationFrame(eyeCursorLoop);
         })();
 
-        // Hover detection for interactive elements
+        /* Hover state — changes arc color + red dot size */
         const hoverTargets = 'a, button, .cs-card, .smena-slot, .bento-card, .wu-card, .club-card, .map-card, label';
         document.querySelectorAll(hoverTargets).forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
             el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
         });
+
+        /* ── Hero surveillance eye — pupil tracks mouse ── */
+        const survEye   = document.getElementById('surv-eye');
+        const survPupil = document.getElementById('se-pupil');
+        const survAngle = document.getElementById('se-angle');
+
+        if (survEye && survPupil) {
+            const MAX_DIST = 38; // max px the pupil can travel from center
+
+            /* Target pupil position (updated on mousemove) */
+            let ptx = 0, pty = 0;
+            /* Current lerped pupil position */
+            let pcx = 0, pcy = 0;
+
+            document.addEventListener('mousemove', e => {
+                const rect = survEye.getBoundingClientRect();
+                const cx = rect.left + rect.width  / 2;
+                const cy = rect.top  + rect.height / 2;
+                const dx = e.clientX - cx;
+                const dy = e.clientY - cy;
+                const angle = Math.atan2(dy, dx);
+                const dist  = Math.min(Math.hypot(dx, dy) / 5, MAX_DIST);
+                ptx = Math.cos(angle) * dist;
+                pty = Math.sin(angle) * dist;
+
+                /* Live angle readout */
+                if (survAngle) {
+                    const deg = Math.round(((angle * 180 / Math.PI) + 360) % 360);
+                    survAngle.textContent = String(deg).padStart(3, '0');
+                }
+            }, { passive: true });
+
+            (function pupilLoop() {
+                pcx += (ptx - pcx) * 0.08;
+                pcy += (pty - pcy) * 0.08;
+                survPupil.style.transform =
+                    `translate(calc(-50% + ${pcx.toFixed(2)}px), calc(-50% + ${pcy.toFixed(2)}px))`;
+                requestAnimationFrame(pupilLoop);
+            })();
+        }
     }
 
     /* ─────────────────────────────────────────────────
