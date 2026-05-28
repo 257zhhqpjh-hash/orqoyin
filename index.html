@@ -13,18 +13,21 @@
 </head>
 <body>
 
+<!-- AURORA -->
+<div class="aurora" aria-hidden="true">
+    <span class="au1"></span><span class="au2"></span><span class="au3"></span>
+</div>
+<div class="aura-mouse" id="aura-mouse" aria-hidden="true"></div>
+
 <!-- GRAIN -->
 <svg class="grain" aria-hidden="true">
     <filter id="gf"><feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
-    <rect width="100%" height="100%" filter="url(#gf)" opacity="0.028"/>
+    <rect width="100%" height="100%" filter="url(#gf)" opacity="0.022"/>
 </svg>
 
 <!-- CURSOR -->
-<div class="cur" id="cur" aria-hidden="true">
-    <svg id="cur-svg" viewBox="0 0 42 42" fill="none" width="42" height="42">
-        <path d="M 37 12 A 18 18 0 1 1 31 6" stroke="rgba(255,255,255,0.8)" stroke-width="2.6" stroke-linecap="round" class="cur-arc"/>
-    </svg>
-</div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="cur-ring" id="cur-ring" aria-hidden="true"></div>
 
 <!-- NAV -->
 <header class="nav" id="nav">
@@ -92,19 +95,19 @@
                 <path d="M 299 97 A 148 148 0 1 1 245 41"
                       stroke="white" stroke-width="22" stroke-linecap="round"
                       class="eye-arc"/>
-                <!-- inner amber echo -->
+                <!-- inner echo -->
                 <path d="M 287 109 A 130 130 0 1 1 234 49"
-                      stroke="rgba(196,120,32,0.22)" stroke-width="1"
+                      stroke="rgba(34,211,238,0.3)" stroke-width="1"
                       stroke-dasharray="5 5" stroke-linecap="round"/>
                 <!-- HUD corners -->
-                <polyline points="26,26 26,48"   stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
-                <polyline points="26,26 48,26"   stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
-                <polyline points="314,26 314,48"  stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
-                <polyline points="292,26 314,26"  stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
-                <polyline points="26,314 26,292"  stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
-                <polyline points="26,314 48,314"  stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
-                <polyline points="314,314 314,292" stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
-                <polyline points="292,314 314,314" stroke="rgba(196,120,32,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="26,26 26,48"   stroke="rgba(34,211,238,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="26,26 48,26"   stroke="rgba(34,211,238,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="314,26 314,48"  stroke="rgba(217,70,239,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="292,26 314,26"  stroke="rgba(217,70,239,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="26,314 26,292"  stroke="rgba(217,70,239,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="26,314 48,314"  stroke="rgba(217,70,239,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="314,314 314,292" stroke="rgba(34,211,238,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+                <polyline points="292,314 314,314" stroke="rgba(34,211,238,0.5)" stroke-width="1.2" stroke-linecap="round"/>
             </svg>
             <div class="eye-hud">
                 <span class="hk">θ</span><span class="hv" id="eye-angle">000</span>

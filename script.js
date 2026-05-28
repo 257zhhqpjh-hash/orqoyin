@@ -305,62 +305,62 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.sv[data-count]').forEach(el => countObs.observe(el));
 
     /* ─────────────────────────────────────────────────
-       7. CURSOR  (#cur + #cur-svg)
-          – lerped position, velocity-based arc rotation
+       7. CURSOR (dot + lagging ring) + aurora follow
           – only on pointer:fine devices
     ───────────────────────────────────────────────── */
     const isPointerFine = window.matchMedia('(pointer: fine)').matches;
 
     if (isPointerFine) {
-        const curEl  = document.getElementById('cur');
-        const curSvg = document.getElementById('cur-svg');
+        const curDot  = document.getElementById('cur');
+        const curRing = document.getElementById('cur-ring');
+        const aura    = document.getElementById('aura-mouse');
 
-        if (curEl && curSvg) {
-            // Hide system cursor
-            document.documentElement.style.cursor = 'none';
+        let mx = -300, my = -300;   // raw mouse
+        let rx = -300, ry = -300;   // ring (lags)
+        let ax = window.innerWidth / 2, ay = window.innerHeight / 2; // aura (slow lag)
 
-            let mxRaw = -300, myRaw = -300;
-            let prevMX = -300, prevMY = -300;
-            let cx = -300, cy = -300;
-            let curAngle = 0, rotSpeed = 0.6, rotTarget = 0.6;
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+        }, { passive: true });
 
-            document.addEventListener('mousemove', e => {
-                prevMX = mxRaw; prevMY = myRaw;
-                mxRaw = e.clientX; myRaw = e.clientY;
-            }, { passive: true });
+        (function cursorLoop() {
+            // dot snaps to mouse
+            if (curDot) curDot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+            // ring lags
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            if (curRing) curRing.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+            // aurora glow lags slowly
+            ax += (mx - ax) * 0.045;
+            ay += (my - ay) * 0.045;
+            if (aura) { aura.style.left = ax + 'px'; aura.style.top = ay + 'px'; }
+            requestAnimationFrame(cursorLoop);
+        })();
 
-            (function cursorLoop() {
-                // velocity → rotation target
-                const vx  = mxRaw - prevMX;
-                const vy  = myRaw - prevMY;
-                const vel = Math.min(Math.hypot(vx, vy), 48);
-                rotTarget = 0.4 + vel * 0.088;
+        // Hover grow state
+        const hoverSel = 'a, button, label, input, select, .cs-card, .smena-slot';
+        document.addEventListener('mouseover', e => {
+            if (e.target.closest(hoverSel)) document.body.classList.add('hovering');
+        });
+        document.addEventListener('mouseout', e => {
+            if (e.target.closest(hoverSel)) document.body.classList.remove('hovering');
+        });
 
-                rotSpeed  += (rotTarget - rotSpeed) * 0.06;
-                curAngle  += rotSpeed;
-
-                // lerp position
-                cx += (mxRaw - cx) * 0.18;
-                cy += (myRaw - cy) * 0.18;
-
-                curEl.style.transform  = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
-                curSvg.style.transform = `rotate(${curAngle}deg)`;
-
-                requestAnimationFrame(cursorLoop);
-            })();
-
-            // Hover state
-            document.addEventListener('mouseover', e => {
-                if (e.target.closest('a, button, label, input, select, .cs-card, .smena-slot')) {
-                    document.body.classList.add('hovering');
-                }
+        // Magnetic buttons
+        document.querySelectorAll('.btn-amber, .btn-ghost, .btn-outline-amber, .cta-btn, .nav-reg').forEach(el => {
+            const STR = 0.32;
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                const dx = (e.clientX - (r.left + r.width / 2)) * STR;
+                const dy = (e.clientY - (r.top + r.height / 2)) * STR;
+                el.style.transform = `translate(${dx}px, ${dy}px)`;
             });
-            document.addEventListener('mouseout', e => {
-                if (e.target.closest('a, button, label, input, select, .cs-card, .smena-slot')) {
-                    document.body.classList.remove('hovering');
-                }
+            el.addEventListener('mouseleave', () => {
+                el.style.transition = 'transform .4s cubic-bezier(.2,.9,.2,1)';
+                el.style.transform = 'translate(0,0)';
+                setTimeout(() => { el.style.transition = ''; }, 400);
             });
-        }
+        });
     }
 
     /* ─────────────────────────────────────────────────
