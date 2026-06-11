@@ -2,7 +2,7 @@
    Proxies form submissions to Telegram so the bot token never
    ships to the browser. Validates input, honeypot, rate-limits. */
 
-const TG_TOKEN   = process.env.TG_TOKEN   || '7981937991:AAFp7zgW0xJ2pc83jL6tH3LRy_mIl38Tkjw';
+const TG_TOKEN   = process.env.TG_TOKEN   || '7981937991:AAGd4i1CTefIOHwbsaeLQBjxqpVTAgHuHGI';
 const TG_CHAT_ID = process.env.TG_CHAT_ID || '-5134567971';
 
 const COURSE_LABELS = {
