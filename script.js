@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_line1:          "KELAJAK",
             hero_line2:          "HIMOYA",
             hero_line3:          "QILINGAN",
-            hero_sub:            "Kiberxavfsizlik. Ingliz tili. Bir joyda.\nUrganch shahridagi birinchi ixtisoslashgan akademiya.",
+            hero_sub:            "Kiberxavfsizlik, ingliz tili, arab tili va bolalar matematikasi.\nUrganch shahridagi birinchi ixtisoslashgan akademiya.",
             hero_btn_courses:    "Kurslarni ko'rish",
             hero_btn_about:      "Akademiya haqida",
             stat_directions:     "Yo'nalish",
@@ -53,6 +53,27 @@ document.addEventListener('DOMContentLoaded', () => {
             eng_days4:           "Hafta 4 kun",
             eng_days5:           "Hafta 5 kun",
             eng_play:            "O'yin orqali",
+            arab_title:          "Arab Tili",
+            arab_desc:           "Alifbodan erkin suhbatgacha — o'qish, yozish, grammatika va jonli muloqot. Ertalabki guruh.",
+            arab_t1:             "Arab alifbosi va o'qish qoidalari",
+            arab_t2:             "Grammatika asoslari (nahv va sarf)",
+            arab_t3:             "So'z boyligi va jonli muloqot",
+            arab_t4:             "Yozuv va xattotlik asoslari",
+            math_title:          "Bolalar Matematikasi",
+            math_desc:           "5–12 yosh bolalar uchun — mantiqiy fikrlash, arifmetika va masala yechish, o'yin va amaliyot orqali.",
+            math_t1:             "Arifmetika va mantiqiy fikrlash",
+            math_t2:             "Masala yechish strategiyalari",
+            math_t3:             "O'yin asosida o'rganish",
+            math_t4:             "Maktab dasturini mustahkamlash",
+            days_label:          "KUNLAR",
+            days_mon_thu:        "Dush – Pay",
+            days_mon_fri:        "Dush – Juma",
+            week_label:          "HAFTA",
+            days_unit:           "KUN",
+            year_label:          "YIL",
+            nav_science:         "Fan",
+            form_note:           "24 soat ichida qo'ng'iroq qilamiz",
+            toast_error:         "Xatolik yuz berdi. Telefon orqali bog'laning.",
             free_label:          "BEPUL KURSLAR",
             free_badge:          "BEPUL",
             ielts_title:         "Bepul IELTS Tayyorlovi",
@@ -66,11 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
             free_reg_note:       "Markazga kelib ro'yxatdan o'ting. To'lov yo'q.",
             free_join:           "Qo'shilish",
             why_title:           "Nega",
-            why_desc:            "Xorazm viloyatida kiberxavfsizlik bo'yicha birinchi va yagona ixtisoslashgan markaz. Biz ikkita sohani o'rgatamiz — jahon darajasida.",
+            why_desc:            "Kiberxavfsizlikdan bolalar matematikasigacha — to'rt yo'nalish, bir maqsad: chuqur bilim. Jahon darajasida o'qitamiz.",
             reason1_title:       "Viloyatda yagona",
             reason1_desc:        "Xorazm viloyatida kiberxavfsizlik bo'yicha birinchi va yagona ixtisoslashgan markaz.",
-            reason2_title:       "Ikki kurs, bir joy",
-            reason2_desc:        "Kiberxavfsizlik + ingliz tili — texnik bilim va muloqot ko'nikmasi bir kompleksda.",
+            reason2_title:       "To'rt kurs, bir joy",
+            reason2_desc:        "Kiberxavfsizlik, ingliz tili, arab tili va matematika — texnik bilim va til ko'nikmalari bir kompleksda.",
             reason3_title:       "Haqiqiy laboratoriya",
             reason3_desc:        "Ommaviy ma'ruzalar emas — 6 Mac Mini, real CTF va amaliy loyihalar.",
             reason4_title:       "Chuqur bilim",
@@ -108,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_line1:          "GELJEK",
             hero_line2:          "GORAGLY",
             hero_line3:          "BOLSUN",
-            hero_sub:            "Kiberhowpsuzlyk. Iňlis dili. Bir ýerde.\nÜrgençdäki ilkinji ýöriteleşdirilen akademiýa.",
+            hero_sub:            "Kiberhowpsuzlyk, iňlis dili, arap dili we çagalar matematikasy.\nÜrgençdäki ilkinji ýöriteleşdirilen akademiýa.",
             hero_btn_courses:    "Kurslary görmek",
             hero_btn_about:      "Akademiýa hakda",
             stat_directions:     "Ugur",
@@ -144,6 +165,27 @@ document.addEventListener('DOMContentLoaded', () => {
             eng_days4:           "Hepde 4 gün",
             eng_days5:           "Hepde 5 gün",
             eng_play:            "Oýun arkaly",
+            arab_title:          "Arap Dili",
+            arab_desc:           "Elipbiýden erkin söhbete çenli — okamak, ýazmak, grammatika we janly gepleşik. Irki topar.",
+            arab_t1:             "Arap elipbiýi we okamak düzgünleri",
+            arab_t2:             "Grammatikanyň esaslary (nahw we sarf)",
+            arab_t3:             "Söz baýlygy we janly gepleşik",
+            arab_t4:             "Ýazuw we hatdatlyk esaslary",
+            math_title:          "Çagalar Matematikasy",
+            math_desc:           "5–12 ýaş çagalar üçin — logiki pikirlenme, arifmetika we mesele çözmek, oýun arkaly.",
+            math_t1:             "Arifmetika we logiki pikirlenme",
+            math_t2:             "Mesele çözmek strategiýalary",
+            math_t3:             "Oýun esasynda öwrenmek",
+            math_t4:             "Mekdep maksatnamasyny berkitmek",
+            days_label:          "GÜNLER",
+            days_mon_thu:        "Duş – Pen",
+            days_mon_fri:        "Duş – Anna",
+            week_label:          "HEPDE",
+            days_unit:           "GÜN",
+            year_label:          "ÝYL",
+            nav_science:         "Ylym",
+            form_note:           "24 sagadyň içinde jaň ederis",
+            toast_error:         "Ýalňyşlyk ýüze çykdy. Telefon arkaly habarlaşyň.",
             free_label:          "MUGT KURSLAR",
             free_badge:          "MUGT",
             ielts_title:         "Mugt IELTS Taýýarlygy",
@@ -157,11 +199,11 @@ document.addEventListener('DOMContentLoaded', () => {
             free_reg_note:       "Merkeze gelip hasaba duruň. Töleg ýok.",
             free_join:           "Goşulmak",
             why_title:           "Näme üçin",
-            why_desc:            "Horezm welaýatynda kiberhowpsuzlyk boýunça ilkinji we ýeke-täk ýöriteleşdirilen merkez. Biz iki ugry öwredýäris — dünýä derejesinde.",
+            why_desc:            "Kiberhowpsuzlykdan çagalar matematikasyna çenli — dört ugur, bir maksat: çuňňur bilim. Dünýä derejesinde okadýarys.",
             reason1_title:       "Welaýatda ýeke-täk",
             reason1_desc:        "Horezm welaýatynda kiberhowpsuzlyk boýunça ilkinji we ýeke-täk ýöriteleşdirilen merkez.",
-            reason2_title:       "Iki kurs, bir ýer",
-            reason2_desc:        "Kiberhowpsuzlyk + iňlis dili — tehniki bilim we aragatnaşyk endigi bir toplumda.",
+            reason2_title:       "Dört kurs, bir ýer",
+            reason2_desc:        "Kiberhowpsuzlyk, iňlis dili, arap dili we matematika — tehniki bilim we dil endikleri bir toplumda.",
             reason3_title:       "Hakyky laboratoriýa",
             reason3_desc:        "Köpçülikleýin leksiýalar däl — 6 Mac Mini, real CTF we amaly taslamalar.",
             reason4_title:       "Çuňňur bilim",
@@ -478,26 +520,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ─────────────────────────────────────────────────
-       10. REGISTRATION FORM + TELEGRAM
+       10. REGISTRATION FORM  (submits to /api/register)
     ───────────────────────────────────────────────── */
-    const TG_TOKEN   = '7981937991:AAFp7zgW0xJ2pc83jL6tH3LRy_mIl38Tkjw';
-    const TG_CHAT_ID = '-5134567971';
-
-    const COURSE_LABELS = {
-        cybersecurity: '🛡 Kiberxavfsizlik',
-        english:       '🌐 Ingliz Tili',
-        ielts_free:    '📖 Bepul IELTS Tayyorlovi',
-        sat_free:      '📐 Bepul SAT Tayyorlovi',
-    };
-
-    const SOURCE_LABELS = {
-        instagram: 'Instagram',
-        telegram:  'Telegram',
-        friend:    "Do'st / tanish",
-        tiktok:    'TikTok',
-        google:    'Google',
-        other:     'Boshqa',
-    };
 
     const DAY_ICON   = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>`;
     const NIGHT_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
@@ -511,6 +535,12 @@ document.addEventListener('DOMContentLoaded', () => {
             { value: '09:00', label: '09:00 – 11:00', note: '12+ yosh',                 period: 'day'   },
             { value: '16:00', label: '16:00 – 18:00', note: 'Bolalar (5+)',              period: 'day'   },
             { value: '19:30', label: '19:30 – 21:00', note: '12+ yosh',                 period: 'night' },
+        ],
+        arabic: [
+            { value: '11:00', label: '11:00',          note: 'Dush – Pay',               period: 'day'   },
+        ],
+        math_kids: [
+            { value: '10:00', label: '10:00',          note: 'Dush – Juma',              period: 'day'   },
         ],
         ielts_free: [
             { value: '10:00', label: '10:00 – 11:30', note: 'Juma · Shanba · Yakshanba', period: 'day'  },
@@ -535,6 +565,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return note
                 .replace('12+ yosh',             '12+ ýaş')
                 .replace('Bolalar (5+)',           'Çagalar (5+)')
+                .replace('Dush – Pay',             'Duş – Pen')
+                .replace('Dush – Juma',            'Duş – Anna')
                 .replace('Juma · Shanba · Yakshanba', 'Anna · Şenbe · Ýekşenbe');
         };
 
@@ -572,35 +604,26 @@ document.addEventListener('DOMContentLoaded', () => {
         r.addEventListener('change', () => buildSmenaOptions(r.value));
     });
 
-    async function sendToTelegram(data) {
-        const course  = COURSE_LABELS[data.course] || data.course;
-        const source  = SOURCE_LABELS[data.source]  || data.source || '—';
-        const smena   = data.smena || '—';
-        const message =
-            `📋 <b>Yangi ro'yxat</b>\n\n` +
-            `👤 <b>Ism:</b> ${data.name}\n` +
-            `📞 <b>Telefon:</b> ${data.phone}\n` +
-            `📚 <b>Kurs:</b> ${course}\n` +
-            `🕐 <b>Smena:</b> ${smena}\n` +
-            `📣 <b>Manba:</b> ${source}`;
-        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+    async function submitRegistration(data) {
+        const r = await fetch('/api/register', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ chat_id: TG_CHAT_ID, text: message, parse_mode: 'HTML' }),
+            body:    JSON.stringify(data),
         });
+        if (!r.ok) throw new Error('register failed: ' + r.status);
     }
 
     const form = document.getElementById('reg-form');
     if (form) {
         form.addEventListener('submit', async e => {
             e.preventDefault();
-            if (document.getElementById('hp-website')?.value) return;
 
-            const name   = document.getElementById('reg-name')?.value.trim();
-            const phone  = document.getElementById('reg-phone')?.value.trim();
-            const course = form.querySelector('input[name="course"]:checked')?.value;
-            const smena  = form.querySelector('input[name="smena"]:checked')?.value;
-            const source = document.getElementById('source')?.value;
+            const name    = document.getElementById('reg-name')?.value.trim();
+            const phone   = document.getElementById('reg-phone')?.value.trim();
+            const course  = form.querySelector('input[name="course"]:checked')?.value;
+            const smena   = form.querySelector('input[name="smena"]:checked')?.value;
+            const source  = document.getElementById('source')?.value;
+            const website = document.getElementById('hp-website')?.value || '';
 
             if (!name || !phone || !course) return;
 
@@ -608,15 +631,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (btn) { btn.disabled = true; btn.style.opacity = '0.5'; }
 
             try {
-                await sendToTelegram({ name, phone, course, smena, source });
-                showToast();
+                await submitRegistration({ name, phone, course, smena, source, website });
+                showToast('success');
                 form.reset();
                 const sg = document.getElementById('smena-group');
                 const so = document.getElementById('smena-options');
                 if (sg) sg.style.display = 'none';
                 if (so) so.innerHTML = '';
             } catch {
-                // silent fail
+                showToast('error');
             } finally {
                 if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
             }
@@ -626,13 +649,18 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ─────────────────────────────────────────────────
        11. TOAST
     ───────────────────────────────────────────────── */
-    function showToast() {
+    function showToast(kind = 'success') {
         const toast = document.getElementById('toast');
         if (!toast) return;
         const textEl = toast.querySelector('[data-i18n]');
-        if (textEl) textEl.textContent = T[currentLang].toast_success;
+        if (textEl) {
+            textEl.textContent = kind === 'error'
+                ? T[currentLang].toast_error
+                : T[currentLang].toast_success;
+        }
+        toast.classList.toggle('error', kind === 'error');
         toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 4000);
+        setTimeout(() => toast.classList.remove('show'), 4500);
     }
 
 }); // end DOMContentLoaded
