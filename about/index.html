@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="uz" data-lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biz haqimizda — ORQOYIN</title>
+    <meta name="description" content="ORQOYIN — Urganch, Xorazm viloyatidagi birinchi kiberxavfsizlik akademiyasi. Bizning missiya, yo'nalishlar va qadriyatlar.">
+    <meta name="theme-color" content="#060812">
+    <meta property="og:title" content="Biz haqimizda — ORQOYIN">
+    <meta property="og:description" content="Viloyatdagi birinchi kiberxavfsizlik akademiyasi. Sertifikat uchun emas — bilim uchun.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="/favicon.svg?v=20260612c" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css?v=20260612c">
+    <style>
+        /* ═══ ABOUT — cyberpunk × liquid glass, infinite stream ═══ */
+        .ab { max-width: var(--max); margin: 0 auto; padding: calc(var(--nav-h) + 40px) var(--pad) 40px; }
+
+        /* hero */
+        .ab-hero { position: relative; padding: 40px 0 18px; }
+        .ab-eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-family: var(--mono); font-size: .64rem; letter-spacing: .24em; text-transform: uppercase;
+            color: var(--t2); padding: 9px 18px; border-radius: 100px; margin-bottom: 26px;
+            background: var(--glass-bg); border: 1px solid var(--border); box-shadow: var(--rim);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        }
+        .ab-eyebrow::before { content:''; width:6px; height:6px; border-radius:50%; background: var(--red); box-shadow: 0 0 10px var(--red); animation: pulse-dot 2s ease-in-out infinite; }
+
+        .glitch { position: relative; font-weight: 700; color: var(--t1); letter-spacing: -.03em;
+            font-size: clamp(2.8rem, 8vw, 6.5rem); line-height: .94; }
+        .glitch::before, .glitch::after {
+            content: attr(data-text); position: absolute; left: 0; top: 0; width: 100%;
+            pointer-events: none; opacity: .85;
+        }
+        .glitch::before { color: var(--c1); clip-path: inset(0 0 56% 0); animation: gl-a 4s steps(1) infinite; }
+        .glitch::after  { color: var(--c3); clip-path: inset(56% 0 0 0); animation: gl-b 4s steps(1) infinite; }
+        @keyframes gl-a {
+            0%,92%,100%{ transform: translate(0,0); opacity:0 }
+            93%{ transform: translate(-3px,1px); opacity:.9 }
+            95%{ transform: translate(2px,-1px); opacity:.9 }
+            97%{ transform: translate(-2px,0);  opacity:.9 }
+        }
+        @keyframes gl-b {
+            0%,92%,100%{ transform: translate(0,0); opacity:0 }
+            94%{ transform: translate(3px,-1px); opacity:.9 }
+            96%{ transform: translate(-2px,1px); opacity:.9 }
+            98%{ transform: translate(2px,0);   opacity:.9 }
+        }
+
+        /* rotating "one by one" phrases */
+        .rotator { position: relative; height: 3.4em; margin-top: 26px; max-width: 620px; }
+        .rot-line {
+            position: absolute; inset: 0;
+            font-size: clamp(1.05rem, 2vw, 1.45rem); color: var(--t2); line-height: 1.5;
+            animation: rot-cyc 12s var(--ease) infinite both;
+        }
+        .rot-line b { color: var(--c1); font-weight: 700; }
+        @keyframes rot-cyc {
+            0%   { opacity:0; transform: translateY(18px); filter: blur(6px); }
+            4%   { opacity:1; transform: translateY(0);    filter: blur(0); }
+            21%  { opacity:1; transform: translateY(0);    filter: blur(0); }
+            25%  { opacity:0; transform: translateY(-18px);filter: blur(6px); }
+            100% { opacity:0; transform: translateY(-18px);filter: blur(6px); }
+        }
+
+        /* horizontal keyword ticker */
+        .ticker {
+            position: relative; overflow: hidden; margin: 40px 0 0;
+            border-radius: 100px; border: 1px solid var(--border); box-shadow: var(--rim);
+            background: var(--glass-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+                    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+        }
+        .ticker-track { display: inline-flex; gap: 0; white-space: nowrap; padding: 13px 0;
+            animation: tick 32s linear infinite; will-change: transform; }
+        .ticker:hover .ticker-track { animation-play-state: paused; }
+        @keyframes tick { to { transform: translateX(-50%); } }
+        .tk { font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; color: var(--t2); text-transform: uppercase; padding: 0 26px; }
+        .tk::before { content:'◇'; color: var(--c2); margin-right: 26px; opacity:.7; }
+
+        /* the infinite intel stream */
+        .stream-wrap { display: grid; grid-template-columns: 150px 1fr; gap: 24px; margin-top: 54px; }
+
+        /* left data rail */
+        .rail {
+            position: relative; overflow: hidden; height: clamp(440px, 72vh, 760px);
+            border-radius: 22px; border: 1px solid var(--border); box-shadow: var(--rim);
+            background: linear-gradient(180deg, rgba(122,92,255,.05), rgba(255,255,255,.02));
+            -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+                    mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+        }
+        .rail-track { display: flex; flex-direction: column; gap: 14px; padding: 14px 0;
+            animation: stream-up 18s linear infinite; will-change: transform; }
+        .rail-line { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; color: var(--t3); text-align: center; }
+        .rail-line b { color: var(--c1); font-weight: 400; }
+
+        /* console */
+        .console {
+            position: relative; overflow: hidden; height: clamp(440px, 72vh, 760px);
+            border-radius: 28px; border: 1px solid var(--border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(170%); -webkit-backdrop-filter: blur(20px) saturate(170%);
+            box-shadow: var(--rim), var(--float);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent);
+                    mask-image: linear-gradient(to bottom, transparent, #000 13%, #000 87%, transparent);
+        }
+        /* scanlines + center focus line live above the mask via a sibling */
+        .console-fx { position: absolute; inset: 0; pointer-events: none; z-index: 3; border-radius: 28px; overflow: hidden; }
+        .console-fx::before {
+            content:''; position:absolute; inset:0;
+            background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(0,0,0,.16) 3px 4px);
+            opacity:.4; mix-blend-mode: overlay; animation: flick 6s steps(60) infinite;
+        }
+        @keyframes flick { 0%,97%,100%{opacity:.4} 98%{opacity:.22} }
+        .console-fx::after {
+            content:''; position:absolute; left:0; right:0; top:50%; height:108px; transform: translateY(-50%);
+            background: linear-gradient(180deg, transparent, rgba(100,210,255,.07) 45%, rgba(100,210,255,.07) 55%, transparent);
+            border-top: 1px solid rgba(100,210,255,.18); border-bottom: 1px solid rgba(100,210,255,.18);
+        }
+        /* HUD corner brackets */
+        .hud-c { position:absolute; width:22px; height:22px; z-index:4; border-color: rgba(100,210,255,.55); }
+        .hud-c.tl { top:14px; left:14px; border-top:1.5px solid; border-left:1.5px solid; border-top-left-radius:6px; }
+        .hud-c.tr { top:14px; right:14px; border-top:1.5px solid; border-right:1.5px solid; border-top-right-radius:6px; }
+        .hud-c.bl { bottom:14px; left:14px; border-bottom:1.5px solid; border-left:1.5px solid; border-bottom-left-radius:6px; }
+        .hud-c.br { bottom:14px; right:14px; border-bottom:1.5px solid; border-right:1.5px solid; border-bottom-right-radius:6px; }
+
+        .stream-track {
+            display: flex; flex-direction: column; gap: 16px; padding: 16px clamp(18px, 3vw, 34px);
+            animation: stream-up 38s linear infinite; will-change: transform;
+        }
+        .console:hover .stream-track, .rail:hover .rail-track { animation-play-state: paused; }
+        @keyframes stream-up { to { transform: translateY(-50%); } }
+
+        .intel {
+            display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: 18px;
+            padding: 20px 22px; border-radius: 18px;
+            background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+            border: 1px solid var(--border);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.16);
+        }
+        .intel-idx { font-family: var(--mono); font-size: .72rem; color: var(--c1); }
+        .intel-kicker { display:block; font-family: var(--mono); font-size: .56rem; letter-spacing: .2em; color: var(--t3); text-transform: uppercase; margin-bottom: 6px; }
+        .intel-line { font-size: clamp(.92rem, 1.5vw, 1.08rem); color: var(--t1); line-height: 1.4; }
+        .intel-line .hl { color: var(--c1); }
+        .intel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); box-shadow: 0 0 10px var(--red); }
+
+        /* stats */
+        .ab-stats { margin-top: 56px; }
+
+        /* closing CTA */
+        .ab-cta {
+            margin: 56px 0 10px; padding: clamp(34px,5vw,60px);
+            display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap;
+            border-radius: 30px; position: relative; overflow: hidden;
+            background:
+                radial-gradient(circle at 12% 0%, rgba(100,210,255,.12), transparent 50%),
+                radial-gradient(circle at 88% 100%, rgba(255,100,130,.10), transparent 50%),
+                var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(170%); -webkit-backdrop-filter: blur(20px) saturate(170%);
+            border: 1px solid var(--border); box-shadow: var(--rim), var(--float);
+        }
+        .ab-cta h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; color: var(--t1); letter-spacing: -.025em; line-height: 1.05; }
+        .ab-cta p { font-family: var(--mono); font-size: .72rem; color: var(--t3); letter-spacing: .06em; margin-top: 12px; }
+        .ab-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        @media (max-width: 760px) {
+            .stream-wrap { grid-template-columns: 1fr; }
+            .rail { display: none; }
+            .console { height: clamp(420px, 76vh, 640px); }
+            .intel { grid-template-columns: 44px 1fr auto; gap: 12px; padding: 16px 16px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .stream-track, .rail-track, .ticker-track { animation: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LIGHT FIELD -->
+<div class="aurora" aria-hidden="true">
+    <span class="au1"></span><span class="au2"></span><span class="au3"></span>
+</div>
+<div class="aura-mouse" id="aura-mouse" aria-hidden="true"></div>
+
+<!-- GRAIN -->
+<svg class="grain" aria-hidden="true">
+    <filter id="gf"><feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <rect width="100%" height="100%" filter="url(#gf)" opacity="0.02"/>
+</svg>
+
+<!-- CURSOR -->
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="cur-ring" id="cur-ring" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav scrolled" id="nav">
+    <a href="/" class="logo" aria-label="ORQOYIN">
+        <img class="logo-mark" src="/logo.svg?v=20260612c" width="19" height="19" alt="" aria-hidden="true">
+        <span>ORQOYIN</span>
+    </a>
+    <div class="nav-end">
+        <a href="/about/" class="nav-sci" data-i18n="nav_about_page">Biz haqimizda</a>
+        <a href="/science/" class="nav-sci" data-i18n="nav_science">Fan</a>
+        <button class="lang-btn" id="lang-toggle" aria-label="Til">
+            <span class="lang-opt" data-l="uz">UZ</span>
+            <span class="lang-sep">·</span>
+            <span class="lang-opt" data-l="tm">TM</span>
+        </button>
+        <a href="/#contact" class="nav-reg" data-i18n="nav_register">Ro'yxatdan o'tish</a>
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mm-lang">
+        <button class="mm-lang-btn" data-l="uz">O'zbek</button>
+        <button class="mm-lang-btn" data-l="tm">Türkmen</button>
+    </div>
+    <a href="/#courses" class="mm-link" data-i18n="nav_courses">Kurslar</a>
+    <a href="/about/"   class="mm-link" data-i18n="nav_about_page">Biz haqimizda</a>
+    <a href="/#contact" class="mm-link mm-cta" data-i18n="nav_register">Ro'yxatdan o'tish</a>
+    <a href="/science/" class="mm-link mm-sci" data-i18n="nav_science">Fan</a>
+</div>
+
+<!-- ═══ ABOUT ═══════════════════════════════════════════════ -->
+<main class="ab">
+
+    <section class="ab-hero">
+        <p class="ab-eyebrow">// SYSTEM · BIZ HAQIMIZDA</p>
+        <h1 class="glitch" data-text="BIZ HAQIMIZDA">BIZ HAQIMIZDA</h1>
+        <div class="rotator" aria-label="ORQOYIN haqida">
+            <p class="rot-line" style="animation-delay:0s">Viloyatdagi <b>birinchi</b> kiberxavfsizlik akademiyasi.</p>
+            <p class="rot-line" style="animation-delay:3s">Sertifikat uchun emas — <b>bilim uchun.</b></p>
+            <p class="rot-line" style="animation-delay:6s">To'rt yo'nalish. Bir maqsad: <b>chuqur bilim.</b></p>
+            <p class="rot-line" style="animation-delay:9s">Urganch · Xorazm · <b>2026.</b></p>
+        </div>
+    </section>
+
+    <!-- keyword ticker -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+            <span class="tk">Kiberxavfsizlik</span><span class="tk">Ingliz tili</span><span class="tk">Arab tili</span><span class="tk">Matematika</span><span class="tk">CTF</span><span class="tk">IELTS</span><span class="tk">SAT</span><span class="tk">Linux</span><span class="tk">OSINT</span><span class="tk">Gara Öý</span>
+            <span class="tk">Kiberxavfsizlik</span><span class="tk">Ingliz tili</span><span class="tk">Arab tili</span><span class="tk">Matematika</span><span class="tk">CTF</span><span class="tk">IELTS</span><span class="tk">SAT</span><span class="tk">Linux</span><span class="tk">OSINT</span><span class="tk">Gara Öý</span>
+        </div>
+    </div>
+
+    <!-- infinite intel stream -->
+    <p class="sec-label" style="margin-top:54px;margin-bottom:0"><span class="mono">// INTEL</span><span>UZLUKSIZ OQIM</span></p>
+
+    <div class="stream-wrap">
+
+        <!-- data rail -->
+        <div class="rail" aria-hidden="true">
+            <div class="rail-track">
+                <span class="rail-line"><b>09:24:11</b> · SCAN OK</span>
+                <span class="rail-line">0xF4 · TRACE</span>
+                <span class="rail-line"><b>NODE</b> 06 · UP</span>
+                <span class="rail-line">CTF · LIVE</span>
+                <span class="rail-line">0x1A · LINK</span>
+                <span class="rail-line"><b>LAB</b> · READY</span>
+                <span class="rail-line">SIG · 100%</span>
+                <span class="rail-line">0xB7 · SYNC</span>
+                <span class="rail-line"><b>UZ</b> · XORAZM</span>
+                <span class="rail-line">PING · 12ms</span>
+                <!-- dup -->
+                <span class="rail-line"><b>09:24:11</b> · SCAN OK</span>
+                <span class="rail-line">0xF4 · TRACE</span>
+                <span class="rail-line"><b>NODE</b> 06 · UP</span>
+                <span class="rail-line">CTF · LIVE</span>
+                <span class="rail-line">0x1A · LINK</span>
+                <span class="rail-line"><b>LAB</b> · READY</span>
+                <span class="rail-line">SIG · 100%</span>
+                <span class="rail-line">0xB7 · SYNC</span>
+                <span class="rail-line"><b>UZ</b> · XORAZM</span>
+                <span class="rail-line">PING · 12ms</span>
+            </div>
+        </div>
+
+        <!-- console -->
+        <div class="console">
+            <span class="hud-c tl"></span><span class="hud-c tr"></span><span class="hud-c bl"></span><span class="hud-c br"></span>
+            <div class="stream-track">
+                <!-- SET A -->
+                <div class="intel"><span class="intel-idx mono">// 01</span><div class="intel-body"><span class="intel-kicker">IDENTITY</span><p class="intel-line">Xorazm viloyatidagi <span class="hl">birinchi va yagona</span> kiberxavfsizlik akademiyasi.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 02</span><div class="intel-body"><span class="intel-kicker">JOYLASHUV</span><p class="intel-line">Urganch shahri · har kuni <span class="hl">09:00–21:00</span> ochiq.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 03</span><div class="intel-body"><span class="intel-kicker">YO'NALISH</span><p class="intel-line">Kiberxavfsizlik — axloqiy hakerlik, CTF, raqamli tekshiruv.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 04</span><div class="intel-body"><span class="intel-kicker">YO'NALISH</span><p class="intel-line">Ingliz tili — A1 dan C1 gacha, IELTS &amp; SAT tayyorlovi.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 05</span><div class="intel-body"><span class="intel-kicker">YO'NALISH</span><p class="intel-line">Arab tili — alifbodan erkin suhbatgacha.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 06</span><div class="intel-body"><span class="intel-kicker">YO'NALISH</span><p class="intel-line">Bolalar matematikasi — 5–12 yosh, mantiqiy fikrlash.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 07</span><div class="intel-body"><span class="intel-kicker">LABORATORIYA</span><p class="intel-line"><span class="hl">6 Mac Mini</span> · real CTF · amaliy loyihalar.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 08</span><div class="intel-body"><span class="intel-kicker">BEPUL</span><p class="intel-line">IELTS va SAT tayyorlovi — <span class="hl">to'lovsiz.</span></p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 09</span><div class="intel-body"><span class="intel-kicker">QADRIYAT</span><p class="intel-line">Mustaqil fikrlash. Real muammolar. Chuqur bilim.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 10</span><div class="intel-body"><span class="intel-kicker">JAMOA</span><p class="intel-line">Offensive security mutaxassislari va o'qituvchilar.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 11</span><div class="intel-body"><span class="intel-kicker">PLATFORMA</span><p class="intel-line">Gara Öý — Linux, Android, macOS <span class="hl">(tez orada).</span></p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 12</span><div class="intel-body"><span class="intel-kicker">ALOQA</span><p class="intel-line">+998 90 924 25 50 · offseckh@icloud.com</p></div><span class="intel-dot"></span></div>
+                <!-- SET B (duplicate for seamless loop) -->
+                <div class="intel"><span class="intel-idx mono">// 01</span><div class="intel-body"><span class="intel-kicker">IDENTITY</span><p class="intel-line">Xorazm viloyatidagi <span class="hl">birinchi va yagona</span> kiberxavfsizlik akademiyasi.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 02</span><div class="intel-body"><span class="intel-kicker">JOYLASHUV</span><p class="intel-line">Urganch shahri · har kuni <span class="hl">09:00–21:00</span> ochiq.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 03</span><div class="intel-body"><span class="intel-kicker">YO'NALISH</span><p class="intel-line">Kiberxavfsizlik — axloqiy hakerlik, CTF, raqamli tekshiruv.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 04</span><div class="intel-body"><span class="intel-kicker">YO'NALISH</span><p class="intel-line">Ingliz tili — A1 dan C1 gacha, IELTS &amp; SAT tayyorlovi.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 05</span><div class="intel-body"><span class="intel-kicker">YO'NALISH</span><p class="intel-line">Arab tili — alifbodan erkin suhbatgacha.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 06</span><div class="intel-body"><span class="intel-kicker">YO'NALISH</span><p class="intel-line">Bolalar matematikasi — 5–12 yosh, mantiqiy fikrlash.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 07</span><div class="intel-body"><span class="intel-kicker">LABORATORIYA</span><p class="intel-line"><span class="hl">6 Mac Mini</span> · real CTF · amaliy loyihalar.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 08</span><div class="intel-body"><span class="intel-kicker">BEPUL</span><p class="intel-line">IELTS va SAT tayyorlovi — <span class="hl">to'lovsiz.</span></p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 09</span><div class="intel-body"><span class="intel-kicker">QADRIYAT</span><p class="intel-line">Mustaqil fikrlash. Real muammolar. Chuqur bilim.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 10</span><div class="intel-body"><span class="intel-kicker">JAMOA</span><p class="intel-line">Offensive security mutaxassislari va o'qituvchilar.</p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 11</span><div class="intel-body"><span class="intel-kicker">PLATFORMA</span><p class="intel-line">Gara Öý — Linux, Android, macOS <span class="hl">(tez orada).</span></p></div><span class="intel-dot"></span></div>
+                <div class="intel"><span class="intel-idx mono">// 12</span><div class="intel-body"><span class="intel-kicker">ALOQA</span><p class="intel-line">+998 90 924 25 50 · offseckh@icloud.com</p></div><span class="intel-dot"></span></div>
+            </div>
+            <div class="console-fx"></div>
+        </div>
+
+    </div>
+
+    <!-- stats -->
+    <div class="stats-bar ab-stats">
+        <div class="stat-item"><span class="sv" data-count="4">4</span><span class="sl" data-i18n="stat_directions">Yo'nalish</span></div>
+        <div class="stat-item"><span class="sv" data-count="2">2</span><span class="sl" data-i18n="stat_free">Bepul kurs</span></div>
+        <div class="stat-item"><span class="sv" data-count="6">6</span><span class="sl">Mac Mini</span></div>
+        <div class="stat-item"><span class="sv sv-sm">9–21</span><span class="sl" data-i18n="stat_hours">Har kuni ochiq</span></div>
+        <div class="stat-item"><span class="sv sv-sm" data-i18n="stat_unique">Yagona</span><span class="sl" data-i18n="stat_unique_sub">Viloyatda</span></div>
+    </div>
+
+    <!-- closing CTA -->
+    <div class="ab-cta">
+        <div>
+            <h2>Bilimni <span class="grad-text">himoya</span> qiling.</h2>
+            <p>Joylar cheklangan · 24 soat ichida bog'lanamiz</p>
+        </div>
+        <div class="ab-cta-btns">
+            <a href="/#contact" class="btn-amber" data-i18n="nav_register">Ro'yxatdan o'tish</a>
+            <a href="/#courses" class="btn-ghost" data-i18n="nav_courses">Kurslar</a>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <a href="/" class="foot-logo">
+        <img class="logo-mark" src="/logo.svg?v=20260612c" width="15" height="15" alt="" aria-hidden="true">
+        ORQOYIN
+    </a>
+    <p class="foot-tag mono" data-i18n="footer_tagline">Urganch — Xorazm viloyatining kiberxavfsizlik akademiyasi</p>
+    <div class="foot-links">
+        <a href="/science/" class="foot-link" data-i18n="nav_science">Fan</a>
+        <a href="/" class="foot-link">← Bosh sahifa</a>
+        <p class="foot-copy mono">© 2026</p>
+    </div>
+</footer>
+
+<script src="/script.js?v=20260612c" defer></script>
+</body>
+</html>
