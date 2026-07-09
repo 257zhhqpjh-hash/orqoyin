@@ -681,3 +681,47 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     .reveal { opacity: 1; transform: none; }
 }
+
+/* ── PARTNERS ────────────────────────────────────────────── */
+.partners { max-width: var(--max); margin: 0 auto; padding: 20px var(--pad) 90px; }
+.pt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.pt-card {
+    display: flex; flex-direction: column; gap: 16px; align-items: flex-start;
+    padding: 32px 30px; border-radius: 24px; min-height: 216px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid var(--border); box-shadow: var(--rim), 0 18px 50px -22px rgba(0,0,0,.55);
+    transition: transform .4s var(--ease), border-color .35s, box-shadow .4s;
+}
+.pt-card:hover { transform: translateY(-5px); border-color: var(--border2); box-shadow: var(--rim), 0 30px 70px -24px rgba(0,0,0,.7); }
+.pt-logo { height: 60px; display: flex; align-items: center; }
+.pt-logo img { max-height: 58px; max-width: 150px; width: auto; object-fit: contain; }
+.pt-logo img.mono-mark { max-height: 50px; filter: brightness(0) invert(1); opacity: .9; }
+.pt-logo img.avatar { height: 58px; width: 58px; max-height: none; max-width: none; border-radius: 14px; object-fit: cover; box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 6px 18px -8px rgba(0,0,0,.5); }
+.pt-name { font-size: 1.18rem; font-weight: 700; color: var(--t1); letter-spacing: -.01em; }
+.pt-role { font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--t3); margin-top: 5px; }
+.pt-link { margin-top: auto; font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; color: var(--c1); transition: color .2s; }
+.pt-card:hover .pt-link { color: var(--t1); }
+
+/* ── GARA ÖY / BAYT — two products ───────────────────────── */
+.garaoy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.garaoy-grid .garaoy-card { padding: clamp(30px, 4vw, 50px); }
+
+/* ── COMING-SOON COURSE STATE ────────────────────────────── */
+.cr-soon { opacity: .7; }
+.cr-soon:hover { transform: none; }
+.cr-soon:hover::before { transform: translateX(-130%); }
+.soon-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--c1); padding: 8px 16px; border-radius: 100px;
+    background: rgba(100,210,255,.1); border: 1px solid rgba(100,210,255,.3);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+}
+.soon-badge::before { content:''; width:6px; height:6px; border-radius:50%; background: var(--c1); box-shadow: 0 0 8px var(--c1); animation: pulse-dot 2s ease-in-out infinite; }
+.soon-note { font-family: var(--mono); font-size: .7rem; color: var(--t3); line-height: 1.55; }
+
+@media (max-width: 760px) {
+    .pt-grid { grid-template-columns: 1fr; }
+    .garaoy-grid { grid-template-columns: 1fr; }
+}
