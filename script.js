@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_line1:          "KELAJAK",
             hero_line2:          "HIMOYA",
             hero_line3:          "QILINGAN",
-            hero_sub:            "Kiberxavfsizlik, ingliz tili, arab tili va bolalar matematikasi.\nUrganç şahridagi birinçi ixtisoslaşgan akademiya.",
+            hero_sub:            "Kiberxavfsizlik, Data Analytics, ingliz va arab tili — bir joyda.\nUrganç şahridagi birinçi ixtisoslaşgan akademiya.",
             hero_btn_courses:    "Kurslarni köriş",
             hero_btn_about:      "Akademiya haqida",
             stat_directions:     "Yönaliş",
@@ -42,9 +42,23 @@ document.addEventListener('DOMContentLoaded', () => {
             cyber_float:         "HIMOYALANGAN",
             eng_tag:             "INGLIZ TILI",
             eng_title:           "Ingliz Tili",
-            eng_desc:            "A1 dan C1 gaça — Bolalar (Kids) va Umumiy (General) guruhlari. Grammatika, nutq, IELTS va SAT tayyorlovi.",
+            eng_desc:            "Bolalar va online guruhlar — boşlanğiçdan B2 gaça. IELTS va SAT tayyorlovi.",
             eng_kids_label:      "BOLALAR · KIDS",
             eng_gen_label:       "UMUMIY · GENERAL",
+            eng_online_label:    "ONLINE · LEVEL UP",
+            arab_women_label:    "AYOLLAR",
+            d_mon_fri:           "Duş–Juma",
+            d_mwf:               "Duş · Çor · Juma",
+            d_tts:               "Seş · Pay · Şan",
+            d_mwfsun:            "Duş·Çor·Juma·Yak",
+            d_3days:             "Haftada 3 kun",
+            da_title:            "Data Analytics",
+            da_desc:             "Ma'lumotlar bilan işlaş — tahlil, vizualizatsiya va qaror qabul qiliş.",
+            da_t1:               "Excel va Google Sheets",
+            da_t2:               "SQL va ma'lumotlar bazasi asoslari",
+            da_t3:               "Ma'lumot vizualizatsiyasi",
+            da_t4:               "Statistika va amaliy loyihalar",
+            da_level:            "Boşlanğiç → Amaliy",
             eng_t1:              "Boşlanğiç ingliz tili asoslari",
             eng_t2:              "Grammatika va söz boyligi",
             eng_t3:              "Tinglaş va öqib tuşuniş",
@@ -56,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             eng_days5:           "Hafta 5 kun",
             eng_play:            "Öyin orqali",
             arab_title:          "Arab Tili",
-            arab_desc:           "Alifbodan erkin suhbatgaça — öqiş, yoziş, grammatika va jonli muloqot.",
+            arab_desc:           "Ayollar guruhi va online maşğulotlar — alifbodan erkin suhbatgaça.",
             arab_t1:             "Arab alifbosi va öqiş qoidalari",
             arab_t2:             "Grammatika asoslari (nahv va sarf)",
             arab_t3:             "Söz boyligi va jonli muloqot",
@@ -96,11 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
             free_reg_note:       "Markazga kelib röyxatdan öting. Tölov yöq.",
             free_join:           "Qöşiliş",
             why_title:           "Nega",
-            why_desc:            "Kiberxavfsizlikdan bolalar matematikasigaça — tört yönaliş, bir maqsad: çuqur bilim. Jahon darajasida öqitamiz.",
+            why_desc:            "Kiberxavfsizlikdan Data Analyticsgaça — beş yönaliş, bir maqsad: çuqur bilim. Jahon darajasida öqitamiz.",
             reason1_title:       "Viloyatda yagona",
             reason1_desc:        "Xorazm viloyatida kiberxavfsizlik böyiça birinçi va yagona ixtisoslaşgan markaz.",
-            reason2_title:       "Tört kurs, bir joy",
-            reason2_desc:        "Kiberxavfsizlik, ingliz tili, arab tili va matematika — texnik bilim va til könikmalari bir kompleksda.",
+            reason2_title:       "Beş yönaliş, bir joy",
+            reason2_desc:        "Kiberxavfsizlik, Data Analytics, ingliz va arab tili, matematika — bir kompleksda.",
             reason3_title:       "Haqiqiy laboratoriya",
             reason3_desc:        "Ommaviy ma'ruzalar emas — 6 Mac Mini, real CTF va amaliy loyihalar.",
             reason4_title:       "Çuqur bilim",
@@ -138,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hero_line1:          "GELJEK",
             hero_line2:          "GORAGLY",
             hero_line3:          "BOLSUN",
-            hero_sub:            "Kiberhowpsuzlyk, iňlis dili, arap dili we çagalar matematikasy.\nÜrgençdäki ilkinji ýöriteleşdirilen akademiýa.",
+            hero_sub:            "Kiberhowpsuzlyk, Data Analytics, iňlis we arap dili — bir ýerde.\nÜrgençdäki ilkinji ýöriteleşdirilen akademiýa.",
             hero_btn_courses:    "Kurslary görmek",
             hero_btn_about:      "Akademiýa hakda",
             stat_directions:     "Ugur",
@@ -163,9 +177,23 @@ document.addEventListener('DOMContentLoaded', () => {
             cyber_float:         "GORAGLY",
             eng_tag:             "IŇLIS DILI",
             eng_title:           "Iňlis Dili",
-            eng_desc:            "A1-den C1-e — Çagalar (Kids) we Umumy (General) toparlary. Grammatika, söhbet, IELTS we SAT.",
+            eng_desc:            "Çagalar we online toparlar — başlanğyçdan B2-ä çenli. IELTS we SAT taýýarlygy.",
             eng_kids_label:      "ÇAGALAR · KIDS",
             eng_gen_label:       "UMUMY · GENERAL",
+            eng_online_label:    "ONLINE · LEVEL UP",
+            arab_women_label:    "AÝALLAR",
+            d_mon_fri:           "Duş–Anna",
+            d_mwf:               "Duş · Çar · Anna",
+            d_tts:               "Siş · Pen · Şen",
+            d_mwfsun:            "Duş·Çar·Anna·Ýek",
+            d_3days:             "Hepdede 3 gün",
+            da_title:            "Data Analytics",
+            da_desc:             "Maglumatlar bilen işlemek — derňew, wizualizasiýa we karar kabul etmek.",
+            da_t1:               "Excel we Google Sheets",
+            da_t2:               "SQL we maglumatlar bazasy esaslary",
+            da_t3:               "Maglumat wizualizasiýasy",
+            da_t4:               "Statistika we amaly taslamalar",
+            da_level:            "Başlanğyç → Amaly",
             eng_t1:              "Esasy iňlis dili",
             eng_t2:              "Grammatika we söz baýlygy",
             eng_t3:              "Diňlemek we okamak",
@@ -177,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             eng_days5:           "Hepde 5 gün",
             eng_play:            "Oýun arkaly",
             arab_title:          "Arap Dili",
-            arab_desc:           "Elipbiýden erkin söhbete çenli — okamak, ýazmak, grammatika we janly gepleşik.",
+            arab_desc:           "Aýallar topary we online sapaklar — elipbiýden erkin söhbete çenli.",
             arab_t1:             "Arap elipbiýi we okamak düzgünleri",
             arab_t2:             "Grammatikanyň esaslary (nahw we sarf)",
             arab_t3:             "Söz baýlygy we janly gepleşik",
@@ -217,11 +245,11 @@ document.addEventListener('DOMContentLoaded', () => {
             free_reg_note:       "Merkeze gelip hasaba duruň. Töleg ýok.",
             free_join:           "Goşulmak",
             why_title:           "Näme üçin",
-            why_desc:            "Kiberhowpsuzlykdan çagalar matematikasyna çenli — dört ugur, bir maksat: çuňňur bilim. Dünýä derejesinde okadýarys.",
+            why_desc:            "Kiberhowpsuzlykdan Data Analytics-e çenli — bäş ugur, bir maksat: çuňňur bilim. Dünýä derejesinde okadýarys.",
             reason1_title:       "Welaýatda ýeke-täk",
             reason1_desc:        "Horezm welaýatynda kiberhowpsuzlyk boýunça ilkinji we ýeke-täk ýöriteleşdirilen merkez.",
-            reason2_title:       "Dört kurs, bir ýer",
-            reason2_desc:        "Kiberhowpsuzlyk, iňlis dili, arap dili we matematika — tehniki bilim we dil endikleri bir toplumda.",
+            reason2_title:       "Bäş ugur, bir ýer",
+            reason2_desc:        "Kiberhowpsuzlyk, Data Analytics, iňlis we arap dili, matematika — bir toplumda.",
             reason3_title:       "Hakyky laboratoriýa",
             reason3_desc:        "Köpçülikleýin leksiýalar däl — 6 Mac Mini, real CTF we amaly taslamalar.",
             reason4_title:       "Çuňňur bilim",
@@ -546,17 +574,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const SMENA_DATA = {
         cybersecurity: [
-            { value: '16:00', label: '16:00',          note: '',                         period: 'day'   },
+            { value: '16:00', label: '16:00', note: 'Duş–Pay',                       period: 'day'   },
         ],
         english: [
-            { value: '09:00', label: '09:00',          note: 'Bolalar (Kids)',           period: 'day'   },
-            { value: '14:00', label: '14:00',          note: 'Umumiy (General)',          period: 'day'   },
+            { value: '09:00',   label: '09:00',  note: 'Bolalar · Duş–Juma',          period: 'day'   },
+            { value: '11:00',   label: '11:00',  note: 'Bolalar · 3 kun',             period: 'day'   },
+            { value: 'online',  label: 'Online', note: 'Level up A→B2 · Duş·Çor·Juma·Yak', period: 'day' },
+        ],
+        arabic: [
+            { value: '15:00', label: '15:00', note: 'Ayollar · Duş·Çor·Juma',         period: 'day'   },
+            { value: '17:00', label: '17:00', note: 'Ayollar · Seş·Pay·Şan',          period: 'day'   },
+            { value: '04:00', label: '04:00', note: 'Online · Duş–Pay',               period: 'day'   },
+            { value: '21:00', label: '21:00', note: 'Online · Duş–Pay',               period: 'night' },
+        ],
+        data_analytics: [
+            { value: '10:00', label: '10:00', note: 'Haftada 3 kun',                  period: 'day'   },
+            { value: '19:00', label: '19:00', note: 'Haftada 3 kun',                  period: 'night' },
         ],
         ielts_free: [
-            { value: '10:00', label: '10:00 – 11:30', note: 'Juma · Shanba · Yakshanba', period: 'day'  },
+            { value: '10:00', label: '10:00 – 11:30', note: 'Juma · Şanba · Yakşanba', period: 'day'  },
         ],
         sat_free: [
-            { value: '18:30', label: '18:30 – 20:00', note: 'Juma · Shanba · Yakshanba', period: 'night'},
+            { value: '18:30', label: '18:30 – 20:00', note: 'Juma · Şanba · Yakşanba', period: 'night'},
         ],
     };
 
@@ -570,13 +609,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!slots || slots.length === 0) { group.style.display = 'none'; return; }
 
         const isTM = currentLang === 'tm';
-        const translateNote = (note) => {
-            if (!isTM) return note;
-            return note
-                .replace('Bolalar (Kids)',         'Çagalar (Kids)')
-                .replace('Umumiy (General)',        'Umumy (General)')
-                .replace('Juma · Shanba · Yakshanba', 'Anna · Şenbe · Ýekşenbe');
+        const NOTE_TM = {
+            'Duş–Pay':                             'Duş–Pen',
+            'Bolalar · Duş–Juma':                  'Çagalar · Duş–Anna',
+            'Bolalar · 3 kun':                     'Çagalar · 3 gün',
+            'Level up A→B2 · Duş·Çor·Juma·Yak':    'Level up A→B2 · Duş·Çar·Anna·Ýek',
+            'Ayollar · Duş·Çor·Juma':              'Aýallar · Duş·Çar·Anna',
+            'Ayollar · Seş·Pay·Şan':               'Aýallar · Siş·Pen·Şen',
+            'Online · Duş–Pay':                    'Online · Duş–Pen',
+            'Haftada 3 kun':                       'Hepdede 3 gün',
+            'Juma · Şanba · Yakşanba':             'Anna · Şenbe · Ýekşenbe',
         };
+        const translateNote = (note) => (isTM ? (NOTE_TM[note] || note) : note);
 
         slots.forEach(slot => {
             const lbl  = document.createElement('label');

@@ -9,6 +9,7 @@ const COURSE_LABELS = {
     cybersecurity: '🛡 Kiberxavfsizlik',
     english:       '🌐 Ingliz Tili',
     arabic:        '🕌 Arab Tili',
+    data_analytics:'📊 Data Analytics',
     math_kids:     '🔢 Bolalar Matematikasi',
     ielts_free:    '📖 Bepul IELTS Tayyorlovi',
     sat_free:      '📐 Bepul SAT Tayyorlovi',
