@@ -90,6 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_science:         "Fan",
             nav_about_page:      "Biz haqimizda",
             partners_label:      "HAMKORLAR",
+            branches_label:      "FILIALLAR",
+            stat_branches:       "Filial · Urganç",
+            br_legend_on:        "Urganç — filiallar",
+            br_legend_off:       "Boşqa tumanlar",
+            br_new:              "YANGI",
+            br1_sub:             "Asosiy filial · laboratoriya",
+            br2_sub:             "Savdo markazi içida",
+            form_branch:         "Filialni tanlang",
+            branch_district:     "Urganç tumani",
+            branch_city:         "Urganç şahri",
             pt_centihack:        "Kiberxavfsizlik hamjamiyati",
             pt_neoavlod:         "Ta'lim akademiyasi",
             pt_haad:             "Sun'iy intellekt platformasi",
@@ -127,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contact_label:       "RÖYXAT",
             contact_title:       "Qöşiling.",
             contact_desc:        "Bepul maslahat uçun ma'lumotlaringizni qoldiring. 24 soat içida boğlanamiz.",
-            contact_map_link:    "Urganç — Xaritada köriş ↗",
+            contact_map_link:    "2 filial · Xaritada köriş ↓",
             form_name:           "Ism va Familiya",
             form_name_ph:        "Töliq ismingiz",
             form_phone:          "Telefon raqam",
@@ -225,6 +235,16 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_science:         "Ylym",
             nav_about_page:      "Biz hakda",
             partners_label:      "HYZMATDAŞLAR",
+            branches_label:      "ŞAHAMÇALAR",
+            stat_branches:       "Şahamça · Urganç",
+            br_legend_on:        "Urganç — şahamçalar",
+            br_legend_off:       "Başga etraplar",
+            br_new:              "TÄZE",
+            br1_sub:             "Esasy şahamça · laboratoriýa",
+            br2_sub:             "Söwda merkezinde",
+            form_branch:         "Şahamçany saýlaň",
+            branch_district:     "Urganç etraby",
+            branch_city:         "Urganç şäheri",
             pt_centihack:        "Kiberhowpsuzlyk jemgyýeti",
             pt_neoavlod:         "Bilim akademiýasy",
             pt_haad:             "Emeli intellekt platformasy",
@@ -262,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contact_label:       "HASABA ALMAK",
             contact_title:       "Goşulyň.",
             contact_desc:        "Mugt maslahat üçin maglumatlaryňyzy goýuň. 24 sagat içinde habarlaşarys.",
-            contact_map_link:    "Ürgenç — Kartada görmek ↗",
+            contact_map_link:    "2 şahamça · Kartada görmek ↓",
             form_name:           "At we Familiýa",
             form_name_ph:        "Doly adyňyz",
             form_phone:          "Telefon belgisi",
@@ -652,8 +672,20 @@ document.addEventListener('DOMContentLoaded', () => {
         group.style.display = 'flex';
     }
 
+    // Branch selector — shown only for courses offered at both branches
+    const BRANCH_COURSES = ['arabic', 'english'];
+    function updateBranch(course) {
+        const group = document.getElementById('branch-group');
+        if (!group) return;
+        const show = BRANCH_COURSES.includes(course);
+        group.style.display = show ? 'flex' : 'none';
+        if (!show) {
+            group.querySelectorAll('input[name="branch"]').forEach(b => { b.checked = false; });
+        }
+    }
+
     document.querySelectorAll('input[name="course"]').forEach(r => {
-        r.addEventListener('change', () => buildSmenaOptions(r.value));
+        r.addEventListener('change', () => { buildSmenaOptions(r.value); updateBranch(r.value); });
     });
 
     async function submitRegistration(data) {
@@ -674,22 +706,31 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone   = document.getElementById('reg-phone')?.value.trim();
             const course  = form.querySelector('input[name="course"]:checked')?.value;
             const smena   = form.querySelector('input[name="smena"]:checked')?.value;
+            const branch  = form.querySelector('input[name="branch"]:checked')?.value;
             const source  = document.getElementById('source')?.value;
             const website = document.getElementById('hp-website')?.value || '';
 
             if (!name || !phone || !course) return;
+            // Branch is required for courses offered at both branches
+            if (BRANCH_COURSES.includes(course) && !branch) {
+                const bg = document.getElementById('branch-group');
+                if (bg) { bg.style.display = 'flex'; bg.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                return;
+            }
 
             const btn = form.querySelector('.btn-submit');
             if (btn) { btn.disabled = true; btn.style.opacity = '0.5'; }
 
             try {
-                await submitRegistration({ name, phone, course, smena, source, website });
+                await submitRegistration({ name, phone, course, smena, branch, source, website });
                 showToast('success');
                 form.reset();
                 const sg = document.getElementById('smena-group');
                 const so = document.getElementById('smena-options');
                 if (sg) sg.style.display = 'none';
                 if (so) so.innerHTML = '';
+                const bg = document.getElementById('branch-group');
+                if (bg) bg.style.display = 'none';
             } catch {
                 showToast('error');
             } finally {

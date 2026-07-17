@@ -24,6 +24,11 @@ const SOURCE_LABELS = {
     other:     'Boshqa',
 };
 
+const BRANCH_LABELS = {
+    district: '📍 Urganch tumani (Turkmanlar ko‘chasi)',
+    city:     '📍 Urganch shahri (Urgench City Mall)',
+};
+
 /* naive per-instance rate limit: 5 req/min per IP */
 const hits = new Map();
 function limited(ip) {
@@ -65,6 +70,7 @@ module.exports = async (req, res) => {
     const phone  = clean(body.phone, 18);
     const course = String(body.course || '');
     const smena  = clean(body.smena, 12);
+    const branch = String(body.branch || '');
     const source = String(body.source || '');
 
     if (!name || phone.length < 7 || !COURSE_LABELS[course]) {
@@ -72,11 +78,13 @@ module.exports = async (req, res) => {
         return;
     }
 
+    const branchLine = BRANCH_LABELS[branch] ? `🏢 <b>Filial:</b> ${BRANCH_LABELS[branch]}\n` : '';
     const message =
         `📋 <b>Yangi ro'yxat</b>\n\n` +
         `👤 <b>Ism:</b> ${name}\n` +
         `📞 <b>Telefon:</b> ${phone}\n` +
         `📚 <b>Kurs:</b> ${COURSE_LABELS[course]}\n` +
+        branchLine +
         `🕐 <b>Smena:</b> ${smena || '—'}\n` +
         `📣 <b>Manba:</b> ${SOURCE_LABELS[source] || '—'}`;
 
