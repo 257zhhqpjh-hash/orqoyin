@@ -799,3 +799,18 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
 @media (max-width: 860px) {
     .br-inner { grid-template-columns: 1fr; }
 }
+
+/* ── KHOREZM MAP — neighbours, cities, river extras ───────── */
+.kh-nb { fill: rgba(255,255,255,.03); stroke: rgba(255,255,255,.07); stroke-width: .5; }
+.kh-nb-l { fill: var(--t3); opacity: .5; font-family: var(--mono); font-size: 6px; letter-spacing: .16em; }
+.kh-city { animation: none !important; }
+.kh-city.kh-on { fill: rgba(122,92,255,.62); stroke: rgba(184,164,255,.95); stroke-width: 1.1;
+    filter: drop-shadow(0 0 5px rgba(122,92,255,.7)); }
+.kh-city.kh-hx { fill: rgba(255,255,255,.11); stroke: rgba(255,255,255,.42); stroke-width: 1; }
+.kh-l-city { font-size: 5.4px; }
+
+/* ── KHOREZM map labels — halo for legibility ────────────── */
+.kh-l, .kh-l-on { paint-order: stroke; stroke: rgba(6,8,18,.8); stroke-width: .5px; stroke-linejoin: round; }
+.kh-l { font-size: 5.3px; }
+.kh-l-on { font-size: 6.2px; fill: #fff; }
+.kh-l-city { font-size: 5.2px; }
