@@ -728,7 +728,7 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
 
 /* ── BRANCHES / KHOREZM MAP ───────────────────────────────── */
 .branches { max-width: var(--max); margin: 0 auto; padding: 90px var(--pad); }
-.br-inner { display: grid; grid-template-columns: 1fr .92fr; gap: 22px; align-items: stretch; }
+.br-inner { display: grid; grid-template-columns: 1.18fr .82fr; gap: 22px; align-items: stretch; }
 
 .br-map {
     position: relative; overflow: hidden; border-radius: 28px;
@@ -741,7 +741,7 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
     font-family: var(--mono); font-size: .56rem; letter-spacing: .16em; }
 .br-map-title { color: var(--c2); }
 .br-map-coord { color: var(--t3); }
-.kh-map { width: 100%; max-width: 340px; height: auto; }
+.kh-map { width: 100%; max-width: 480px; height: auto; margin: 6px 0; }
 
 /* HUD corner brackets (shared) */
 .hud-c { position: absolute; width: 20px; height: 20px; z-index: 2; pointer-events: none; border-color: rgba(100,210,255,.5); }
