@@ -814,3 +814,20 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
 .kh-l { font-size: 5.3px; }
 .kh-l-on { font-size: 6.2px; fill: #fff; }
 .kh-l-city { font-size: 5.2px; }
+
+/* ── KHOREZM ZOOM INSET ──────────────────────────────────── */
+.kh-zoom {
+    position: absolute; left: 16px; bottom: 46px; width: 43%; max-width: 212px; z-index: 6;
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--border2);
+    background: rgba(8,11,22,.74);
+    backdrop-filter: blur(10px) saturate(150%); -webkit-backdrop-filter: blur(10px) saturate(150%);
+    box-shadow: var(--rim), 0 14px 34px -14px rgba(0,0,0,.78);
+}
+.kh-zoom-h { position: absolute; top: 8px; left: 11px; z-index: 2; pointer-events: none;
+    font-size: .5rem; letter-spacing: .16em; color: var(--c2); }
+.kh-inset { width: 100%; height: auto; display: block; }
+.kh-inset .kh-l { font-size: 7px; }
+.kh-inset .kh-l-on { font-size: 8.2px; }
+.kh-inset .kh-l-city { font-size: 6.6px; }
+.kh-indicator { fill: none; stroke: rgba(184,164,255,.9); stroke-width: 1; stroke-dasharray: 3 2.5; }
+@media (max-width: 500px) { .kh-zoom { width: 46%; bottom: 52px; } }
