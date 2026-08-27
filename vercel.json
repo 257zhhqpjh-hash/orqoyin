@@ -1,4 +1,13 @@
 {
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/yoz", "destination": "/yoz/index.html" },
+    { "source": "/yoz/", "destination": "/yoz/index.html" },
+    { "source": "/science/article00001", "destination": "/science/article00001/index.html" },
+    { "source": "/science/article00001/", "destination": "/science/article00001/index.html" },
+    { "source": "/science/:slug", "destination": "/science/view.html?slug=:slug" },
+    { "source": "/science/:slug/", "destination": "/science/view.html?slug=:slug" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -8,7 +17,7 @@
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" }
       ]
     },
     {

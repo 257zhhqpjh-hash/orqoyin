@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="uz" data-lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-page-title">Maqola — ORQOYIN</title>
+    <meta name="description" id="meta-page-desc" content="ORQOYIN tahririyati maqolasi.">
+    <meta property="og:title" id="og-title" content="Maqola — ORQOYIN">
+    <meta property="og:description" id="og-desc" content="ORQOYIN tahririyati maqolasi.">
+    <meta property="og:image" id="og-image" content="/science/article00001/bottle.png">
+    <meta property="og:type" content="article">
+    <meta name="theme-color" content="#060812">
+    <link rel="icon" href="/favicon.svg?v=20260718" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css?v=20260718">
+    <style>
+        /* ═══ ARTICLE — Verge-style editorial layout ═══ */
+        :root { --read: 720px; --ink: #d4daec; }
+
+        .article { max-width: 940px; margin: 0 auto; padding: calc(var(--nav-h) + 40px) var(--pad) 40px; }
+
+        /* breadcrumb */
+        .a-crumbs { display: flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: .64rem; letter-spacing: .12em; color: var(--t3); text-transform: uppercase; margin-bottom: 34px; flex-wrap: wrap; }
+        .a-crumbs a { color: var(--t3); transition: color .2s; }
+        .a-crumbs a:hover { color: var(--c1); }
+        .a-crumbs .sep { opacity: .5; }
+        .a-crumbs .cur-crumb { color: var(--t2); }
+
+        /* header */
+        .a-head { max-width: 880px; }
+        .a-eyebrow {
+            display: inline-flex; align-items: center; gap: 9px;
+            font-family: var(--mono); font-size: .66rem; letter-spacing: .2em; text-transform: uppercase;
+            background: var(--grad-anim); background-size: 220% auto;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+            animation: grad-pan 7s linear infinite; margin-bottom: 22px;
+        }
+        .a-title {
+            font-family: var(--font); font-weight: 700; color: var(--t1);
+            font-size: clamp(2.1rem, 5.2vw, 4rem); line-height: 1.04; letter-spacing: -.025em; margin-bottom: 26px;
+        }
+        .a-standfirst {
+            font-family: 'Newsreader', Georgia, serif; font-weight: 400;
+            font-size: clamp(1.15rem, 2.1vw, 1.5rem); line-height: 1.55; color: var(--t2);
+            max-width: var(--read); margin-bottom: 34px;
+        }
+        .a-byline {
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+            font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; color: var(--t3);
+            padding-bottom: 36px; border-bottom: 1px solid var(--border);
+        }
+        .a-byline .a-author { color: var(--t1); }
+        .a-byline .a-dot { opacity: .4; }
+
+        /* hero image — bright pastel panel */
+        .a-hero { margin: 40px 0 14px; }
+        .a-hero-panel {
+            position: relative; border-radius: 22px; overflow: hidden;
+            background: linear-gradient(135deg, #a9d4ec 0%, #b7c2f1 48%, #ddc1ee 100%);
+            display: grid; place-items: center;
+            min-height: clamp(340px, 56vw, 620px); padding: 40px;
+            box-shadow: 0 30px 80px -30px rgba(99,102,241,.55);
+        }
+        .a-hero-panel::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 38%, rgba(255,255,255,.5), transparent 60%);
+            mix-blend-mode: soft-light; pointer-events: none;
+        }
+        .a-hero-panel img {
+            position: relative; max-height: clamp(300px, 50vw, 560px); width: auto; max-width: 100%;
+            mix-blend-mode: multiply; filter: drop-shadow(0 18px 30px rgba(40,60,90,.25));
+        }
+        .a-hero figcaption {
+            font-family: var(--mono); font-size: .68rem; line-height: 1.6; color: var(--t3);
+            padding: 14px 4px 0; max-width: var(--read);
+        }
+
+        /* body reading column */
+        .a-body { max-width: var(--read); margin: 0 auto; }
+        .a-body > * { margin-left: auto; margin-right: auto; }
+        .a-body p {
+            font-family: 'Newsreader', Georgia, serif; font-size: 1.18rem; line-height: 1.82; color: var(--ink);
+            margin-bottom: 26px; letter-spacing: .005em;
+        }
+        .a-body p a { color: var(--c1); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+        .a-lead::first-letter {
+            float: left; font-family: var(--font); font-weight: 700; color: var(--c2);
+            font-size: 3.6rem; line-height: .82; padding: 6px 14px 0 0;
+        }
+        .a-body h2 {
+            font-family: var(--font); font-weight: 600; color: var(--t1);
+            font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; letter-spacing: -.02em;
+            margin: 50px 0 20px; padding-left: 18px; position: relative;
+        }
+        .a-body h2::before {
+            content: ''; position: absolute; left: 0; top: .15em; bottom: .15em; width: 4px; border-radius: 4px;
+            background: var(--grad);
+        }
+        .a-body h3 {
+            font-family: var(--font); font-weight: 600; color: var(--t1);
+            font-size: clamp(1.25rem, 2.2vw, 1.55rem); line-height: 1.25; letter-spacing: -.015em;
+            margin: 36px 0 16px;
+        }
+        .a-body ul, .a-body ol { margin: 0 0 26px; padding-left: 4px; }
+        .a-body ul li, .a-body ol li {
+            font-family: 'Newsreader', Georgia, serif; font-size: 1.12rem; line-height: 1.7; color: var(--ink);
+            position: relative; padding-left: 26px; margin-bottom: 12px;
+        }
+        .a-body ul li::before {
+            content: ''; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 50%;
+            background: var(--grad);
+        }
+
+        /* pull quote */
+        .a-pull {
+            margin: 44px 0; padding: 6px 0 6px 28px; border-left: 3px solid transparent;
+            border-image: var(--grad) 1;
+            font-family: var(--font); font-weight: 500; color: var(--t1);
+            font-size: clamp(1.35rem, 2.8vw, 1.9rem); line-height: 1.34; letter-spacing: -.015em;
+        }
+
+        /* conclusion box */
+        .a-conclusion {
+            margin: 50px auto 10px; padding: 32px clamp(22px, 4vw, 40px);
+            border-radius: 20px; border: 1px solid var(--border2); background: var(--glass);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        }
+        .a-conclusion h2 { margin-top: 0; }
+        .a-conclusion p:last-child { margin-bottom: 0; }
+
+        /* footer note + back link */
+        .a-foot {
+            max-width: var(--read); margin: 48px auto 0; padding-top: 30px; border-top: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+        }
+        .a-tag { font-family: var(--mono); font-size: .64rem; letter-spacing: .14em; color: var(--t3); text-transform: uppercase; }
+        .a-back {
+            display: inline-flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: .72rem;
+            letter-spacing: .06em; color: var(--t1); padding: 11px 22px; border-radius: 100px;
+            background: var(--glass); border: 1px solid var(--border2); transition: border-color .25s, background .25s;
+        }
+        .a-back:hover { border-color: rgba(34,211,238,.5); background: rgba(34,211,238,.06); }
+
+        .not-found-box {
+            text-align: center; padding: 120px 20px; max-width: 600px; margin: 0 auto;
+        }
+        .not-found-title { font-size: 2.4rem; font-weight: 700; color: var(--t1); margin-bottom: 16px; }
+        .not-found-desc { color: var(--t2); margin-bottom: 30px; }
+
+        @media (max-width: 720px) {
+            .a-hero-panel { padding: 26px; border-radius: 16px; }
+            .a-body p, .a-body ul li { font-size: 1.08rem; }
+            .a-lead::first-letter { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- AURORA -->
+<div class="aurora" aria-hidden="true">
+    <span class="au1"></span><span class="au2"></span><span class="au3"></span>
+</div>
+<div class="aura-mouse" id="aura-mouse" aria-hidden="true"></div>
+
+<!-- GRAIN -->
+<svg class="grain" aria-hidden="true">
+    <filter id="gf"><feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <rect width="100%" height="100%" filter="url(#gf)" opacity="0.022"/>
+</svg>
+
+<!-- CURSOR -->
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="cur-ring" id="cur-ring" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav scrolled" id="nav">
+    <a href="/" class="logo" aria-label="ORQOYIN">
+        <img class="logo-mark" src="/logo.svg?v=20260718" width="19" height="19" alt="" aria-hidden="true">
+        <span>ORQOYIN</span>
+    </a>
+    <div class="nav-end">
+        <button class="lang-btn" id="lang-toggle" aria-label="Til">
+            <span class="lang-opt" data-l="uz">UZ</span>
+            <span class="lang-sep">·</span>
+            <span class="lang-opt" data-l="tm">TM</span>
+        </button>
+        <a href="/#contact" class="nav-reg" data-i18n="nav_register">Röyxatdan ötiş</a>
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mm-lang">
+        <button class="mm-lang-btn" data-l="uz">Özbek</button>
+        <button class="mm-lang-btn" data-l="tm">Türkmen</button>
+    </div>
+    <a href="/#courses" class="mm-link" data-i18n="nav_courses">Kurslar</a>
+    <a href="/#about"   class="mm-link" data-i18n="nav_about">Akademiya</a>
+    <a href="/#contact" class="mm-link mm-cta" data-i18n="nav_register">Röyxatdan ötiş</a>
+</div>
+
+<!-- ═══ MAIN ARTICLE CONTAINER ═══════════════════════════════ -->
+<main id="article-app">
+    <div id="loading-view" style="text-align:center;padding:calc(var(--nav-h) + 80px) 20px 80px;font-family:var(--mono);color:var(--t3);">
+        Maqola yuklanmoqda...
+    </div>
+
+    <div id="not-found-view" class="not-found-box" style="display:none;">
+        <h1 class="not-found-title">Maqola topilmadi</h1>
+        <p class="not-found-desc">Kechirasiz, siz qidirgan maqola o‘chirilgan yoki manzili o‘zgargan bo‘lishi mumkin.</p>
+        <a href="/science/" class="a-back">← Fan bo‘limiga qaytish</a>
+    </div>
+
+    <article id="article-view" class="article" style="display:none;">
+        <div class="a-head reveal">
+            <nav class="a-crumbs" aria-label="breadcrumb">
+                <a href="/">Boş sahifa</a><span class="sep">/</span>
+                <a href="/science/">Fan</a><span class="sep">/</span>
+                <span id="art-crumb-slug" class="cur-crumb">Maqola</span>
+            </nav>
+            <p class="a-eyebrow" id="art-eyebrow">Fan · Intellektual mulk</p>
+            <h1 class="a-title" id="art-title">Sarlavha</h1>
+            <p class="a-standfirst" id="art-standfirst">Standfirst tavsifi</p>
+            <div class="a-byline">
+                <span class="a-author" id="art-author">ORQOYIN tahririyati</span>
+                <span class="a-dot">·</span>
+                <time id="art-date">Sana</time>
+                <span class="a-dot">·</span>
+                <span id="art-readtime">4 daqiqa öqiş</span>
+            </div>
+        </div>
+
+        <figure class="a-hero reveal" id="art-hero-wrap">
+            <div class="a-hero-panel">
+                <img id="art-hero-img" src="" alt="">
+            </div>
+            <figcaption id="art-hero-caption"></figcaption>
+        </figure>
+
+        <div class="a-body" id="art-body-content"></div>
+
+        <div class="a-foot">
+            <span class="a-tag" id="art-tags">Fan</span>
+            <a href="/science/" class="a-back">← Fan bo‘limiga qaytish</a>
+        </div>
+    </article>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <a href="/" class="foot-logo">
+        <img class="logo-mark" src="/logo.svg?v=20260718" width="15" height="15" alt="" aria-hidden="true">
+        ORQOYIN
+    </a>
+    <p class="foot-tag mono" data-i18n="footer_tagline">Urganç — Xorazm viloyatining kiberxavfsizlik akademiyasi</p>
+    <div class="foot-links">
+        <a href="/about/" class="foot-link" data-i18n="nav_about_page">Biz haqimizda</a>
+        <a href="/science/" class="foot-link">Fan</a>
+        <a href="/" class="foot-link">← Boş sahifa</a>
+        <p class="foot-copy mono">© 2026</p>
+    </div>
+</footer>
+
+<script src="/script.js?v=20260718" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const loadingView = document.getElementById('loading-view');
+    const notFoundView = document.getElementById('not-found-view');
+    const articleView = document.getElementById('article-view');
+
+    /* Extract slug from query param or pathname */
+    const params = new URLSearchParams(window.location.search);
+    let slug = params.get('slug');
+    if (!slug) {
+        const parts = window.location.pathname.split('/').filter(Boolean);
+        if (parts.length >= 2 && parts[0] === 'science') {
+            slug = parts[1];
+        }
+    }
+
+    if (!slug) {
+        loadingView.style.display = 'none';
+        notFoundView.style.display = 'block';
+        return;
+    }
+
+    try {
+        const res = await fetch(`/api/articles?slug=${encodeURIComponent(slug)}`);
+        if (!res.ok) throw new Error('Not found');
+        const data = await res.json();
+
+        if (data.ok && data.article) {
+            renderFullArticle(data.article);
+            loadingView.style.display = 'none';
+            articleView.style.display = 'block';
+        } else {
+            throw new Error('Not found');
+        }
+    } catch (e) {
+        loadingView.style.display = 'none';
+        notFoundView.style.display = 'block';
+    }
+
+    function renderFullArticle(a) {
+        document.title = `${a.title} — ORQOYIN`;
+        const metaDesc = document.getElementById('meta-page-desc');
+        if (metaDesc && a.standfirst) metaDesc.content = a.standfirst;
+
+        document.getElementById('art-crumb-slug').textContent = a.slug || a.id;
+        document.getElementById('art-eyebrow').textContent = `Fan · ${a.category || 'Tahririyat'}`;
+        document.getElementById('art-title').textContent = a.title;
+        document.getElementById('art-standfirst').textContent = a.standfirst || '';
+        document.getElementById('art-author').textContent = a.author || 'ORQOYIN tahririyati';
+        document.getElementById('art-date').textContent = a.dateFormatted || a.date || '';
+        document.getElementById('art-readtime').textContent = a.readTime || '';
+
+        const heroWrap = document.getElementById('art-hero-wrap');
+        const heroImg = document.getElementById('art-hero-img');
+        const heroCaption = document.getElementById('art-hero-caption');
+
+        if (a.heroImage) {
+            heroImg.src = a.heroImage;
+            heroImg.alt = a.title;
+            heroWrap.style.display = 'block';
+            if (a.imageCaption) {
+                heroCaption.textContent = a.imageCaption;
+                heroCaption.style.display = 'block';
+            } else {
+                heroCaption.style.display = 'none';
+            }
+        } else {
+            heroWrap.style.display = 'none';
+        }
+
+        const tagList = Array.isArray(a.tags) ? a.tags.join(' · ') : (a.tags || a.category || 'Fan');
+        document.getElementById('art-tags').textContent = tagList;
+
+        const bodyEl = document.getElementById('art-body-content');
+        bodyEl.innerHTML = parseMarkdownToHtml(a.content || '');
+    }
+
+    function parseMarkdownToHtml(md) {
+        if (!md) return '';
+        let processed = md.replace(/:::conclusion([\s\S]*?):::/g, (match, inner) => {
+            return `<div class="a-conclusion reveal">${parseBlocks(inner.trim())}</div>`;
+        });
+        return parseBlocks(processed, true);
+    }
+
+    function parseBlocks(text, isMain = false) {
+        const blocks = text.split(/\n\n+/);
+        let isFirst = true;
+
+        return blocks.map(block => {
+            block = block.trim();
+            if (!block) return '';
+            if (block.startsWith('<div class="a-conclusion"')) return block;
+
+            if (block.startsWith('## ')) return `<h2>${formatInline(block.slice(3).trim())}</h2>`;
+            if (block.startsWith('### ')) return `<h3>${formatInline(block.slice(4).trim())}</h3>`;
+            if (block.startsWith('> ')) {
+                return `<blockquote class="a-pull">${formatInline(block.replace(/^>\s*/gm, '').trim())}</blockquote>`;
+            }
+            if (block === '---' || block === '***') return '<hr style="border:none;border-top:1px solid var(--border);margin:40px 0;">';
+
+            if (/^[*+-]\s+/m.test(block)) {
+                const items = block.split(/\n/).map(l => {
+                    const c = l.replace(/^[*+-]\s+/, '').trim();
+                    return c ? `<li>${formatInline(c)}</li>` : '';
+                }).join('');
+                return `<ul>${items}</ul>`;
+            }
+
+            if (/^\d+\.\s+/m.test(block)) {
+                const items = block.split(/\n/).map(l => {
+                    const c = l.replace(/^\d+\.\s+/, '').trim();
+                    return c ? `<li>${formatInline(c)}</li>` : '';
+                }).join('');
+                return `<ol>${items}</ol>`;
+            }
+
+            const pClass = (isMain && isFirst) ? 'class="a-lead"' : '';
+            if (isMain) isFirst = false;
+            return `<p ${pClass}>${formatInline(block)}</p>`;
+        }).join('\n');
+    }
+
+    function formatInline(t) {
+        if (!t) return '';
+        return t
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/`([^`]+)`/g, '<code style="font-family:var(--mono);background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;">$1</code>')
+            .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    }
+});
+</script>
+</body>
+</html>
