@@ -45,15 +45,21 @@
 html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 body {
     font-family: var(--font);
-    background: var(--bg);
+    background: #050505;
     color: var(--t2);
     overflow-x: hidden;
     line-height: 1.6;
     background-image: 
-        radial-gradient(#d3d3d3 1px, transparent 1px),
-        radial-gradient(#d3d3d3 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
-    background-position: 0 0, 20px 20px;
+    background-position: 0 0, 0 0;
+    background-attachment: fixed;
+}
+body::after {
+    content: " "; display: block; position: fixed; inset: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+    z-index: 9999; background-size: 100% 3px; pointer-events: none;
 }
 a { color: inherit; text-decoration: none; }
 img, svg { display: block; }
