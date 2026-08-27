@@ -3,12 +3,9 @@
   "rewrites": [
     { "source": "/yoz", "destination": "/yoz/index.html" },
     { "source": "/yoz/", "destination": "/yoz/index.html" },
-    { "source": "/science/article00001", "destination": "/science/article00001/index.html" },
-    { "source": "/science/article00001/", "destination": "/science/article00001/index.html" },
     { "source": "/science", "destination": "/science/index.html" },
     { "source": "/science/", "destination": "/science/index.html" },
-    { "source": "/science/:slug", "destination": "/science/view.html" },
-    { "source": "/science/:slug/", "destination": "/science/view.html" }
+    { "source": "/science/:slug*", "destination": "/science/view.html" }
   ],
   "headers": [
     {
