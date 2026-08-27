@@ -7,34 +7,30 @@
 
 :root {
     --bg:      #050505;
-    --bg2:     #0A0A0A;
-    --surf:    #0A0A0A;
+    --bg2:     #FFFFFF;
+    --surf:    #FFFFFF;
 
-    --c1: #00FF41;       /* Terminal Green */
-    --c2: #FF003C;       /* Defcon Red */
-    --c3: #FAFF00;       /* Cyber Yellow */
+    --c1: #00FF41;       
+    --c2: #FF003C;       
+    --c3: #FAFF00;       
     --red: #FF003C;      
     --green: #00FF41;    
     --amber: #FAFF00;    
     --cyan: #00F0FF;
 
-    --t1: #F4F4F0;
-    --t2: #A0A0A0;
-    --t3: #555555;
+    /* Text */
+    --t1: #FFFFFF;       /* Light text for dark body */
+    --t2: #E0E0E0;
+    --t3: #888888;
+    
+    --t-dark1: #000000;  /* Dark text for white cards */
+    --t-dark2: #333333;
+    --t-dark3: #555555;
 
-    --glass:   #000000;
-    --glass2:  #000000;
-    --border:  #FF003C;
-    --border2: #FAFF00;
-    --border-cyan: #00F0FF;
+    --border:  #000000;
+    --border2: #000000;
 
-    --grad: linear-gradient(110deg, var(--c1), var(--c2) 45%, var(--c3));
-    --grad-anim: linear-gradient(110deg, #FF003C, #00F0FF, #FAFF00, #FF003C);
-    --grad-fire: linear-gradient(135deg, #FF003C, #FAFF00);
-
-    --glass-bg: rgba(0,0,0,0.85);
-    --rim: none;
-    --rim-cyan: none;
+    --glass-bg: #FFFFFF;
     --float: 6px 6px 0px var(--c2);
 
     --mono: 'Space Mono', monospace;
@@ -959,4 +955,97 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
     .reveal { opacity: 1; transform: none; }
+}
+
+/* ── THE VERGE / BRUTALIST INVERSION OVERRIDES ── */
+
+/* Make all cards white with sharp black borders and red/cyan shadows */
+.bento-card-6, .bento-card-4, .bento-flagship, .garaoy-card, .reg-form, .term-mock, .footer, .nav-main {
+    background: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 6px 6px 0px #FF003C !important;
+    border-radius: 0 !important;
+    color: #000000 !important;
+}
+
+/* Fix text colors inside the white cards */
+.bento-card-title, .ht-amber, .bento-card-desc, .bento-meta-v, .bento-meta-k, 
+.term-mock *, .contact-title, .contact-desc, .foot-logo, .foot-tag, .foot-copy, 
+.foot-link, .wi-t, .wi-d, .why-stmt, .garaoy-glow, .pt-link, .nav-logo {
+    color: #000000 !important;
+}
+
+/* Less movement: Disable transform translate on hover for cards */
+.bento-card-6:hover, .bento-card-4:hover, .bento-flagship:hover, .garaoy-card:hover {
+    transform: none !important;
+    box-shadow: 6px 6px 0px #00F0FF !important; /* Just change shadow color */
+}
+
+/* Button Refinements (Black buttons on white background, or Yellow on Black) */
+.btn-amber, .cta-btn, .btn-submit, .nav-reg {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 4px 4px 0px #00F0FF !important;
+    border-radius: 0 !important;
+    clip-path: none !important; /* Remove chamfer, keep it pure rectangle */
+    transform: none !important;
+    transition: box-shadow 0.1s !important;
+}
+.btn-amber:hover, .cta-btn:hover, .btn-submit:hover, .nav-reg:hover {
+    background: #FF003C !important;
+    color: #FFFFFF !important;
+    box-shadow: 6px 6px 0px #FAFF00 !important;
+    transform: none !important;
+}
+
+/* Inputs & Form Elements (White background, black borders) */
+.fg input, .fg select, .cs-card {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 4px 4px 0px #000000 !important;
+    border-radius: 0 !important;
+}
+.fg input:focus, .cs-opt input:checked + .cs-card {
+    background: #FAFF00 !important;
+    box-shadow: 6px 6px 0px #FF003C !important;
+    transform: none !important;
+}
+
+/* Chips */
+.chip {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #000000 !important;
+    box-shadow: 2px 2px 0px #00F0FF !important;
+    border-radius: 0 !important;
+}
+.chip-hot {
+    background: #FF003C !important;
+    box-shadow: 2px 2px 0px #FAFF00 !important;
+}
+.chip:hover {
+    transform: none !important;
+    box-shadow: 4px 4px 0px #00F0FF !important;
+}
+
+/* Section Labels */
+.sec-label {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 4px 4px 0px #FF003C !important;
+}
+
+/* Hero Title Adjustment (Needs to be legible on black background) */
+.ht {
+    color: #FFFFFF !important;
+    text-shadow: 4px 4px 0px #FF003C, -3px -3px 0px #00F0FF !important;
+    mix-blend-mode: normal !important;
+}
+
+/* Other text elements on black body */
+.why-desc, .c-link {
+    color: #E0E0E0;
 }
