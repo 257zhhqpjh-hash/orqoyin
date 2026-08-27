@@ -305,32 +305,24 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
 /* ── HERO LIVE CYBER TERMINAL WIDGET ─────────────────────── */
-.hero-terminal {
-    margin-top: 6px; border-radius: 18px; overflow: hidden;
-    background: rgba(8, 11, 24, 0.75); border: 1px solid var(--c2);
-    box-shadow: var(--rim), 0 16px 40px -15px rgba(0,0,0,0.8);
-     -webkit-
-}
+.hero-terminal { margin-top: 6px; border-radius: 18px; overflow: hidden; background: rgba(10, 10, 10, 0.85); border: 0.5px solid var(--border); box-shadow: var(--float); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
 .term-header {
     display: flex; align-items: center; justify-content: space-between;
     padding: 10px 16px; background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border);
 }
 .term-dots { display: flex; gap: 6px; }
-.term-dots span { width: 9px; height: 9px; border-radius: 50%; }
+.term-dots span { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); }
 .term-dots span:nth-child(1) { background: var(--red); }
-.term-dots span:nth-child(2) { background: var(--t3); }
-.term-dots span:nth-child(3) { background: var(--t2); }
-.term-title { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; color: var(--t3); }
-.term-badge {
-    font-family: var(--mono); font-size: .56rem; letter-spacing: .12em;
-    color: var(--c1); background: var(--c2); border: 1px solid var(--c2);
-    padding: 2px 8px; border-radius: 100px;
-}
-.term-body { padding: 14px 18px; font-size: .74rem; line-height: 1.7; display: flex; flex-direction: column; gap: 4px; }
-.t-prompt { color: var(--c1); font-weight: 700; }
-.t-cyan { color: var(--c1); font-weight: 700; }
-.t-green { color: var(--t1); font-weight: 700; }
-.t-dim { color: var(--t3); }
+
+
+
+.term-title { font-family: var(--mono); font-size: .64rem; letter-spacing: .06em; color: #FFFFFF; }
+.term-badge { font-family: var(--mono); font-size: .56rem; letter-spacing: .12em; color: #FFFFFF; background: var(--red); padding: 3px 8px; border-radius: 100px; font-weight: 700; box-shadow: 0 2px 10px rgba(255, 0, 60, 0.4); }
+.term-body { padding: 14px 18px; font-size: .74rem; line-height: 1.7; display: flex; flex-direction: column; gap: 4px; color: #FFFFFF; }
+.t-prompt { color: var(--red); font-weight: 700; }
+.t-cyan { color: #FFFFFF; font-weight: 700; }
+.t-green { color: #FFFFFF; font-weight: 700; }
+.t-dim { color: rgba(255, 255, 255, 0.4); }
 
 /* ── SURVEILLANCE EYE — 2.0 CYBER SCANNER ─────────────────── */
 .hero-eye-wrap { display: flex; align-items: center; justify-content: center; position: relative; }
