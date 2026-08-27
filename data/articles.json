@@ -1,5 +1,29 @@
 [
   {
+    "id": "art_asahi_linux_7_2",
+    "slug": "asahi-linux-7-2-apple-silicon-m4-tahlil",
+    "title": "Asahi Linux 7.2: Apple Silicon arxitekturasi, M4 chiplari va yangi drayverlar tahlili",
+    "category": "Texnologiya",
+    "standfirst": "Linux 7.2 yadrosining çiqişi va Apple Silicon (M1–M4) platformasi uçun Asahi Linux jamoasining eng sönggi yutuqlari: energiya tejaş (cpuidle), UEFI PSCI va SPTM xavfsizlik arxitekturasi tahlili.",
+    "author": "ORQOYIN tahririyati",
+    "date": "2026-08-27",
+    "dateFormatted": "27-avgust, 2026",
+    "readTime": "4 daqiqa öqiş",
+    "heroImage": "/science/asahi-linux-7-2.png",
+    "imageCaption": "Asahi Linux — Apple Silicon arxitekturasida Linux 7.2 yadrosi va M4 chiplarini qo‘llab-quvvatlash.",
+    "tags": [
+      "Fan",
+      "Texnologiya",
+      "Linux",
+      "Apple Silicon",
+      "Kiberxavfsizlik"
+    ],
+    "published": true,
+    "createdAt": "2026-08-27T11:00:00.000Z",
+    "updatedAt": "2026-08-27T11:00:00.000Z",
+    "content": "Linux 7.2 rasman ommaga taqdim etildi! Asahi Linux jamoasi Apple Silicon (M1, M2, M3 va yangi M4) chiplarida Linux operatsion tizimini to‘liq va samarali işlatiş böyiça navbatdagi muhim hisobotini e'lon qildi. Uşbu maqolada Apple arxitekturasining öziğa xos murakkabliklari, energiya boşqarişi va xavfsizlik mexanizmlari tahlil qilinadi.\n\n## \"Boşqaça fikrlaş\"... yana bir bor (Think Different)\n\nApple Silicon platformasining energiya boşqariş (power management) infratuzilmasi nihoyatda murakkabdir. Vazifalar bir neçta apparat bloklari — SMC, PMGR va PMP örtasida taqsimlangan. Batareya quvvatini tejaşdagi eng katta tösiqlardan biri esa protsessor yadrolarining özini uyqu rejimiga ötkaziş bölmoqda.\n\nARM protsessor yadrosini \"uxlatiş\"ning eng oddiy usuli — **WFI (Wait For Interrupt)** buyruğidir. Bu buyruq yadroga taşqi uziliş (interrupt) kelgunça kutib turişni buyuradi. Bu energiya tejasada, yadro quvvatdan uzilmaydi va tezda işga qaytadi. Apple chiplarida esa yadroni çuqurroq öçiradigan \"çuqur WFI\" rejimi mavjud bölib, u yadroning barça holatlarini saqlab qolişni talab qiladi.\n\nStandart Linux yadrosida bunday apparatga xos energiya boşqaruvini yagona tizimga keltiriş uçun **PSCI (Power State Coordination Interface)** talab qilinadi. Biroq PSCI odatda eng yuqori imtiyoz darajasida (EL3) işlaydi, Apple protsessorlarida esa EL3 darajasi mutlaqo mavjud emas!\n\n> Apple chiplarida EL3 mavjud bölmaganligi sababli, an'anaviy PSCI chaqiruvlari işlamaydi. Asahi dasturçisi Sven buni hal etiş uçun **UEFI Runtime Services** orqali işlaydigan yangi PSCI yönaltirgiçini (conduit) işlab çiqdi.\n\nUşbu yeçim Linux yadrosiga m1n1 yuklagiçining xotirasidagi funksiyalarga murojaat qiliş imkonini beradi va yamoqlar (patches) allaqaçon Linux yadrosining poçta röyxatiga yuborildi.\n\n## Yangi M4 chiplari va WFI muammosi\n\nARM spetsifikatsiyasi böyiça WFI buyruği barça holatlarni saqlaşi şart. M1–M3 chiplarida bu holatni sozlaş \"chicken bits\" registrlari orqali amalga oşirilar edi.\n\nBiroq yangi **Apple M4 seriyasida** Apple bu registrlarni mBoot darajasida qulflab qöydi. Natijada, M4 protsessorida WFI chaqirilganda yadro barça holatini yöqotadi va tizim \"crash\" bölib töxtaydi. Asahi jamoasi muhandisi Yureka yadro yuklanişining ilk bosqiçlarida böş turiş rejimini (idle loop) boşqariş imkonini beruvçi maxsus parametr işlab çiqdi. Uşbu yamoqlar allaqaçon `linux-next` tarmoğiga qabul qilindi.\n\n## Xotira xavfsizligi: SPTM va Guarded Execution Framework\n\nApple xavfsizlik arxitekturasida xotirani boşqariş va sahifalar jadvalini (pagetable) himoya qiliş uçun yangi **SPTM (Secure Page Table Monitor)** tizimini joriy qildi.\n\nAn'anaviy ravişda operatsion tizim yadrosi xotirani töğridan-töğri boşqaradi. Bu esa xotira boşqaruvidagi bitta zaiflik butun tizimning töliq qölga olinişiğa olib kelişi mumkinligini anglatadi.\n\n* **PPL (Page Protection Layer):** Sahifalar jadvalini yadroning qolgan qismidan apparat darajasida ajratadi.\n* **SPTM va GXF:** Apple PPL tizimini takomillaştirib, uni GXF (Guarded Execution Framework) içiga joylaştirdi. Bu standart ARM64 darajalariga parallel işlovçi alohida istisno darajasidir.\n* **SPRR:** Xotira ruxsatlarini xavfsiz boşqaruvçi maxsus tizim.\n\n:::conclusion\n## Xulosa va Kelajak\nLinux 7.2 yangilanişi va Asahi Linux jamoasining tinimsiz mehnati Apple kompaniyasining yopiq va nostandart apparat arxitekturasida oçiq manbali tizimlarni yuqori unumdorlikda işlatiş mumkinligini yana bir bor isbotladi.\n\nYangi M4 chiplarini qöllab-quvvatlaş, quvvat samaradorligini oşiriş va UEFI PSCI mexanizmlari tez orada barça foydalanuvçilar uçun Asahi Linux distrosida töliq barqaror holatda taqdim etiladi.\n:::"
+  },
+  {
     "id": "art_niger_defacement",
     "slug": "niger-hukumatiga-tegishli-savdo-ostdomeni-buzib-kirildi",
     "title": "Niger hukumatiga tegişli savdo ostdomeni buzib kirildi",
