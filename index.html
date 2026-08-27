@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1787835987">
+    <link rel="stylesheet" href="style.css?v=1787836158">
 </head>
 <body>
 
@@ -183,10 +183,15 @@
 
             <div class="bento-side-panel">
                 <div class="bento-terminal-box">
-                    <p style="color:var(--c1);margin-bottom:6px;">// CTF LAB SIMULATOR</p>
-                    <p style="color:var(--t2);">$ ./exploit --target sandbox</p>
-                    <p style="color:var(--green); font-weight:700;">[✓] Payload delivered</p>
-                    <p style="color:var(--t3); font-size:.66rem;">FLAG: ORQOYIN{cyber_defense_2026}</p>
+                    <div class="term-header" style="padding: 0 0 10px 0; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); background: transparent;">
+                        <div class="term-dots"><span></span><span></span><span></span></div>
+                        <span class="term-title" style="color: rgba(255,255,255,0.5);">root@cyber-lab</span>
+                        <div></div>
+                    </div>
+                    <p style="color:var(--red); font-weight:700; margin-bottom:6px;">// CTF LAB SIMULATOR</p>
+                    <p style="color:#ffffff;"><span style="color:var(--red); font-weight:700;">❯</span> ./exploit --target sandbox</p>
+                    <p style="color:#ffffff; font-weight:700;"><span style="color:rgba(255,255,255,0.4);">[+]</span> Payload delivered</p>
+                    <p style="color:rgba(255,255,255,0.4); font-size:.66rem; margin-top:4px;">FLAG: ORQOYIN{cyber_defense_2026}</p>
                 </div>
                 <div class="bento-meta-strip">
                     <div class="bento-meta-item">
@@ -487,6 +492,6 @@
     <span id="toast-msg">Muvaffaqiyatli yuborildi!</span>
 </div>
 
-<script src="script.js?v=1787835987" defer></script>
+<script src="script.js?v=1787836158" defer></script>
 </body>
 </html>
