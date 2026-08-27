@@ -1,1 +1,25 @@
-[]
+[
+  {
+    "id": "art_niger_defacement",
+    "slug": "niger-hukumatiga-tegishli-savdo-ostdomeni-buzib-kirildi",
+    "title": "Niger hukumatiga tegişli savdo ostdomeni buzib kirildi",
+    "category": "Kiberxavfsizlik",
+    "standfirst": "Niger Savdo vazirligi (commerce.gouv.ne) infratuzilmasiga ruxsatsiz kirildi. Infosniger ostdomenida qoldirilgan defacement xabari va kiberxavfsizlik oqibatlari tahlili.",
+    "author": "ORQOYIN tahririyati",
+    "date": "2026-08-27",
+    "dateFormatted": "27-avgust, 2026",
+    "readTime": "3 daqiqa öqiş",
+    "heroImage": "/science/niger-defacement.png",
+    "imageCaption": "infosniger.commerce.gouv.ne saytining defacement qilingan holati — Gh0st@Terminal va Zero X Zero xabari.",
+    "tags": [
+      "Fan",
+      "Kiberxavfsizlik",
+      "Defacement",
+      "Hukumat xavfsizligi"
+    ],
+    "published": true,
+    "createdAt": "2026-08-27T10:30:00.000Z",
+    "updatedAt": "2026-08-27T10:30:00.000Z",
+    "content": "Doimiy rivojlanib borayotgan global kiberxavfsizlik olamida hukumat veb-saytlari raqamli vandallar, haktivistlar va kiberjinoyatçilarning asosiy nişoni bölib qolmoqda. Yaqinda Niger hukumatiga tegişli bölgan maxsus ostdomen \"defacement\" (veb-sayt qiyofasini özgartiriş) hujumi qurboni bölgan körinadi.\n\nNişonga olingan URL manzili – [https://infosniger.commerce.gouv.ne/pwnd.html](https://infosniger.commerce.gouv.ne/pwnd.html) – Niger Savdo vazirligi (commerce.gouv.ne) infratuzilmasiga ruxsatsiz kirilganligini yaqqol körsatib turibdi.\n\n## Veb-sayt qiyofasining özgartirilişi (Defacement)\n\nVeb-sayt qiyofasi qançalik özgartirilganligi taqdim etilgan rasmda aks etgan. Jinoyatçilar standart veb-sahifa mazmunini klassik, öziga xos hakerlik estetikasi bilan almaştirdilar: terminaldagi yorqin yaşil matnlar tuşirilgan qop-qora fon.\n\nQoldirilgan xabar veb-sayt buzilişlarida tez-tez uçraydigan holat bölib, u sayt himoyasini masxara qilişga qaratilgan. Sahifada oçiqçasiga şunday yozilgan:\n\n> \"Siz buzib kirildingiz!\" (You have been hacked!)\n> \n> \"Xavfsizlik şunçaki illyuziya\" (Security is just an illusion)\n\nHujumçilar, şuningdek, uşbu buzğunçilikni quyidagi taxalluslar ostidagi şaxslar yoki guruhlarga boğlab, özlarining \"taşrif qoğozlarini\" qoldirişni ham unutmadilar:\n\n* **Zero X Zero**\n* **Team_CC**\n* **Gh0st@Terminal**\n\n## Hujumni tuşuniş\n\nBunday veb-sayt qiyofasini özgartiriş (defacement) hujumlari binoga sprey yordamida graffiti çizişning raqamli ekvivalentidir. Garçi ular barçaning köziga darhol taşlansa va jabrlanuvçi taşkilot uçun uyatli bölsa-da, köpinça bu nisbatan past darajadagi xavfni anglatadi.\n\nOdatda, bunday hujumlar kontentni boşqariş tizimlaridagi (CMS) ma'lum zaifliklar, xavfsiz bölmagan plaginlar yoki ma'muriy (admin) parollarning zaifligidan foydalanadi. Hujumçilar yangi HTML faylini (bu holda pwnd.html) yuklaş yoki asosiy sahifani özgartiriş uçun yetarli ruxsatga ega bölişadi, lekin bu ular albatta çuqurroq va maxfiy ma'lumotlar bazalariga ham kira olganini bildirmaydi.\n\nBiroq, \"Xavfsizlik şunçaki illyuziya\" degan maş'um xabar kuçli eslatma bölib xizmat qiladi. Garçi uşbu aniq hodisa şunçaki yuzaki raqamli vandalizm bölsa ham, muvaffaqiyatli hujum tizimga ruxsatsiz kiriş amalga oşirilganligini isbotlaydi. Bu holat gouv.ne infratuzilmasining umumiy xavfsizlik holati haqida jiddiy savollarni yuzaga çiqaradi.\n\n:::conclusion\n## Kengroq ta'siri va Xulosa\nHukumat idoralari uçun xavfsiz onlayn mavjudotni saqlab qoliş jamoatçilik işonçi va iş faoliyatining yaxlitligi uçun juda muhimdir. Bunday hodisa tizim zaifliklarini doimiy ravişda tekşirib boriş, dasturiy ta'minotni öz vaqtida yangilaş va kirişni qat'iy nazorat qiliş zarurligini ta'kidlaydi.\n\n\"Terminaldagi şarpa\" (Gh0st@Terminal) hozirça öz aytganini qilgan bölsa-da, infosniger.commerce.gouv.ne saytidagi kabi hodisalar raqamli olamda xavfsizlik şunçaki illyuziya emas, balki doimiy va faol jarayon bölişi kerakligini körsatib beradi.\n:::"
+  }
+]
