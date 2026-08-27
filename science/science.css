@@ -451,3 +451,42 @@
         align-items: flex-start;
     }
 }
+
+/* ── OFFSEC STEALTH OVERRIDES FOR SCIENCE ── */
+.sci-lead-card, .sci-grid-card {
+    background: rgba(20, 22, 30, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05) !important;
+}
+
+.sci-lead-card:hover, .sci-grid-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: rgba(0, 229, 255, 0.3) !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 20px rgba(0, 229, 255, 0.1), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+}
+
+.sci-ticker-wrap {
+    background: rgba(10, 12, 16, 0.6) !important;
+    border-color: rgba(255,255,255,0.05) !important;
+    border-radius: 8px !important;
+}
+
+.sci-search {
+    background: rgba(0,0,0,0.3) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+.sci-search input:focus {
+    color: #fff;
+}
+
+/* Remove gradient overlays from images that clash */
+.sci-lead-thumb, .sci-grid-thumb, .a-hero-panel {
+    background: #000 !important;
+}
+.sci-lead-thumb img, .sci-grid-thumb img, .a-hero-panel img {
+    mix-blend-mode: normal !important;
+}

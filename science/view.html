@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/science/science.css?v=20260827_2">
     <style>
         /* ═══ VERGE STYLE EDITORIAL READER ═══ */
-        :root { --read: 740px; --ink: #d4daec; }
+        :root { --read: 740px; --ink: var(--t2); }
 
         .article-page { max-width: 960px; margin: 0 auto; padding: calc(var(--nav-h) + 40px) var(--pad) 80px; }
 
@@ -34,7 +34,7 @@
         .a-eyebrow {
             display: inline-flex; align-items: center; gap: 8px;
             font-family: var(--mono); font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-            color: var(--verge-neon); background: rgba(100, 210, 255, 0.08); border: 1px solid rgba(100, 210, 255, 0.25);
+            color: var(--c2); background: rgba(100, 210, 255, 0.08); border: 1px solid rgba(100, 210, 255, 0.25);
             padding: 6px 14px; border-radius: 100px; margin-bottom: 20px;
         }
         .a-title {
@@ -121,21 +121,27 @@
         }
 
         /* conclusion */
-        .a-conclusion {
-            margin: 54px auto 20px; padding: 36px clamp(24px, 4vw, 44px);
-            border-radius: 24px; border: 1px solid var(--border2); background: var(--glass-bg);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.5), var(--rim);
+                .a-conclusion {
+            background: rgba(20, 22, 30, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.06) !important;
+            border-radius: 12px !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            padding: 38px 46px; margin: 48px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05) !important;
         }
         .a-conclusion h2 { margin-top: 0; }
         .a-conclusion p:last-child { margin-bottom: 0; }
 
         /* bottom footer & tags */
-        .a-foot {
-            max-width: var(--read); margin: 54px auto 0; padding-top: 32px; border-top: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+                .a-foot {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border);
         }
-        .a-tag { font-family: var(--mono); font-size: .66rem; letter-spacing: .16em; color: var(--t3); text-transform: uppercase; }
+        .a-tag {
+            font-family: var(--mono); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+            color: #000; background: var(--c1); padding: 5px 12px; border-radius: 4px; font-weight: 700;
+        }
 
         /* share buttons */
         .a-share-group { display: flex; align-items: center; gap: 8px; }
