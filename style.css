@@ -1159,3 +1159,49 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
     /* Hide radar haze completely just in case */
     .eye-haze { display: none !important; }
 }
+
+/* ── CONTRAST & VISIBILITY OVERRIDES (REAL ASTRONOMY) ── */
+
+/* Make glass slightly more opaque to ensure text is perfectly readable over the real image */
+.bento-card-6, .bento-card-4, .bento-flagship, .garaoy-card, .term-mock, .reg-form, .nav-main, .sci-lead-card, .sci-grid-card, .footer {
+    background: rgba(18, 18, 22, 0.75) !important;
+    backdrop-filter: blur(28px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(150%) !important;
+}
+
+/* Force all form labels and descriptions to be bright and visible */
+.fg label {
+    color: #E5E5EA !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    letter-spacing: 0.05em !important;
+}
+.cs-card {
+    color: #F5F5F7 !important;
+}
+.cs-desc {
+    color: #A1A1A6 !important;
+}
+.bento-meta-v, .br-sub, .wi-d, .contact-desc, .form-note, .hero-sub, .why-desc, .garaoy-desc, .cta-note {
+    color: #B0B0B8 !important; /* Brighter secondary text */
+}
+
+/* Ensure all links and small texts don't get lost in the stars */
+.br-go, .c-link, .foot-link, .foot-copy, .foot-tag, .mm-lang-btn {
+    color: #E5E5EA !important;
+}
+.c-link:hover, .foot-link:hover, .mm-lang-btn.active {
+    color: #FFFFFF !important;
+}
+
+/* Force text inputs to have high contrast white text */
+.fg input, .fg select, .sci-search input {
+    color: #FFFFFF !important;
+}
+.fg input::placeholder {
+    color: #86868B !important;
+}
+
+/* Ensure the nav when scrolled is perfectly opaque enough */
+.nav.scrolled {
+    background: rgba(15, 15, 18, 0.85) !important;
+}
