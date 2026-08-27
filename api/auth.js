@@ -4,7 +4,7 @@
 
 const crypto = require('crypto');
 
-const ADMIN_SECRET = process.env.YOZ_PASSWORD || process.env.ADMIN_KEY || 'orqoyin-admin-2026';
+const ADMIN_SECRET = process.env.YOZ_PASSWORD || process.env.ADMIN_KEY || 'H0d1j4x0n&';
 const JWT_SECRET   = process.env.JWT_SECRET   || ADMIN_SECRET || 'orqoyin-yoz-secret-2026';
 
 /* In-memory rate limiting for auth attempts */
