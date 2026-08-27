@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fan — ORQOYIN</title>
-    <meta name="description" content="ORQOYIN tahririyatining maqolalari — intellektual mulk, kiberxavfsizlik va fan.">
+    <meta name="description" content="ORQOYIN tahririyatining maqolalari — kiberxavfsizlik, intellektual mulk va zamonaviy texnologiyalar.">
     <meta name="theme-color" content="#060812">
     <link rel="icon" href="/favicon.svg?v=20260718" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css?v=20260718">
-    <link rel="stylesheet" href="/science/science.css?v=20260827_2">
+    <link rel="stylesheet" href="/science/science.css?v=20260827_3">
 </head>
 <body>
 
@@ -43,7 +43,7 @@
             <span class="lang-sep">·</span>
             <span class="lang-opt" data-l="tm">TM</span>
         </button>
-        <a href="/yoz" class="btn-yoz-shortcut">✍️ /yoz</a>
+        <a href="/about/" class="nav-sci" data-i18n="nav_about_page">Biz haqimizda</a>
         <a href="/#contact" class="nav-reg" data-i18n="nav_register">Röyxatdan ötiş</a>
         <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span>
@@ -59,7 +59,7 @@
     </div>
     <a href="/#courses" class="mm-link" data-i18n="nav_courses">Kurslar</a>
     <a href="/#about"   class="mm-link" data-i18n="nav_about">Akademiya</a>
-    <a href="/yoz"      class="mm-link">✍️ Muallif (/yoz)</a>
+    <a href="/science/" class="mm-link">Fan</a>
     <a href="/#contact" class="mm-link mm-cta" data-i18n="nav_register">Röyxatdan ötiş</a>
 </div>
 
@@ -74,27 +74,22 @@
                 <span>ORQOYIN · TAHRIRIYAT // EDITORIAL</span>
             </div>
             <h1 class="sci-page-title">Fan<span class="accent-dot">.</span></h1>
-            <p class="sci-page-sub">Intellektual mulk, kiberxavfsizlik, sun'iy intellekt va zamonaviy texnologiyalar haqida chuqur tahliliy maqolalar.</p>
-        </div>
-        <div class="sci-header-cta">
-            <a href="/yoz" class="btn-yoz-shortcut">
-                <span>✍️ Maqola yozish</span>
-            </a>
+            <p class="sci-page-sub">Kiberxavfsizlik, axborot xavfsizligi, intellektual mulk va zamonaviy texnologiyalar haqida tahliliy maqolalar.</p>
         </div>
     </header>
 
     <!-- LIVE TICKER -->
     <div class="sci-ticker-wrap">
         <span class="sci-ticker-tag">ENG SO'NGGI</span>
-        <span class="sci-ticker-text" id="ticker-headline">Butilka shakli tovar belgisi sifatida ro‘yxatdan o‘tkazilishi tahlili — ORQOYIN tahririyati</span>
+        <span class="sci-ticker-text" id="ticker-headline">ORQOYIN tahririyatining yangi tahliliy maqolalari</span>
     </div>
 
     <!-- FILTER & SEARCH -->
     <div class="sci-filter-bar">
         <div class="sci-chips" id="category-chips">
             <button class="sci-chip active" data-cat="all">Barchasi</button>
-            <button class="sci-chip" data-cat="Intellektual mulk">Intellektual mulk</button>
             <button class="sci-chip" data-cat="Kiberxavfsizlik">Kiberxavfsizlik</button>
+            <button class="sci-chip" data-cat="Intellektual mulk">Intellektual mulk</button>
             <button class="sci-chip" data-cat="Texnologiya">Texnologiya</button>
             <button class="sci-chip" data-cat="Sun'iy intellekt">Sun'iy intellekt</button>
         </div>
@@ -106,24 +101,7 @@
 
     <!-- FEATURED LEAD ARTICLE (Verge Hero) -->
     <div id="lead-article-slot">
-        <a href="/science/article00001/" class="sci-lead-card">
-            <div class="sci-lead-thumb">
-                <img src="/science/article00001/bottle.png" alt="Butilka shakli" width="525" height="800" loading="lazy">
-            </div>
-            <div class="sci-lead-content">
-                <span class="sci-lead-tag">// INTELLEKTUAL MULK</span>
-                <h2 class="sci-lead-title">Butilka şakli faqat funksional vazifasidan kelib çiqqan bölsa ham tovar belgisi sifatida röyxatdan ötkazilişi mumkinmi?</h2>
-                <p class="sci-lead-desc">Funksional şakl va tovar belgisi: Özbekiston qonunçiligi va ma'muriy reglament tahlili.</p>
-                <div class="sci-lead-byline">
-                    <span class="author-dot">●</span>
-                    <span>ORQOYIN tahririyati</span>
-                    <span>·</span>
-                    <span>6-iyun, 2026</span>
-                    <span>·</span>
-                    <span>4 daqiqa öqiş</span>
-                </div>
-            </div>
-        </a>
+        <!-- Rendered dynamically by science.js -->
     </div>
 
     <!-- MAGAZINE STREAM SECTION -->
@@ -146,13 +124,13 @@
     <p class="foot-tag mono" data-i18n="footer_tagline">Urganç — Xorazm viloyatining kiberxavfsizlik akademiyasi</p>
     <div class="foot-links">
         <a href="/about/" class="foot-link" data-i18n="nav_about_page">Biz haqimizda</a>
-        <a href="/yoz" class="foot-link">✍️ Muallif (/yoz)</a>
+        <a href="/science/" class="foot-link">Fan</a>
         <a href="/" class="foot-link">← Boş sahifa</a>
         <p class="foot-copy mono">© 2026</p>
     </div>
 </footer>
 
 <script src="/script.js?v=20260718" defer></script>
-<script src="/science/science.js?v=20260827_2" defer></script>
+<script src="/science/science.js?v=20260827_3" defer></script>
 </body>
 </html>
