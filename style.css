@@ -1011,3 +1011,11 @@ body.hovering .cur { background: var(--c1); box-shadow: 0 0 16px var(--c1); }
     background: var(--c2) !important;
     color: #FFFFFF !important;
 }
+
+/* KILL BRUTALIST SHAPES */
+.aurora, .au1, .au2, .au3 {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    animation: none !important;
+}
