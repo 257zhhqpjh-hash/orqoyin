@@ -740,19 +740,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ─────────────────────────────────────────────────
-       11. TOAST
+       11. TOAST & AUDIO MICRO-INTERACTIONS
     ───────────────────────────────────────────────── */
+    let audioCtx = null;
+    function playCyberClick(freq = 900, type = 'sine', duration = 0.035) {
+        try {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(freq * 0.5, audioCtx.currentTime + duration);
+            gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        } catch {}
+    }
+
+    document.querySelectorAll('.btn-amber, .btn-ghost, .btn-outline-amber, .cs-card, .lang-btn, .lang-opt, .nav-reg').forEach(el => {
+        el.addEventListener('click', () => playCyberClick(1200, 'sine', 0.04));
+    });
+
     function showToast(kind = 'success') {
         const toast = document.getElementById('toast');
         if (!toast) return;
-        const textEl = toast.querySelector('[data-i18n]');
-        if (textEl) {
-            textEl.textContent = kind === 'error'
+        const msg = document.getElementById('toast-msg');
+        if (msg) {
+            msg.textContent = kind === 'error'
                 ? T[currentLang].toast_error
                 : T[currentLang].toast_success;
         }
         toast.classList.toggle('error', kind === 'error');
         toast.classList.add('show');
+        playCyberClick(kind === 'error' ? 300 : 1600, 'sine', 0.08);
         setTimeout(() => toast.classList.remove('show'), 4500);
     }
 
